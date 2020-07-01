@@ -1,42 +1,59 @@
-baseurl = "/"
+baseURL = "http://example.com/"
 languageCode = "en-us"
-title = "A Hugo website"
-theme = "hugo-lithium"
+title = "Intro to R"
+theme = "minimal"
+disqusShortname = "username" # delete this to disable disqus comments
 googleAnalytics = ""
-disqusShortname = ""
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
-
-[permalinks]
-    post = "/:year/:month/:day/:slug/"
-
-[[menu.main]]
-    name = "About"
-    url = "/about/"
-[[menu.main]]
-    name = "GitHub"
-    url = "https://github.com/rstudio/blogdown"
-[[menu.main]]
-    name = "Twitter"
-    url = "https://twitter.com/rstudio"
 
 [params]
-    description = "A website built through Hugo and blogdown."
+    author = "Brennan T. Beal"
+    description = "An introductory tour of R for incoming UW CHOICE PhDs and Fellows"
+    githubUsername = "#"
+    accent = "purple"
+    showBorder = true
+    backgroundColor = "white"
+    font = "Raleway" # should match the name on Google Fonts!
+    highlight = true
+    highlightStyle = "default"
+    highlightLanguages = ["go", "haskell", "kotlin", "scala", "swift"]
 
-    # options for highlight.js (version, additional languages, and theme)
-    highlightjsVersion = "9.12.0"
-    highlightjsCDN = "//cdnjs.cloudflare.com/ajax/libs"
-    highlightjsLang = ["r", "yaml"]
-    highlightjsTheme = "github"
+[[menu.main]]
+    url = "/"
+    name = "Home"
+    weight = 1
 
-    MathJaxCDN = "//cdnjs.cloudflare.com/ajax/libs"
-    MathJaxVersion = "2.7.5"
+[[menu.main]]
+    url = "/about/"
+    name = "About"
+    weight = 2
 
-    # path to the favicon, under "static"
-    favicon = "favicon.ico"
+[[menu.main]]
+    url = "/post/"
+    name = "Posts"
+    weight = 3
 
-    [params.logo]
-    url = "logo.png"
-    width = 50
-    height = 50
-    alt = "Logo"
+
+# Social icons to be shown on the right-hand side of the navigation bar.
+# The "name" field should match the name of the icon in Font Awesome.
+# The list of available icons can be found at http://fontawesome.io/icons.
+
+[[menu.icon]]
+    url = "mailto:me@example.com"
+    name = "envelope-o"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://github.com/btbeal"
+    name = "github"
+    weight = 2
+
+[[menu.icon]]
+    url = "https://twitter.com/BealBrennan"
+    name = "twitter"
+    weight = 3
+
+[[menu.icon]]
+    url = "https://www.linkedin.com/in/btbeal/"
+    name = "linkedin"
+    weight = 4
 
