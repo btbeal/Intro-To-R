@@ -1,4 +1,4 @@
-baseURL = "http://example.com/"
+baseURL = "https://zealous-hawking-ce0a3d.netlify.app/"
 languageCode = "en-us"
 title = "Intro to R"
 theme = "minimal"
