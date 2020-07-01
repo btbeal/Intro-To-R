@@ -3,82 +3,87 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.com/categories/</loc>
+    <loc>/categories/</loc>
+    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/intro/</loc>
+    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020-07-01-lesson2/</loc>
+    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/lessons/</loc>
+    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r-markdown/</loc>
+    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020-06-30-lesson1/</loc>
     <lastmod>2020-06-30T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.com/tags/intro/</loc>
-    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.com/</loc>
-    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.com/post/2020-06-30-lesson1/</loc>
-    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/lessons/</loc>
-    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.com/post/</loc>
-    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.com/categories/r/</loc>
-    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/r-markdown/</loc>
-    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/</loc>
-    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.com/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2016-05-05T21:48:51-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.com/post/goisforlovers/</loc>
+    <loc>/post/goisforlovers/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.com/tags/development/</loc>
+    <loc>/tags/development/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.com/tags/go/</loc>
+    <loc>/tags/go/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.com/tags/golang/</loc>
+    <loc>/tags/golang/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.com/tags/template/</loc>
+    <loc>/tags/template/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.com/tags/themes/</loc>
+    <loc>/tags/themes/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
