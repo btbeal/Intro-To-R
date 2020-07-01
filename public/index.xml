@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>Lesson 2 - Indexing and Tidyverse</title>
+      <link>/post/2020-07-01-lesson2.knit/</link>
+      <pubDate>Wed, 01 Jul 2020 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2020-07-01-lesson2.knit/</guid>
+      <description>In the previous lesson we covered the very basics of R. We discussed that R can be a fancy calculator, interpret logical arguments, and some fun facts sprinkled throughout. In addition, we covered basic data types and structures. Alone, this is good information to know&amp;hellip; and is indeed the very bare bones introduction&amp;hellip; but we are here to look at data - to manipulate data in a meaningful way. The first step towards data exploration is learning how to find values in a data set.</description>
+    </item>
+    
+    <item>
+      <title>Lesson 2 - Indexing and Tidyverse</title>
+      <link>/post/2020-07-01-lesson2.utf8/</link>
+      <pubDate>Wed, 01 Jul 2020 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2020-07-01-lesson2.utf8/</guid>
+      <description>In the previous lesson we covered the very basics of R. We discussed that R can be a fancy calculator, interpret logical arguments, and some fun facts sprinkled throughout. In addition, we covered basic data types and structures. Alone, this is good information to know&amp;hellip; and is indeed the very bare bones introduction&amp;hellip; but we are here to look at data - to manipulate data in a meaningful way. The first step towards data exploration is learning how to find values in a data set.</description>
+    </item>
+    
+    <item>
       <title>Lesson 1 - intro to R</title>
       <link>/post/2020-06-30-lesson1/</link>
       <pubDate>Tue, 30 Jun 2020 21:13:14 -0500</pubDate>
