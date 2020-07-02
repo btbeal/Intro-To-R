@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Intro to R</title>
-    <link>https://zealous-hawking-ce0a3d.netlify.app/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Intro to R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 01 Jul 2020 21:13:14 -0500</lastBuildDate>
     
-	<atom:link href="https://zealous-hawking-ce0a3d.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/categories/r/</link>
+      <link>/categories/r/</link>
       <pubDate>Wed, 01 Jul 2020 21:13:14 -0500</pubDate>
       
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/categories/r/</guid>
+      <guid>/categories/r/</guid>
       <description></description>
     </item>
     
