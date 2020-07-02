@@ -1,0 +1,223 @@
+---
+title: "Lesson 3 - Functions and Loops in R"
+author: "Brennan T. Beal, PharmD, MS"
+date: 2020-07-01T21:13:14-05:00
+categories: ["R"]
+output:
+  blogdown::html_page
+draft: FALSE
+tags: ["R Markdown", "Lessons", "Intro"]
+---
+
+
+
+<p>Now that you've mastered the basics of R, and data manipulation with dplyr, you're ready for an introduction to functions and loops. Hopefully, the time you'll need for loops is minimal since dplyer has solved some grouping issues for us. But, you should still learn them just in case (and so you can understand them when reading others' code).<br />
+<br />
+Here I want to cover:</p>
+<pre><code>1. Functions and if statements
+2. Loops</code></pre>
+<div id="functions-and-if-statements" class="section level3">
+<h3>Functions and if statements</h3>
+<p>Functions are a key part of R. Regarding R, John Chambers is quoted saying that 'Everything that exists is an object and everything that happens is a function call'. You may not have noticed but everything we have done thus far has used a function. The assignment operator, <code>&lt;-</code>, and the piping operator, <code>%&gt;%</code> are functions. So are all the dplyr verbs we discussed. In this sense, even though we may not need to create our own, we should still understand how best to interact with the ones we are using day-to-day.<br />
+<br />
+In general, a function is constructed by using the <code>function</code> command and assignment arguments (or variables) that you'd like the function to rely on. I think that the <a href="https://r4ds.had.co.nz/functions.html">R for Data Science</a> book teaches it best. Paraphrasing:</p>
+<blockquote>
+<p>There are three key steps in creating a function:</p>
+<p>First, You need to pick a name for the function.</p>
+<p>Second, you list the arguments for a function inside <code>function()</code></p>
+<p>Finally, place the code for the arguments inside {} after <code>function()</code></p>
+</blockquote>
+<p>So, for our first function, we want to take any two variables, multiply the first variable by 2 and then add the second to the product.<br />
+</p>
+<pre class="r"><code># We want to name our function: my_first_function
+# and we specified that it would need two numbers supplied. We will just call them &#39;x&#39; and &#39;y&#39;
+my_first_function &lt;- function(x, y){
+  # simply telling the function that it should multiply x by 2 and add y - this inside brackets {}
+  x*2 + y   
+} # close the bracket
+
+# Now, test it out:
+my_first_function(x = 892, y = 1764)</code></pre>
+<p>Notice that when we called our function, we told it that the x value should equal 892 and that y should be 1764. What happens if you don't specify x or y? What happens if you type <code>my_first_function(892, 1764)</code>? Notice that the code still runs the same. R understands that you want those variables assigned. Try mixing it up and calling <code>my_first_function(1764, 892)</code>. See that the result is different? Because the first number is assigned to x. However, one final caveat is that we could rearrange the order, as long as we specified the variable. For example, now look at <code>my_first_function(y = 1764, x = 892)</code>. Now we have our original answer.<br />
+<br />
+In general, especially as you get better, it is good practice to specify the variables explicitly when using code. This can be good for you to begin to memorize arguments that some functions use, as well as helping your reader that may be less familiar with a given function.<br />
+<br />
+Since we are learning the basics of functions, I should add one more important thing: often times functions make use of hidden arguments, or arguments within a function that have a pre-assigned value.<br />
+<br />
+Let me show you want I mean. Suppose we want a function that just requires 3 variables, x, y, and z, and returns their sum. But, imagine that z was almost always the same, z = 4. We could specify that within our function so we don't need to type it everytime.<br />
+</p>
+<pre class="r"><code># we will set z = to four from the beginning
+add_three &lt;- function(x, y, z = 4){
+  x + y + z
+}
+
+# now, try calling this function with just two numbers:
+add_three(4, 3)</code></pre>
+<p>Notice that R placed 4 and 3 as the x and y variable and assumed that z was four. Just like the other functions, we could always override this value by calling something like <code>add_three(4,3,z = 6)</code> or <code>add_three(4,3,6)</code>.<br />
+<br />
+Finally, since we can specify one value, we could specify all of them and call an empty function. For example, suppose I want to have a function to spit out &quot;1 apple a day keeps 1 doctor away&quot; - the true golden ratio. To do so, I could simply create:</p>
+<pre class="r"><code>cheesy_function &lt;- function(apple_num = 1, figure_num = 1, profession = &quot;doctor&quot;){
+  
+  # first, turn their number into a character
+  apples &lt;- as.character(apple_num) 
+  figure &lt;- as.character(figure_num)
+  
+  print(paste(apples, &quot;apple a day keeps&quot;, figure, profession, &quot;away&quot;, sep = &quot; &quot;))
+  
+}
+
+# now I can call this function without giving any arguments
+cheesy_function()</code></pre>
+<pre><code>## [1] &quot;1 apple a day keeps 1 doctor away&quot;</code></pre>
+<p>Cool. Now I have a REALLY useful function that people are going to want to use. And, it is flexible. We could have used any number of apples, or professionals, and we can pick our own profession. For example, try <code>cheesy_function(9, 9, &quot;zookeeper&quot;)</code>.<br />
+<br />
+This works, but it bothers me that the function spits out &quot;9 apple a day&quot; as if plural words do not exist. If the number was anything but singular (1), then it should say &quot;9 <em>apples</em> a day&quot;. Same should apply for the profession. To do this, I can introduce you to if statements in R.<br />
+<br />
+If statements are exactly what they sound like and are constructed similar to functions: <code>if(logical condition is TRUE){do something}</code>.<br />
+<br />
+We can use these within our <code>cheesy_function()</code>. We will also use the <code>paste()</code> function like above. Remember to type <code>?paste</code> if you're unfamiliar.</p>
+<pre class="r"><code># let&#39;s modify the code a bit
+cheesy_function &lt;- function(apple_num = 1, figure_num = 1, profession = &quot;doctor&quot;){
+  
+  # leave the first part the same
+  # first, turn their number into a character with as.character
+  apples &lt;- as.character(apple_num) 
+  figure &lt;- as.character(figure_num)
+  
+  # check to see if apples is greater than 1
+  if(apples &gt; 1){
+    # then the word we should use is &quot;apples&quot;
+    fruit_word &lt;- &quot;apples&quot; 
+  } else {           
+    # otherwise...
+    fruit_word &lt;- &quot;apple&quot;
+  }
+  
+  # should do the same thing for profession
+  if(figure &gt; 1){
+    # paste an &quot;s&quot; onto profession
+    profession_word &lt;- paste(profession,&quot;s&quot;, sep = &quot;&quot;)
+  } else {
+    # otherwise leave it
+    profession_word &lt;- profession
+  }
+  
+  # now enter these variables into your print out
+  print(paste(apples, fruit_word, &quot;a day keeps&quot;, figure, profession_word, &quot;away&quot;, sep = &quot; &quot;))
+  
+}
+
+
+# now let&#39;s try it:
+cheesy_function(9, 2)</code></pre>
+<pre><code>## [1] &quot;9 apples a day keeps 2 doctors away&quot;</code></pre>
+<p>Great. Play around with that function. Try changing some things in it and seeing what happens. At this point, you should be ready to create some of your own!</p>
+</div>
+<div id="loops" class="section level3">
+<h3>Loops</h3>
+<p>The dreaded loops. Tidyverse has optimized a LOT of work for data scientists, which means that we really don't need to use loops as often as we did. Though, when you need them, you'll know what to do. Loops can take several different forms. For our purposes, we can look at two cases: <code>for</code> loops and <code>while</code> loops.</p>
+<div id="for-loops" class="section level4">
+<h4>For Loops</h4>
+<p>For loops are as their name suggests. They are used to iterate over certain values within a data structure and perform some operation. They're called for loops because they're read aloud as &quot;<strong>For</strong> all values in this structure, perform some operation.&quot; For loops rely on our memory of indexing. If you're unfamiliar, check our indexing module.<br />
+<br />
+The basic structure of for loops are <code>for(some_value in 1:all_values){ do something }</code>. This reads &quot;For an indexed value in 1 through all the values, do something&quot;.<br />
+<br />
+Let's suppose that we want to loop over all values of some vector, and print their value.<br />
+<br />
+</p>
+<pre class="r"><code>new_vector &lt;- c(10, 40, 42, 19, 36, 11)
+
+# open our for loop, and call our index &#39;i&#39; - we could&#39;ve called it anything but &#39;i&#39; is convention
+for(i in 1:6){
+  # pull the value from new_vector and store it in &#39;value&#39;
+  value &lt;- new_vector[i]
+  
+  print(paste(&quot;This particular value is&quot;, value))
+}</code></pre>
+<pre><code>## [1] &quot;This particular value is 10&quot;
+## [1] &quot;This particular value is 40&quot;
+## [1] &quot;This particular value is 42&quot;
+## [1] &quot;This particular value is 19&quot;
+## [1] &quot;This particular value is 36&quot;
+## [1] &quot;This particular value is 11&quot;</code></pre>
+<p>Note that I told R that it should loop 6 times <code>1:6</code> but that isn't very flexible. A new function, <code>length()</code> can tell us how long our vector is so we don't have to count.<br />
+</p>
+<pre class="r"><code># open our for loop, and call our index &#39;i&#39; - we could&#39;ve called it anything but &#39;i&#39; is convention
+for(i in 1:length(new_vector)){
+  # pull the value from new_vector and store it in &#39;value&#39;
+  value &lt;- new_vector[i]
+  
+  print(paste(&quot;This particular value is&quot;, value))
+}</code></pre>
+<p>To tie these into our if statements, we could write a loop to print only the even numbers. To do this, we will have to think of a criteria that our even numbers fit that the others don't. We know that even numbers can be divided by two with a 0 remainder. Luckily, in R there is a special function to provide the remainder of a quotient, <code>%%</code>. We can take advantage of this logic within our loop.<br />
+</p>
+<pre class="r"><code># open our for loop, and call our index &#39;i&#39; - we could&#39;ve called it anything but &#39;i&#39; is convention
+for(i in 1:length(new_vector)){
+  # pull the value from new_vector and store it in &#39;value&#39;
+  value &lt;- new_vector[i]
+  
+  if(value %% 2 == 0){ # if the remainder is == 0
+    print(paste(&quot;This particular value is&quot;, value))
+  } else {
+    next # else go to the next number
+  }
+  
+}</code></pre>
+<pre><code>## [1] &quot;This particular value is 10&quot;
+## [1] &quot;This particular value is 40&quot;
+## [1] &quot;This particular value is 42&quot;
+## [1] &quot;This particular value is 36&quot;</code></pre>
+<p>See? Not so bad. But in most cases, we don't want to simply print a value to the console. Most of the time we want to store a value for further use. In this module, I'm only going to cover storage in vectors. But, because data frames are just bundled vectors, it translates easily.<br />
+<br />
+In keeping with the example above, instead of printing the values that were even, let us just store them in a vector. To do this, we will first need to define an empty vector. Then, upon each iteration, we will concatenate that vector with the newest value. At the end, we can just return the vector for use. Note that things assigned within the vector are saved into memory so... don't name things inside loops values that are assigned elsewhere. for example, we can see that if we type <code>value</code> into our console, the most recent number (the last in our loop) will print: 11.<br />
+<br />
+</p>
+<pre class="r"><code># open an empty vector
+even_vec &lt;- c()
+# open our for loop, and call our index &#39;i&#39; - we could&#39;ve called it anything but &#39;i&#39; is convention
+for(i in 1:length(new_vector)){
+  # pull the value from new_vector and store it in &#39;value&#39;
+  value &lt;- new_vector[i]
+  
+  if(value %% 2 == 0){ # if the remainder is == 0
+    # override the even_vec with a combination of itseslf plus the new value
+    even_vec &lt;- c(even_vec, value)
+  } else {
+    next # else go to the next number
+  }
+
+}
+
+# now we have access to that variable
+even_vec</code></pre>
+<pre><code>## [1] 10 40 42 36</code></pre>
+<p>I would encourage you to try this yourself!</p>
+</div>
+<div id="while-loops" class="section level4">
+<h4>While Loops</h4>
+<p>Our introduction to while loops will be brief, but they can be useful so I still wanted to provide some information. While loops, similar to for loops, do exactly what they sound like they do: <strong>while</strong> a logical expresssion evaluates to true, do something.<br />
+<br />
+Suppose we want to print all the values up to 10 multiplied by the number previous in the sequence? For example, if the number is 1, we would multiply 1 * (1-1), which would give us 0. The basic structure is <code>while(logical expression){do something}</code>. Because it implies iteration (while), we must assign next values of <code>i</code> on our own.<br />
+</p>
+<pre class="r"><code># tell the loop what the first value will be
+i &lt;- 1
+while(i &lt; 11){
+  num &lt;- i * (i-1)
+  print(paste(&quot;Product: &quot;, num))
+  i &lt;- i + 1
+}</code></pre>
+<pre><code>## [1] &quot;Product:  0&quot;
+## [1] &quot;Product:  2&quot;
+## [1] &quot;Product:  6&quot;
+## [1] &quot;Product:  12&quot;
+## [1] &quot;Product:  20&quot;
+## [1] &quot;Product:  30&quot;
+## [1] &quot;Product:  42&quot;
+## [1] &quot;Product:  56&quot;
+## [1] &quot;Product:  72&quot;
+## [1] &quot;Product:  90&quot;</code></pre>
+<p>So this was pretty straightforward. Notice that I had to update <code>i</code> each loop. If I would not have, the loop would've extended forever. If this happens (and you will forget occassionally), there is a &quot;stop&quot; icon at the top right of the console pane in RStudio. Press that and your function will stop.<br />
+<br />
+Hopefully you now have a good understand of what functions are and how to use them, along with two different types of loops!</p>
+</div>
+</div>
