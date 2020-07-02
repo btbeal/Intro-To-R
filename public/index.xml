@@ -23,6 +23,16 @@ Here I want to cover:
     </item>
     
     <item>
+      <title>Lesson 3 - Functions and Loops in R</title>
+      <link>/modules/2020-07-03-lesson3/</link>
+      <pubDate>Thu, 02 Jul 2020 21:13:14 -0500</pubDate>
+      
+      <guid>/modules/2020-07-03-lesson3/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
+    </item>
+    
+    <item>
       <title>Lesson 2 - Indexing and Tidyverse</title>
       <link>/modules/2020-07-01-lesson2/</link>
       <pubDate>Wed, 01 Jul 2020 21:13:14 -0500</pubDate>
