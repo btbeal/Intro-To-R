@@ -31,6 +31,17 @@
     
     <item>
       <title>Lesson 3 - Functions and Loops in R</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-07-02-lesson4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-07-02-lesson4/</guid>
+      <description>Now that you&#39;ve mastered the basics of R, and data manipulation with dplyr, you&#39;re ready for an introduction to functions and loops. Hopefully, the time you&#39;ll need for loops is minimal since dplyer has solved some grouping issues for us. But, you should still learn them just in case (and so you can understand them when reading others&#39; code).
+Here I want to cover:
+1. Functions and if statements 2.</description>
+    </item>
+    
+    <item>
+      <title>Lesson 3 - Functions and Loops in R</title>
       <link>https://zealous-hawking-ce0a3d.netlify.app/modules/newlesson/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
