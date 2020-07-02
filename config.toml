@@ -28,8 +28,8 @@ googleAnalytics = ""
     weight = 2
 
 [[menu.main]]
-    url = "/post/"
-    name = "Posts"
+    url = "/modules/"
+    name = "Modules"
     weight = 3
 
 
