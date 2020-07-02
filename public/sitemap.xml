@@ -3,62 +3,53 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/categories/</loc>
-    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/intro/</loc>
-    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020-07-01-lesson2/</loc>
-    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/lessons/</loc>
-    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r-markdown/</loc>
-    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-07-01T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020-06-30-lesson1/</loc>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/categories/</loc>
     <lastmod>2020-06-30T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/about/</loc>
-    <lastmod>2016-05-05T21:48:51-07:00</lastmod>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/tags/intro/</loc>
+    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2020-07-02-lesson3/</loc>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/</loc>
+    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/post/2020-06-30-lesson1/</loc>
+    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/tags/lessons/</loc>
+    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/post/</loc>
+    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/categories/r/</loc>
+    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/tags/r-markdown/</loc>
+    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/tags/</loc>
+    <lastmod>2020-06-30T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/about/</loc>
+    <lastmod>2016-05-05T21:48:51-07:00</lastmod>
   </url>
   
 </urlset>
