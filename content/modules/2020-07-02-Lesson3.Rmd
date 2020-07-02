@@ -1,8 +1,9 @@
 ---
-title: "Lesson 3 - Functions and Loops in R"
+title: "Lesson 3 - Functions and Loops"
 author: "Brennan T. Beal, PharmD, MS"
 date: 2020-07-02T21:13:14-05:00
 categories: ["R"]
+output: html_document
 draft: FALSE
 tags: ["R Markdown", "Lessons", "Intro"]
 ---
@@ -235,13 +236,4 @@ while(i < 11){
 So this was pretty straightforward. Notice that I had to update `i` each loop. If I would not have, the loop would've extended forever. If this happens (and you will forget occassionally), there is a "stop" icon at the top right of the console pane in RStudio. Press that and your function will stop.\
 \
 Hopefully you now have a good understand of what functions are and how to use them, along with two different types of loops!
-
-
-
-
-
-
-
-
-
 
