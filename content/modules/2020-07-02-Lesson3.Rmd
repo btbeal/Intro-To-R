@@ -5,6 +5,9 @@ date: 2020-07-02T21:13:14-05:00
 categories: ["R"]
 draft: FALSE
 tags: ["R Markdown", "Lessons", "Intro"]
+output:
+  blogdown::html_page:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
