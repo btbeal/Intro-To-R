@@ -2,41 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lessons on Intro to R</title>
-    <link>/tags/lessons/</link>
+    <link>https://zealous-hawking-ce0a3d.netlify.app/tags/lessons/</link>
     <description>Recent content in Lessons on Intro to R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Jul 2020 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2020 21:13:14 -0500</lastBuildDate>
     
-	<atom:link href="/tags/lessons/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zealous-hawking-ce0a3d.netlify.app/tags/lessons/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Lesson 3 - Functions and Loops in R</title>
-      <link>/modules/2020-07-02-lesson3/</link>
-      <pubDate>Thu, 02 Jul 2020 21:13:14 -0500</pubDate>
-      
-      <guid>/modules/2020-07-02-lesson3/</guid>
-      <description>Now that you&#39;ve mastered the basics of R, and data manipulation with dplyr, you&#39;re ready for an introduction to functions and loops. Hopefully, the time you&#39;ll need for loops is minimal since dplyer has solved some grouping issues for us. But, you should still learn them just in case (and so you can understand them when reading others&#39; code).
-Here I want to cover:
-1. Functions and if statements 2.</description>
-    </item>
     
     <item>
       <title>Lesson 2 - Indexing and Tidyverse</title>
-      <link>/modules/2020-07-01-lesson2/</link>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-07-01-lesson2/</link>
       <pubDate>Wed, 01 Jul 2020 21:13:14 -0500</pubDate>
       
-      <guid>/modules/2020-07-01-lesson2/</guid>
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-07-01-lesson2/</guid>
       <description>In the previous lesson we covered the very basics of R. We discussed that R can be a fancy calculator, interpret logical arguments, and some fun facts sprinkled throughout. In addition, we covered basic data types and structures. Alone, this is good information to know... and is indeed the very bare bones introduction... but we are here to look at data - to manipulate data in a meaningful way. The first step towards data exploration is learning how to find values in a data set.</description>
     </item>
     
     <item>
       <title>Lesson 1 - intro to R</title>
-      <link>/modules/2020-06-30-lesson1/</link>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-06-30-lesson1/</link>
       <pubDate>Tue, 30 Jun 2020 21:13:14 -0500</pubDate>
       
-      <guid>/modules/2020-06-30-lesson1/</guid>
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-06-30-lesson1/</guid>
       <description>Welcome to The University of Washington and your crash course on R. Note that this class will not be incredibly robust (we have three days) but it will aim to provide you the tools necessary to do well in your stats classes and beyond. Futher, I believe several of you will take a semester long course in R. You&#39;ll be ahead of that game but will go into more depth during that class.</description>
     </item>
     
