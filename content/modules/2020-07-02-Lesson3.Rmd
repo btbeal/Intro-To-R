@@ -3,11 +3,10 @@ title: "Lesson 3 - Functions and Loops in R"
 author: "Brennan T. Beal, PharmD, MS"
 date: 2020-07-02T21:13:14-05:00
 categories: ["R"]
-output::
-  blogdown::html_page
-draft: FALSE
 tags: ["R Markdown", "Lessons", "Intro"]
 ---
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
