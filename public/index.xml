@@ -52,13 +52,13 @@ Write an simple expression in your console that adds those two variables Write a
     </item>
     
     <item>
-      <title>Lesson 0 - R Graphics Tutorial</title>
+      <title>Lesson 1.5 - R Graphics Tutorial</title>
       <link>https://zealous-hawking-ce0a3d.netlify.app/modules/rgraphicstutorial/</link>
       <pubDate>Sun, 28 Jun 2020 21:13:14 -0500</pubDate>
       
       <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/rgraphicstutorial/</guid>
       <description>For this lesson, we&#39;re going to use the gapminder data, which can be found in its original form here. If you&#39;re reading this and not attending the class, I would highly encourage you to check out the website! The late Hans Rosling was a brilliant guy and his work, followed up by children, is worth digging through.
-There are two sets of data I want to focus on. The first is simply population data.</description>
+The main purpose of this exercise is to learn how to graph your data; however, we first need to understand the (subjectively) best format for data, tidy data.</description>
     </item>
     
     <item>

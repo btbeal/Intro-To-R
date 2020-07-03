@@ -1,5 +1,5 @@
 ---
-title: "Lesson 0 - R Graphics Tutorial"
+title: "Lesson 1.5 - R Graphics Tutorial"
 author: "Brennan T. Beal"
 date: 2020-06-28T21:13:14-05:00
 categories: ["R"]
@@ -10,14 +10,290 @@ tags: ["R Markdown", "Lessons", "Intro"]
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-gapminder_IncomePerCap <- read.csv2("../data/income_per_person.csv", sep = ",")
+gapminder_IncomePerCap <- read.csv("../data/income_per_person.csv")
+gap <- read.csv2("../data/gapminder.csv")
 ```
 
 For this lesson, we're going to use the gapminder data, which can be found in its original form  [here](https://www.gapminder.org/data/). If you're reading this and not attending the class, I would highly encourage you to check out the website! The late Hans Rosling was a brilliant guy and his work, followed up by children, is worth digging through.\
 \
+The main purpose of this exercise is to learn how to graph your data; however, we first need to understand the (subjectively) best format for data, tidy data. Last, we'll go more in depth to see how to take advantage of ggplots dimensionality. So, in this lesson we will actually cover three things:
+
+  1. Tidy Data (for graphing purposes)
+  2. R Graphics with ggplot2
+  3. Dimensions in ggplot2
+
 There are two sets of data I want to focus on. The first is simply population data. Download the data by clicking [this link](../../data/income_per_person.csv).\
 \
+Open a new script and read the data into your environment. Let's title this data `gapminder_IncomePerCap` and assign it as such; `gapminder_IncomePerCap <- read.csv("income_per_person.csv")`. Note that you'll have to specify the path relative to your directory.
+
+### Tidy Data
+Let's look at the data you've loaded in.\
+
 ```{r}
-head(gapminder_IncomePerCap)
+str(gapminder_IncomePerCap)
 ```
+
+
+Okay... what is that? 193 observations and 242 VARIALBES? Well if we look at a smaller subset, we can see that the data is organized with each row representing a country and the respective columns the years from left to right. The values of those columns represent the income that we're interested in. We can subset our data to see that:\
+\
+```{r}
+# let's look at the first 4 observations with the first 5 columns
+gapminder_IncomePerCap[1:4, 1:5] 
+```
+
+That looks less intimidating. But this isn't what we would call `tidy` data. In general, *tidy data refers to data where each column represents a variable*. We will almost always want our data in this form so pay attention to this concept. If we look at our data above, we can see that income (the numbers)... is not a variable at all... and what should be a `year` variable is a bunch of columns. We need to fix this before we can begin to discuss graphics.\
+\
+This data is in what we will rever to as its "wide" form. We want it in its long form. These terms are fairly self explanatory - wide data has more columns (making it wider), whereas long data has more rows (making it longer).\
+\
+Fortunately for us, R has a really nice set of commands for us within the `tidyverse` and so... we should first load that library (you must first install the package using `install.packages("tidyverse")`). Next, take a look at the function `pivot_longer()` using `?pivot_longer`. Now let's use it to transform our data.\
+
+```{r}
+# install.packages("tidyverse") - I already have this installed so no need to do it here. 
+# load the library as so:
+library(tidyverse)
+
+# Now, we 'pivot' our data longer
+# Keep in mind, we want our years to be their own variable, 'years', and our values 'income'
+# Also notice that all the years begin with "X" - we can use that to our advantage
+tidy_df <- gapminder_IncomePerCap %>% 
+  pivot_longer(cols = starts_with("X"), names_to = "year", values_to = "income")
+```
+
+Hopefully you see how simple that was in R. You will use `pivot_longer` frequently. The above simply says that I want to take all the columns which begins with `X` and turn them into their own variable, `year`. Then, all the values within those columns should go into an `income` column.\
+\
+But since we want to treat years as a numeric value, we have to `mutate()` our new column. We will take advantage of some string manipulation (which I'm not going to go into detail about here) and then change the data type. It is a character value currently. Note that we could've just piped into it above but I thought it would be helpful to see step by step.\
+\
+```{r}
+# Normally, we wouldn't want to store the df in the same name.
+tidy_df <- tidy_df %>% 
+  # let's mutate the year column
+  # First, remove the "X" from our years
+  mutate(year = str_replace(year, pattern = "X", replacement = ""),
+         # next, turn our character to numeric (technically 'double')
+         year = as.numeric(year))
+```
+
+Now we have taken a relatively ugly data set and made it into something that we would consider "tidy". Notice a couple things before we move on. First, countries used to be unique to a single row... now those countries are repeated multiple times (as many times as there are years). This is on purpose and a consequence of "longer" data. Second, now we have each variable representing a single type of value. We have `country`, `year`, and `income` all specifying a single piece of information about our data.\
+\
+Now we can get to the fun stuff.
+
+### R Graphics with ggplot2
+Base R has graphic capabilities that were far extended by the `ggplot2` package - the gg stands for Grammar of Graphics. This package relies on a standard "grammar" for graphical representation. To learn more, there is a really nice [cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) online, which you should check out - I have it saved and used it often starting out!\
+\
+In general, ggplot requires data, a specified shape (`geom_`etry), some aesthetics, and a coordinate system. Let's use these ideas to create our first plot with the data set we've transformed, `tidy_df`.\
+\
+First, let's subset the data for only the US data.\
+\
+```{r}
+us_data <- tidy_df %>% filter(country == "United States")
+```
+
+Now that we only have US data, let's look at the evolution of income per person over the years. A good way to do this is by creating a bar graph.\
+\
+```{r}
+# first, supply the data frame to ggplot()
+ggplot(us_data) +
+  # we want bars so... geom_bar() gives us that geometry
+  # now, we want specify the y axis to be income and x is year
+  # we put these in the aes() comman (for aesthetics)
+  geom_bar(aes(x = year, y = income), stat = "identity")
+```
+
+That worked pretty well. Not the most attractive graph... but there it is nonetheless - two lines of code later. Also... check out the '30s. Interesting. Wonder what happened there (clue is in the depressed line).\
+\
+What if we wanted to look at this income growth for 3 countries? Let's say Germany, US, and France. We can do this a few ways - R has a color/fill argument that can be useful for separating by a given level. Let's use that.\
+\
+First, as usual, we will pull out our data.\
+\
+```{r}
+top_three <- tidy_df %>% 
+  # %in% is convenient function for selecting multiple matching items from a vector
+  filter(country %in% c("United States", "Germany", "France"),
+         year %in% c(seq.int(from = 1800, to = 2020, by = 20)))
+
+# now we plot
+ggplot(top_three) +
+  # using geom_bar again
+  # now we add two arguments - fill, which tells us to color the bars by country
+  # position (I prefer "dodge" - the default is "stack")
+  geom_bar(aes(x = year, y = income, fill = country), stat = "identity", position = "dodge")
+
+```
+
+Like all of the examples, you should play around with the defaults and the data to see different results/etc.\
+\
+Finally, for this example, I want to show you some easy tricks to make this graph a little cleaner. I really like the `ggthemes` package to make a clean plot space. Go ahead and install it using `install.packages("ggthemes")`.\
+\
+The ggthemes package has many different themes for ggplot2 so you don't have to create a theme manually (which you very well could do but we don't have time here - or ever, usually). Additionally, we need to neaten up the labels and y-axis (since it should be dollars). I'll show you all three here.\
+\
+```{r}
+# load ggthemes
+library(ggthemes)
+# Use the same graph
+ggplot(top_three) +
+  geom_bar(aes(x = year, y = income, fill = country), stat = "identity", position = "dodge") +
+  # now add a theme (scroll through and pick your favorite.. I really like the minimal one)
+  # these themes are specified as theme_* - try several out!
+  theme_minimal() +
+  # now add your labels
+  labs(
+    x = "Year",
+    y = "Income",
+    title = "Income Per Capita for Three Major Countries"
+  ) +
+  # there are several ways to do this.. I use the scales package
+  # scales can do a lot for your axes. Check it out:
+  scale_y_continuous(labels = scales::dollar)
+```
+
+Now you've got the basics of ggplot. Take some time to play around with this before moving on.\
+\
+Let's go a bit deeper into ggplot2 now.
+
+### Dimensions in ggplot2
+You've already noticed how to add an extra dimension in ggplot2: specifying a `fill` lets us distinguish by a given variable not plotted on the x or y axis explicitly (`country` in our case). I we can do a little more than that. For this exercise, I've taken the liberty of curating a bunch of data and merging it together so we don't need to clean it again - go ahead and download it [here]((../../data/gapminder.csv)).\
+\
+Store this data as `gap <- read.csv2("gapminder.csv")`.\
+\
+Now, let's take a look:
+
+```{r}
+str(gap)
+```
+
+Again, we have GDP per capita (slightly different than income), along with a ton of other metrics. I have already done all the cleaning for each of these variables that we did earlier so this is good to go.\
+\
+General metrics of progress are GDP per capita and life expectancy. Let's say we want to see the change in these metrics for all the countries in this data set from the beginning of our data (1800) to 2015.\
+\
+First, let's select the data we want.\
+\
+```{r}
+gap_selected_years <- gap %>%
+  filter(Year %in% c(1800, 2015))
+```
+
+Now, let's use the `geom_point()` geometry since we want to view both continuous variables.\
+\
+```{r}
+ggplot(gap_selected_years) +
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy))
+
+```
+
+Alright, that's not beautiful... but it is a start. We can see two general clusters - one to the lower left and one gathered around the top. We can guess that these two clusters are the years. We can use the `color` argument (color is geom_point's fill equivalent) to verify our assumption:
+
+```{r}
+ggplot(gap_selected_years) + 
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = Year))
+```
+
+So we were right. But there is still a bit of funkiness going on. First, the legend shows us that R thinks `Year` is continous... and it was... but for this analysis we should think of it as a factor (or categorical). We could use `as.factor(Year)` to transform it if we wanted.\
+\
+Second, the clusters are rough. We can could place these on a log scale to make it a bit more linear.\
+\
+```{r}
+ggplot(gap_selected_years) + 
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = Year)) +
+  # we can just add a scale to the x axis (there are many of these - check them out!)
+  scale_x_log10()
+```
+
+Hey that looks a lot better! In general, we can see that everyone is doing better as a society. Awesome.\
+\
+But about dimensions... we have a population variable that we could take advantage of. Let's make the size of each point proportional to their population size.\
+\
+```{r}
+ggplot(gap_selected_years) + 
+  # let's add the `size` argument to our aesthetics
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = as.factor(Year), size = population)) +
+  # fix our log scale (make them dollars)
+  scale_x_log10(labels = scales::dollar) +
+  # let's get rid of the legends for now...
+  guides(size = FALSE, color = FALSE) +
+  # and add a theme
+  theme_minimal() +
+  # and labels
+  labs(
+    y = "Life Expectancy",
+    x = "GDP Per Capita",
+    title = "Check Out This Graph"
+  )
+```
+
+But what if we wanted to call out the US, specifically? We could add a shape...
+
+```{r}
+# create a new data frame with a column indicated whether the value is for US or not
+gselect_us <- gap_selected_years %>% 
+  mutate(us_val = ifelse(country == "United States", 1, 0))
+
+
+ggplot(gselect_us) + 
+  # let's add the `shape` argument to our aesthetics
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = as.factor(Year), size = population,
+                 shape = as.factor(us_val))) +
+  # fix our log scale (make them dollars)
+  scale_x_log10(labels = scales::dollar) +
+  # let's get rid of the legends for now...
+  guides(size = FALSE, color = FALSE) +
+  # and add a theme
+  theme_minimal() +
+  # and labels
+  labs(
+    y = "Life Expectancy",
+    x = "GDP Per Capita",
+    title = "Check Out This Graph"
+  )
+```
+
+
+
+See the triangle? That's the US. And yes, this is getting a little out of hand here... but we should just go one layer deeper. Let's subset the data by who was above the average child mortality rate and who was not.\
+\
+```{r}
+child_mort_cutoff_data <- gselect_us %>% 
+  # we are really just interested in the 2015 year... 
+  group_by(Year) %>% 
+  # this will give a column to compare child mortality to
+  mutate(avg_mort = mean(child_mortality),
+         # make a comlumn getting 1 if the avg is greater or 0 if not
+         compare = ifelse(child_mortality > avg_mort, 1, 0),
+         # hardcoding compare to be 0 if the year is not 2015
+         compare = ifelse(Year == 1800, 0, compare)) %>% 
+  ungroup() %>% 
+  group_by(country) %>% 
+  # telling R that the country should get 1 for both dates if it was 1 for 2015
+  mutate(compare = max(compare),
+         compare = ifelse(compare == 1, "Above Avg. Child Mortality", "At or Under Avg. Child Mortality"))
+
+
+# Now let us plot it again...
+ggplot(child_mort_cutoff_data) + 
+  # let's add the `shape` argument to our aesthetics
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = as.factor(Year), size = population,
+                 shape = as.factor(us_val))) +
+  # fix our log scale (make them dollars)
+  scale_x_log10(labels = scales::dollar) +
+  # let's get rid of the legends for now...
+  guides(size = FALSE, color = FALSE, shape = FALSE) +
+  # and add a theme
+  theme_fivethirtyeight() +
+  # and labels
+  labs(
+    y = "Life Expectancy",
+    x = "GDP Per Capita",
+    title = "Change in GDP and Life Expectancy",
+    subtitle = "from 1800 to 2015, separated by groups at or above average child mortality"
+  ) +
+  # now, we add "facets" to group the data into different panes
+  # we will use our 'compare' variable for that.
+  facet_grid(~compare) 
+```
+
+
+So we just did a lot... and it was a bit of overkill. But it is interesting to see. We know that the US is under the average child mortality rate (the triangle in the right pane). We can also now see that those higher GDP and life expectancy are correlated with better child mortality rates.\
+\
+This is all just data exploration and we know that looking at associations this way tells us nothing about causation. Though, it can be a good first step!\
+\
+Hopefully you all are now experts with ggplot **and** dplyr since we used them both a lot here!
 

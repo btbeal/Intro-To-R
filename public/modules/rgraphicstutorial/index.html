@@ -5,7 +5,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Lesson 0 - R Graphics Tutorial</title>
+        <title>Lesson 1.5 - R Graphics Tutorial</title>
         
         <style>
 
@@ -85,7 +85,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Lesson 0 - R Graphics Tutorial</a>
+                    <a class="navbar-brand visible-xs" href="#">Lesson 1.5 - R Graphics Tutorial</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -125,7 +125,7 @@
 <main>
 
     <div>
-        <h2>Lesson 0 - R Graphics Tutorial</h2>
+        <h2>Lesson 1.5 - R Graphics Tutorial</h2>
         <h5></h5>
         
 <a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r-markdown"><kbd class="item-tag">R Markdown</kbd></a>
@@ -142,143 +142,377 @@
 
 <p>For this lesson, we're going to use the gapminder data, which can be found in its original form <a href="https://www.gapminder.org/data/">here</a>. If you're reading this and not attending the class, I would highly encourage you to check out the website! The late Hans Rosling was a brilliant guy and his work, followed up by children, is worth digging through.<br />
 <br />
-There are two sets of data I want to focus on. The first is simply population data. Download the data by clicking <a href="../../data/income_per_person.csv">this link</a>.<br />
+The main purpose of this exercise is to learn how to graph your data; however, we first need to understand the (subjectively) best format for data, tidy data. Last, we'll go more in depth to see how to take advantage of ggplots dimensionality. So, in this lesson we will actually cover three things:</p>
+<ol style="list-style-type: decimal">
+<li>Tidy Data (for graphing purposes)</li>
+<li>R Graphics with ggplot2</li>
+<li>Dimensions in ggplot2</li>
+</ol>
+<p>There are two sets of data I want to focus on. The first is simply population data. Download the data by clicking <a href="../../data/income_per_person.csv">this link</a>.<br />
+<br />
+Open a new script and read the data into your environment. Let's title this data <code>gapminder_IncomePerCap</code> and assign it as such; <code>gapminder_IncomePerCap &lt;- read.csv(&quot;income_per_person.csv&quot;)</code>. Note that you'll have to specify the path relative to your directory.</p>
+<div id="tidy-data" class="section level3">
+<h3>Tidy Data</h3>
+<p>Let's look at the data you've loaded in.<br />
+</p>
+<pre class="r"><code>str(gapminder_IncomePerCap)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    193 obs. of  242 variables:
+##  $ country: Factor w/ 193 levels &quot;Afghanistan&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ X1800  : int  603 667 715 1200 618 757 1510 514 814 1850 ...
+##  $ X1801  : int  603 667 716 1200 620 757 1510 514 816 1850 ...
+##  $ X1802  : int  603 667 717 1200 623 757 1510 514 818 1860 ...
+##  $ X1803  : int  603 667 718 1200 626 757 1510 514 820 1870 ...
+##  $ X1804  : int  603 667 719 1210 628 757 1510 514 822 1880 ...
+##  $ X1805  : int  603 668 720 1210 631 757 1510 514 824 1880 ...
+##  $ X1806  : int  603 668 721 1210 634 757 1510 514 825 1890 ...
+##  $ X1807  : int  603 668 722 1210 637 758 1510 514 827 1900 ...
+##  $ X1808  : int  603 668 723 1220 640 758 1510 514 829 1910 ...
+##  $ X1809  : int  603 668 724 1220 642 758 1510 514 831 1920 ...
+##  $ X1810  : int  604 668 725 1220 645 758 1510 514 833 1920 ...
+##  $ X1811  : int  604 668 726 1220 648 758 1510 515 835 1930 ...
+##  $ X1812  : int  604 668 727 1220 651 758 1510 515 837 1940 ...
+##  $ X1813  : int  604 668 728 1230 654 758 1510 515 839 1950 ...
+##  $ X1814  : int  604 668 729 1230 657 758 1510 515 841 1950 ...
+##  $ X1815  : int  604 669 730 1230 660 758 1510 515 843 1960 ...
+##  $ X1816  : int  604 669 731 1230 662 759 1510 515 845 1970 ...
+##  $ X1817  : int  604 669 732 1240 665 759 1510 515 847 1980 ...
+##  $ X1818  : int  604 669 733 1240 668 759 1510 515 849 1990 ...
+##  $ X1819  : int  604 669 734 1240 671 759 1510 515 851 1990 ...
+##  $ X1820  : int  604 669 735 1240 674 759 1510 515 853 2000 ...
+##  $ X1821  : int  607 671 743 1260 677 764 1530 517 860 2030 ...
+##  $ X1822  : int  609 672 751 1270 680 769 1560 519 886 2070 ...
+##  $ X1823  : int  611 674 759 1290 683 775 1580 521 916 2100 ...
+##  $ X1824  : int  613 675 767 1300 686 780 1600 523 967 2140 ...
+##  $ X1825  : int  615 677 775 1320 689 785 1620 525 1010 2170 ...
+##  $ X1826  : int  617 678 784 1330 692 790 1640 527 1030 2200 ...
+##  $ X1827  : int  619 680 792 1350 695 796 1670 529 1060 2240 ...
+##  $ X1828  : int  621 681 801 1360 698 801 1690 531 1090 2280 ...
+##  $ X1829  : int  623 683 810 1380 701 806 1720 533 1150 2310 ...
+##  $ X1830  : int  625 684 819 1400 704 812 1740 535 1400 2350 ...
+##  $ X1831  : int  627 686 828 1410 708 817 1770 538 1450 2380 ...
+##  $ X1832  : int  630 688 837 1430 711 823 1790 540 1480 2400 ...
+##  $ X1833  : int  632 689 846 1450 714 828 1820 542 1480 2430 ...
+##  $ X1834  : int  634 691 855 1460 717 834 1840 544 1560 2450 ...
+##  $ X1835  : int  636 692 864 1480 720 840 1870 546 1890 2480 ...
+##  $ X1836  : int  638 694 874 1500 723 845 1900 548 1860 2500 ...
+##  $ X1837  : int  640 695 883 1520 726 851 1920 550 1950 2530 ...
+##  $ X1838  : int  643 697 893 1540 730 857 1950 552 1920 2550 ...
+##  $ X1839  : int  645 699 903 1550 733 863 1980 554 1790 2580 ...
+##  $ X1840  : int  647 700 912 1570 736 868 2010 556 2270 2610 ...
+##  $ X1841  : int  649 702 922 1590 739 874 2040 559 1940 2640 ...
+##  $ X1842  : int  651 703 932 1610 743 880 2060 561 1760 2660 ...
+##  $ X1843  : int  654 705 943 1630 746 886 2090 563 2050 2690 ...
+##  $ X1844  : int  656 707 953 1650 749 892 2120 565 2330 2720 ...
+##  $ X1845  : int  658 708 963 1670 752 898 2150 567 2400 2750 ...
+##  $ X1846  : int  660 710 974 1690 756 904 2180 569 2650 2780 ...
+##  $ X1847  : int  663 711 984 1710 759 910 2220 572 3060 2810 ...
+##  $ X1848  : int  665 713 995 1730 762 917 2250 574 3500 2840 ...
+##  $ X1849  : int  667 715 1010 1750 766 923 2280 576 3460 2880 ...
+##  $ X1850  : int  669 716 1020 1770 769 929 2310 578 3270 2910 ...
+##  $ X1851  : int  672 718 1030 1790 773 935 2340 581 3880 2940 ...
+##  $ X1852  : int  674 720 1040 1810 776 942 2380 583 4550 2960 ...
+##  $ X1853  : int  676 721 1050 1830 779 948 2410 585 4980 2990 ...
+##  $ X1854  : int  678 723 1060 1860 783 954 2450 587 4360 3020 ...
+##  $ X1855  : int  681 724 1070 1880 786 961 2480 590 4140 3050 ...
+##  $ X1856  : int  683 726 1080 1900 790 967 2520 592 5050 3080 ...
+##  $ X1857  : int  685 728 1100 1920 793 974 2550 594 4460 3110 ...
+##  $ X1858  : int  688 729 1110 1940 797 980 2590 596 3800 3140 ...
+##  $ X1859  : int  690 731 1120 1970 800 987 2630 599 4910 3170 ...
+##  $ X1860  : int  692 733 1130 1990 804 994 2660 601 4790 3200 ...
+##  $ X1861  : int  695 734 1150 2020 807 1000 2700 603 4720 3230 ...
+##  $ X1862  : int  697 736 1160 2040 811 1010 2740 606 4540 3250 ...
+##  $ X1863  : int  699 738 1170 2060 814 1010 2780 608 4520 3270 ...
+##  $ X1864  : int  702 739 1180 2090 818 1020 2820 610 4800 3300 ...
+##  $ X1865  : int  704 741 1200 2110 822 1030 2860 613 4580 3320 ...
+##  $ X1866  : int  707 743 1210 2140 825 1040 2900 615 4710 3340 ...
+##  $ X1867  : int  709 745 1220 2160 829 1040 2940 617 5150 3370 ...
+##  $ X1868  : int  711 746 1240 2190 832 1050 2980 620 5230 3390 ...
+##  $ X1869  : int  714 748 1250 2220 836 1060 3030 622 5130 3410 ...
+##  $ X1870  : int  716 750 1260 2240 840 1060 3070 625 5430 3440 ...
+##  $ X1871  : int  719 761 1280 2270 844 1070 3110 627 5470 3660 ...
+##  $ X1872  : int  721 772 1290 2300 847 1080 3160 629 5890 3660 ...
+##  $ X1873  : int  724 784 1300 2320 851 1080 3200 632 6340 3560 ...
+##  $ X1874  : int  726 795 1320 2350 855 1090 3250 634 6360 3690 ...
+##  $ X1875  : int  729 807 1330 2380 858 1100 3300 637 6870 3680 ...
+##  $ X1876  : int  731 819 1350 2410 862 1110 3260 639 6650 3740 ...
+##  $ X1877  : int  734 831 1360 2440 866 1110 3500 642 6700 3840 ...
+##  $ X1878  : int  736 844 1380 2460 870 1120 3220 644 7100 3950 ...
+##  $ X1879  : int  739 856 1390 2490 874 1130 3260 647 6980 3900 ...
+##  $ X1880  : int  741 869 1410 2520 878 1140 3100 649 7120 3930 ...
+##  $ X1881  : int  744 882 1420 2550 881 1140 3050 652 7400 4060 ...
+##  $ X1882  : int  746 895 1440 2580 885 1150 3750 654 6750 4060 ...
+##  $ X1883  : int  749 908 1450 2610 889 1160 4080 657 7440 4200 ...
+##  $ X1884  : int  751 922 1470 2640 893 1170 4250 659 7150 4290 ...
+##  $ X1885  : int  754 936 1490 2680 897 1180 4850 662 7350 4230 ...
+##  $ X1886  : int  756 950 1500 2710 901 1180 4720 635 7200 4340 ...
+##  $ X1887  : int  759 964 1520 2740 905 1190 4890 741 7700 4620 ...
+##  $ X1888  : int  761 978 1540 2770 909 1200 5530 711 7490 4580 ...
+##  $ X1889  : int  764 993 1550 2810 913 1210 5890 660 7890 4510 ...
+##  $ X1890  : int  767 1010 1570 2840 917 1220 5220 656 7410 4720 ...
+##  $ X1891  : int  769 1020 1590 2870 921 1220 4780 599 7760 4860 ...
+##  $ X1892  : int  772 1040 1600 2910 925 1230 5570 655 6650 4920 ...
+##  $ X1893  : int  774 1050 1620 2940 929 1240 5720 740 6170 4920 ...
+##  $ X1894  : int  777 1060 1640 2980 933 1250 6420 840 6270 5160 ...
+##  $ X1895  : int  780 1080 1660 3010 937 1260 6920 776 5800 5260 ...
+##  $ X1896  : int  782 1090 1680 3050 941 1270 7440 853 6130 5290 ...
+##  $ X1897  : int  785 1110 1690 3080 946 1280 5820 837 5690 5360 ...
+##   [list output truncated]</code></pre>
+<p>Okay... what is that? 193 observations and 242 VARIALBES? Well if we look at a smaller subset, we can see that the data is organized with each row representing a country and the respective columns the years from left to right. The values of those columns represent the income that we're interested in. We can subset our data to see that:<br />
 <br />
 </p>
-<pre class="r"><code>head(gapminder_IncomePerCap)</code></pre>
-<pre><code>##               country X1800 X1801 X1802 X1803 X1804 X1805 X1806 X1807 X1808
-## 1         Afghanistan   603   603   603   603   603   603   603   603   603
-## 2             Albania   667   667   667   667   667   668   668   668   668
-## 3             Algeria   715   716   717   718   719   720   721   722   723
-## 4             Andorra  1200  1200  1200  1200  1210  1210  1210  1210  1220
-## 5              Angola   618   620   623   626   628   631   634   637   640
-## 6 Antigua and Barbuda   757   757   757   757   757   757   757   758   758
-##   X1809 X1810 X1811 X1812 X1813 X1814 X1815 X1816 X1817 X1818 X1819 X1820 X1821
-## 1   603   604   604   604   604   604   604   604   604   604   604   604   607
-## 2   668   668   668   668   668   668   669   669   669   669   669   669   671
-## 3   724   725   726   727   728   729   730   731   732   733   734   735   743
-## 4  1220  1220  1220  1220  1230  1230  1230  1230  1240  1240  1240  1240  1260
-## 5   642   645   648   651   654   657   660   662   665   668   671   674   677
-## 6   758   758   758   758   758   758   758   759   759   759   759   759   764
-##   X1822 X1823 X1824 X1825 X1826 X1827 X1828 X1829 X1830 X1831 X1832 X1833 X1834
-## 1   609   611   613   615   617   619   621   623   625   627   630   632   634
-## 2   672   674   675   677   678   680   681   683   684   686   688   689   691
-## 3   751   759   767   775   784   792   801   810   819   828   837   846   855
-## 4  1270  1290  1300  1320  1330  1350  1360  1380  1400  1410  1430  1450  1460
-## 5   680   683   686   689   692   695   698   701   704   708   711   714   717
-## 6   769   775   780   785   790   796   801   806   812   817   823   828   834
-##   X1835 X1836 X1837 X1838 X1839 X1840 X1841 X1842 X1843 X1844 X1845 X1846 X1847
-## 1   636   638   640   643   645   647   649   651   654   656   658   660   663
-## 2   692   694   695   697   699   700   702   703   705   707   708   710   711
-## 3   864   874   883   893   903   912   922   932   943   953   963   974   984
-## 4  1480  1500  1520  1540  1550  1570  1590  1610  1630  1650  1670  1690  1710
-## 5   720   723   726   730   733   736   739   743   746   749   752   756   759
-## 6   840   845   851   857   863   868   874   880   886   892   898   904   910
-##   X1848 X1849 X1850 X1851 X1852 X1853 X1854 X1855 X1856 X1857 X1858 X1859 X1860
-## 1   665   667   669   672   674   676   678   681   683   685   688   690   692
-## 2   713   715   716   718   720   721   723   724   726   728   729   731   733
-## 3   995  1010  1020  1030  1040  1050  1060  1070  1080  1100  1110  1120  1130
-## 4  1730  1750  1770  1790  1810  1830  1860  1880  1900  1920  1940  1970  1990
-## 5   762   766   769   773   776   779   783   786   790   793   797   800   804
-## 6   917   923   929   935   942   948   954   961   967   974   980   987   994
-##   X1861 X1862 X1863 X1864 X1865 X1866 X1867 X1868 X1869 X1870 X1871 X1872 X1873
-## 1   695   697   699   702   704   707   709   711   714   716   719   721   724
-## 2   734   736   738   739   741   743   745   746   748   750   761   772   784
-## 3  1150  1160  1170  1180  1200  1210  1220  1240  1250  1260  1280  1290  1300
-## 4  2020  2040  2060  2090  2110  2140  2160  2190  2220  2240  2270  2300  2320
-## 5   807   811   814   818   822   825   829   832   836   840   844   847   851
-## 6  1000  1010  1010  1020  1030  1040  1040  1050  1060  1060  1070  1080  1080
-##   X1874 X1875 X1876 X1877 X1878 X1879 X1880 X1881 X1882 X1883 X1884 X1885 X1886
-## 1   726   729   731   734   736   739   741   744   746   749   751   754   756
-## 2   795   807   819   831   844   856   869   882   895   908   922   936   950
-## 3  1320  1330  1350  1360  1380  1390  1410  1420  1440  1450  1470  1490  1500
-## 4  2350  2380  2410  2440  2460  2490  2520  2550  2580  2610  2640  2680  2710
-## 5   855   858   862   866   870   874   878   881   885   889   893   897   901
-## 6  1090  1100  1110  1110  1120  1130  1140  1140  1150  1160  1170  1180  1180
-##   X1887 X1888 X1889 X1890 X1891 X1892 X1893 X1894 X1895 X1896 X1897 X1898 X1899
-## 1   759   761   764   767   769   772   774   777   780   782   785   788   790
-## 2   964   978   993  1010  1020  1040  1050  1060  1080  1090  1110  1120  1140
-## 3  1520  1540  1550  1570  1590  1600  1620  1640  1660  1680  1690  1710  1730
-## 4  2740  2770  2810  2840  2870  2910  2940  2980  3010  3050  3080  3120  3160
-## 5   905   909   913   917   921   925   929   933   937   941   946   950   954
-## 6  1190  1200  1210  1220  1220  1230  1240  1250  1260  1270  1280  1280  1290
-##   X1900 X1901 X1902 X1903 X1904 X1905 X1906 X1907 X1908 X1909 X1910 X1911 X1912
-## 1   793   796   798   801   804   807   809   812   815   818   820   823   826
-## 2  1160  1170  1190  1200  1220  1240  1250  1270  1280  1300  1320  1340  1360
-## 3  1750  1770  1790  1810  1830  1850  1870  1890  1910  1930  1950  2000  2040
-## 4  3200  3230  3270  3310  3350  3390  3430  3470  3510  3550  3600  3640  3680
-## 5   958   962   967   971   975   979   984   988   992   997  1000  1010  1010
-## 6  1300  1310  1320  1330  1340  1340  1360  1360  1370  1380  1390  1400  1410
-##   X1913 X1914 X1915 X1916 X1917 X1918 X1919 X1920 X1921 X1922 X1923 X1924 X1925
-## 1   829   833   837   841   845   849   853   857   863   868   874   880   885
-## 2  1390  1410  1420  1440  1460  1480  1500  1520  1540  1560  1580  1600  1620
-## 3  2100  2130  2170  2200  2240  2280  2320  2360  2420  2480  2540  2600  2660
-## 4  3730  3790  3850  3920  3980  4050  4120  4190  4260  4330  4410  4480  4560
-## 5  1010  1040  1080  1110  1140  1170  1210  1240  1280  1330  1370  1410  1460
-## 6  1420  1460  1490  1530  1560  1600  1640  1680  1720  1770  1810  1860  1900
-##   X1926 X1927 X1928 X1929 X1930 X1931 X1932 X1933 X1934 X1935 X1936 X1937 X1938
-## 1   891   897   903   909   915   921   927   933   939   945   951   957   963
-## 2  1640  1650  1670  1690  1710  1720  1730  1740  1750  1760  1780  1790  1800
-## 3  2720  2780  2830  2890  2950  3010  3060  3120  3180  3230  3280  3340  3390
-## 4  4640  4720  4800  4880  4970  5050  5140  5230  5320  5410  5500  5600  5690
-## 5  1500  1550  1600  1650  1700  1760  1810  1870  1930  1990  2060  2120  2190
-## 6  1950  2000  2040  2090  2140  2200  2250  2310  2360  2420  2480  2540  2600
-##   X1939 X1940 X1941 X1942 X1943 X1944 X1945 X1946 X1947 X1948 X1949 X1950 X1951
-## 1   969   976   982   988   995  1000  1010  1010  1020  1030  1030  1040  1060
-## 2  1810  1820  1830  1840  1850  1860  1870  1880  1890  1900  1910  1920  2000
-## 3  3450  3500  3550  3600  3660  3710  3760  3810  3860  3910  3960  4000  3980
-## 4  5790  5890  5990  6100  6200  6310  6410  6520  6640  6750  6870  6980  7550
-## 5  2260  2330  2400  2480  2560  2640  2720  2810  2900  2990  3080  3180  3260
-## 6  2660  2730  2800  2860  2940  3010  3080  3160  3230  3310  3390  3470  3560
-##   X1952 X1953 X1954 X1955 X1956 X1957 X1958 X1959 X1960 X1961 X1962 X1963 X1964
-## 1  1070  1120  1130  1130  1160  1140  1180  1190  1210  1200  1200  1190  1190
-## 2  2010  2090  2150  2270  2290  2440  2550  2660  2790  2820  2910  3010  3110
-## 3  4100  4100  4340  4390  4740  5200  5310  6190  6520  5640  4520  5590  5740
-## 4  8160  8820  9540 10300 11200 12100 13000 14100 15200 16500 17800 19200 20800
-## 5  3340  3420  3290  3510  3400  3670  3810  3770  3860  4310  4130  4280  4690
-## 6  3640  3730  3820  3920  4010  4110  4210  4310  4420  4530  4640  4750  4860
-##   X1965 X1966 X1967 X1968 X1969 X1970 X1971 X1972 X1973 X1974 X1975 X1976 X1977
-## 1  1190  1180  1180  1200  1190  1180  1100  1050  1150  1180  1210  1240  1130
-## 2  3220  3340  3460  3580  3700  3830  3980  4120  4320  4320  4330  4340  4340
-## 3  5960  5520  5860  6370  6810  7290  6480  7620  7650  7890  8200  8480  8980
-## 4 22500 24300 26300 28400 30700 33200 33000 34000 34900 35300 34100 34000 34000
-## 5  4960  5170  5390  5230  5300  5550  5780  5670  6000  6060  5620  5200  5110
-## 6  4980  5100  5230  5360  5480  5620  5890  6160  6540  6650  6230  5670  6140
-##   X1978 X1979 X1980 X1981 X1982 X1983 X1984 X1985 X1986 X1987 X1988 X1989 X1990
-## 1  1190  1160  1170  1300  1410  1470  1440  1400  1500  1240  1120  1100  1040
-## 2  4350  4360  4380  4400  4410  4430  4440  4450  4470  4490  4500  4530  4560
-## 3  9830 10400 10300 10300 10600 10800 11100 11200 10800 10500 10000 10200 10200
-## 4 33500 32500 32100 30800 29900 29100 28400 27800 27600 27900 28200 28400 28400
-## 5  4720  4600  4590  4250  4110  4140  4240  4260  4290  4480  4620  4530  4390
-## 6  6440  7250  7850  8350  8470  9150  9960 10900 12100 13400 14800 15900 16400
-##   X1991 X1992 X1993 X1994 X1995 X1996 X1997 X1998 X1999 X2000 X2001 X2002 X2003
-## 1  1030   950   818   732   881   904   930   956   982   972   871  1060  1100
-## 2  3230  3010  3320  3620  4130  4530  4070  4460  5100  5470  5960  6230  6620
-## 3  9870  9820  9400  9130  9300  9510  9460  9800  9970 10200 10400 10800 11500
-## 4 28000 27200 26000 25900 26100 27200 29700 30800 31900 31700 31800 31900 34500
-## 5  4210  3790  2760  2770  2970  3210  3370  3500  3510  3510  3540  3180  3240
-## 6 16600 16500 17000 17700 16500 17100 17500 17900 18100 18800 17500 17500 18300
-##   X2004 X2005 X2006 X2007 X2008 X2009 X2010 X2011 X2012 X2013 X2014 X2015 X2016
-## 1  1060  1140  1160  1280  1300  1530  1610  1660  1840  1810  1780  1750  1740
-## 2  7020  7460  7920  8450  9150  9520  9930 10200 10400 10500 10700 11000 11400
-## 3 11800 12300 12300 12600 12700 12600 12900 13000 13200 13300 13500 13700 14000
-## 4 36300 39800 42700 43400 41400 41700 39000 42000 41900 43700 44900 46600 48200
-## 5  3460  3950  4600  5440  5980  5910  5900  5910  6000  6180  6260  6230  6020
-## 6 19200 20100 22400 24200 24000 20800 19100 18600 19100 18900 19500 20100 20800
-##   X2017 X2018 X2019 X2020 X2021 X2022 X2023 X2024 X2025 X2026 X2027 X2028 X2029
-## 1  1800  1870  1950  1970  2000  2020  2060  2090  2130  2170  2220  2260  2310
-## 2 11900 12400 13000 13500 14000 14600 15100 15600 16000 16500 16900 17300 17700
-## 3 13800 13700 13700 13600 13600 13600 13600 13700 13900 14100 14300 14600 14900
-## 4 49800 51500 53200 55000 56900 58700 60400 62100 63800 65400 66900 68500 70000
-## 5  5940  5850  5760  5670  5600  5550  5530  5550  5600  5670  5770  5880  6010
-## 6 20900 21000 21200 21300 21500 21700 22000 22300 22700 23100 23600 24100 24600
-##   X2030 X2031 X2032 X2033 X2034 X2035 X2036 X2037 X2038 X2039 X2040
-## 1  2360  2420  2470  2520  2580  2640  2700  2760  2820  2880  2940
-## 2 18100 18500 18900 19300 19700 20200 20600 21100 21500 22000 22500
-## 3 15300 15600 15900 16300 16700 17000 17400 17800 18200 18600 19000
-## 4 71600 73200 74800 76400 78100 79900 81600 83400 85300 87200 89100
-## 5  6140  6270  6410  6550  6700  6850  7000  7150  7310  7470  7640
-## 6 25100 25700 26200 26800 27400 28000 28600 29300 29900 30600 31300</code></pre>
+<pre class="r"><code># let&#39;s look at the first 4 observations with the first 5 columns
+gapminder_IncomePerCap[1:4, 1:5] </code></pre>
+<pre><code>##       country X1800 X1801 X1802 X1803
+## 1 Afghanistan   603   603   603   603
+## 2     Albania   667   667   667   667
+## 3     Algeria   715   716   717   718
+## 4     Andorra  1200  1200  1200  1200</code></pre>
+<p>That looks less intimidating. But this isn't what we would call <code>tidy</code> data. In general, <em>tidy data refers to data where each column represents a variable</em>. We will almost always want our data in this form so pay attention to this concept. If we look at our data above, we can see that income (the numbers)... is not a variable at all... and what should be a <code>year</code> variable is a bunch of columns. We need to fix this before we can begin to discuss graphics.<br />
+<br />
+This data is in what we will rever to as its &quot;wide&quot; form. We want it in its long form. These terms are fairly self explanatory - wide data has more columns (making it wider), whereas long data has more rows (making it longer).<br />
+<br />
+Fortunately for us, R has a really nice set of commands for us within the <code>tidyverse</code> and so... we should first load that library (you must first install the package using <code>install.packages(&quot;tidyverse&quot;)</code>). Next, take a look at the function <code>pivot_longer()</code> using <code>?pivot_longer</code>. Now let's use it to transform our data.<br />
+</p>
+<pre class="r"><code># install.packages(&quot;tidyverse&quot;) - I already have this installed so no need to do it here. 
+# load the library as so:
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.1     ✓ purrr   0.3.4
+## ✓ tibble  3.0.1     ✓ dplyr   1.0.0
+## ✓ tidyr   1.1.0     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code># Now, we &#39;pivot&#39; our data longer
+# Keep in mind, we want our years to be their own variable, &#39;years&#39;, and our values &#39;income&#39;
+# Also notice that all the years begin with &quot;X&quot; - we can use that to our advantage
+tidy_df &lt;- gapminder_IncomePerCap %&gt;% 
+  pivot_longer(cols = starts_with(&quot;X&quot;), names_to = &quot;year&quot;, values_to = &quot;income&quot;)</code></pre>
+<p>Hopefully you see how simple that was in R. You will use <code>pivot_longer</code> frequently. The above simply says that I want to take all the columns which begins with <code>X</code> and turn them into their own variable, <code>year</code>. Then, all the values within those columns should go into an <code>income</code> column.<br />
+<br />
+But since we want to treat years as a numeric value, we have to <code>mutate()</code> our new column. We will take advantage of some string manipulation (which I'm not going to go into detail about here) and then change the data type. It is a character value currently. Note that we could've just piped into it above but I thought it would be helpful to see step by step.<br />
+<br />
+</p>
+<pre class="r"><code># Normally, we wouldn&#39;t want to store the df in the same name.
+tidy_df &lt;- tidy_df %&gt;% 
+  # let&#39;s mutate the year column
+  # First, remove the &quot;X&quot; from our years
+  mutate(year = str_replace(year, pattern = &quot;X&quot;, replacement = &quot;&quot;),
+         # next, turn our character to numeric (technically &#39;double&#39;)
+         year = as.numeric(year))</code></pre>
+<p>Now we have taken a relatively ugly data set and made it into something that we would consider &quot;tidy&quot;. Notice a couple things before we move on. First, countries used to be unique to a single row... now those countries are repeated multiple times (as many times as there are years). This is on purpose and a consequence of &quot;longer&quot; data. Second, now we have each variable representing a single type of value. We have <code>country</code>, <code>year</code>, and <code>income</code> all specifying a single piece of information about our data.<br />
+<br />
+Now we can get to the fun stuff.</p>
+</div>
+<div id="r-graphics-with-ggplot2" class="section level3">
+<h3>R Graphics with ggplot2</h3>
+<p>Base R has graphic capabilities that were far extended by the <code>ggplot2</code> package - the gg stands for Grammar of Graphics. This package relies on a standard &quot;grammar&quot; for graphical representation. To learn more, there is a really nice <a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf">cheat sheet</a> online, which you should check out - I have it saved and used it often starting out!<br />
+<br />
+In general, ggplot requires data, a specified shape (<code>geom_</code>etry), some aesthetics, and a coordinate system. Let's use these ideas to create our first plot with the data set we've transformed, <code>tidy_df</code>.<br />
+<br />
+First, let's subset the data for only the US data.<br />
+<br />
+</p>
+<pre class="r"><code>us_data &lt;- tidy_df %&gt;% filter(country == &quot;United States&quot;)</code></pre>
+<p>Now that we only have US data, let's look at the evolution of income per person over the years. A good way to do this is by creating a bar graph.<br />
+<br />
+</p>
+<pre class="r"><code># first, supply the data frame to ggplot()
+ggplot(us_data) +
+  # we want bars so... geom_bar() gives us that geometry
+  # now, we want specify the y axis to be income and x is year
+  # we put these in the aes() comman (for aesthetics)
+  geom_bar(aes(x = year, y = income), stat = &quot;identity&quot;)</code></pre>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>That worked pretty well. Not the most attractive graph... but there it is nonetheless - two lines of code later. Also... check out the '30s. Interesting. Wonder what happened there (clue is in the depressed line).<br />
+<br />
+What if we wanted to look at this income growth for 3 countries? Let's say Germany, US, and France. We can do this a few ways - R has a color/fill argument that can be useful for separating by a given level. Let's use that.<br />
+<br />
+First, as usual, we will pull out our data.<br />
+<br />
+</p>
+<pre class="r"><code>top_three &lt;- tidy_df %&gt;% 
+  # %in% is convenient function for selecting multiple matching items from a vector
+  filter(country %in% c(&quot;United States&quot;, &quot;Germany&quot;, &quot;France&quot;),
+         year %in% c(seq.int(from = 1800, to = 2020, by = 20)))
+
+# now we plot
+ggplot(top_three) +
+  # using geom_bar again
+  # now we add two arguments - fill, which tells us to color the bars by country
+  # position (I prefer &quot;dodge&quot; - the default is &quot;stack&quot;)
+  geom_bar(aes(x = year, y = income, fill = country), stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Like all of the examples, you should play around with the defaults and the data to see different results/etc.<br />
+<br />
+Finally, for this example, I want to show you some easy tricks to make this graph a little cleaner. I really like the <code>ggthemes</code> package to make a clean plot space. Go ahead and install it using <code>install.packages(&quot;ggthemes&quot;)</code>.<br />
+<br />
+The ggthemes package has many different themes for ggplot2 so you don't have to create a theme manually (which you very well could do but we don't have time here - or ever, usually). Additionally, we need to neaten up the labels and y-axis (since it should be dollars). I'll show you all three here.<br />
+<br />
+</p>
+<pre class="r"><code># load ggthemes
+library(ggthemes)
+# Use the same graph
+ggplot(top_three) +
+  geom_bar(aes(x = year, y = income, fill = country), stat = &quot;identity&quot;, position = &quot;dodge&quot;) +
+  # now add a theme (scroll through and pick your favorite.. I really like the minimal one)
+  # these themes are specified as theme_* - try several out!
+  theme_minimal() +
+  # now add your labels
+  labs(
+    x = &quot;Year&quot;,
+    y = &quot;Income&quot;,
+    title = &quot;Income Per Capita for Three Major Countries&quot;
+  ) +
+  # there are several ways to do this.. I use the scales package
+  # scales can do a lot for your axes. Check it out:
+  scale_y_continuous(labels = scales::dollar)</code></pre>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Now you've got the basics of ggplot. Take some time to play around with this before moving on.<br />
+<br />
+Let's go a bit deeper into ggplot2 now.</p>
+</div>
+<div id="dimensions-in-ggplot2" class="section level3">
+<h3>Dimensions in ggplot2</h3>
+<p>You've already noticed how to add an extra dimension in ggplot2: specifying a <code>fill</code> lets us distinguish by a given variable not plotted on the x or y axis explicitly (<code>country</code> in our case). I we can do a little more than that. For this exercise, I've taken the liberty of curating a bunch of data and merging it together so we don't need to clean it again - go ahead and download it <a href="(../../data/gapminder.csv)">here</a>.<br />
+<br />
+Store this data as <code>gap &lt;- read.csv2(&quot;gapminder.csv&quot;)</code>.<br />
+<br />
+Now, let's take a look:</p>
+<pre class="r"><code>str(gap)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    29346 obs. of  11 variables:
+##  $ X                 : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ country           : Factor w/ 134 levels &quot;Afghanistan&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ Year              : int  1800 1800 1800 1800 1800 1800 1800 1800 1800 1800 ...
+##  $ GDP_per_capita    : int  603 667 715 618 1510 814 1850 1240 876 2410 ...
+##  $ life_expectancy   : num  28.2 35.4 28.8 27 33.2 34 34.4 30.3 25.5 40 ...
+##  $ population        : num  3280000 410000 2500000 1570000 534000 351000 3210000 64500 19200000 3140000 ...
+##  $ continent         : Factor w/ 5 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 3 4 1 1 2 5 4 3 3 4 ...
+##  $ child_per_woman   : num  7 4.6 6.99 6.93 6.8 6.5 5.1 7.03 6.7 4.85 ...
+##  $ child_mortality   : num  469 375 460 486 402 391 387 440 508 322 ...
+##  $ health_spend      : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ maternal_mortality: int  NA NA NA NA NA NA NA NA NA NA ...</code></pre>
+<p>Again, we have GDP per capita (slightly different than income), along with a ton of other metrics. I have already done all the cleaning for each of these variables that we did earlier so this is good to go.<br />
+<br />
+General metrics of progress are GDP per capita and life expectancy. Let's say we want to see the change in these metrics for all the countries in this data set from the beginning of our data (1800) to 2015.<br />
+<br />
+First, let's select the data we want.<br />
+<br />
+</p>
+<pre class="r"><code>gap_selected_years &lt;- gap %&gt;%
+  filter(Year %in% c(1800, 2015))</code></pre>
+<p>Now, let's use the <code>geom_point()</code> geometry since we want to view both continuous variables.<br />
+<br />
+</p>
+<pre class="r"><code>ggplot(gap_selected_years) +
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy))</code></pre>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Alright, that's not beautiful... but it is a start. We can see two general clusters - one to the lower left and one gathered around the top. We can guess that these two clusters are the years. We can use the <code>color</code> argument (color is geom_point's fill equivalent) to verify our assumption:</p>
+<pre class="r"><code>ggplot(gap_selected_years) + 
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = Year))</code></pre>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>So we were right. But there is still a bit of funkiness going on. First, the legend shows us that R thinks <code>Year</code> is continous... and it was... but for this analysis we should think of it as a factor (or categorical). We could use <code>as.factor(Year)</code> to transform it if we wanted.<br />
+<br />
+Second, the clusters are rough. We can could place these on a log scale to make it a bit more linear.<br />
+<br />
+</p>
+<pre class="r"><code>ggplot(gap_selected_years) + 
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = Year)) +
+  # we can just add a scale to the x axis (there are many of these - check them out!)
+  scale_x_log10()</code></pre>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Hey that looks a lot better! In general, we can see that everyone is doing better as a society. Awesome.<br />
+<br />
+But about dimensions... we have a population variable that we could take advantage of. Let's make the size of each point proportional to their population size.<br />
+<br />
+</p>
+<pre class="r"><code>ggplot(gap_selected_years) + 
+  # let&#39;s add the `size` argument to our aesthetics
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = as.factor(Year), size = population)) +
+  # fix our log scale (make them dollars)
+  scale_x_log10(labels = scales::dollar) +
+  # let&#39;s get rid of the legends for now...
+  guides(size = FALSE, color = FALSE) +
+  # and add a theme
+  theme_minimal() +
+  # and labels
+  labs(
+    y = &quot;Life Expectancy&quot;,
+    x = &quot;GDP Per Capita&quot;,
+    title = &quot;Check Out This Graph&quot;
+  )</code></pre>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>But what if we wanted to call out the US, specifically? We could add a shape...</p>
+<pre class="r"><code># create a new data frame with a column indicated whether the value is for US or not
+gselect_us &lt;- gap_selected_years %&gt;% 
+  mutate(us_val = ifelse(country == &quot;United States&quot;, 1, 0))
+
+
+ggplot(gselect_us) + 
+  # let&#39;s add the `shape` argument to our aesthetics
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = as.factor(Year), size = population,
+                 shape = as.factor(us_val))) +
+  # fix our log scale (make them dollars)
+  scale_x_log10(labels = scales::dollar) +
+  # let&#39;s get rid of the legends for now...
+  guides(size = FALSE, color = FALSE) +
+  # and add a theme
+  theme_minimal() +
+  # and labels
+  labs(
+    y = &quot;Life Expectancy&quot;,
+    x = &quot;GDP Per Capita&quot;,
+    title = &quot;Check Out This Graph&quot;
+  )</code></pre>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>See the triangle? That's the US. And yes, this is getting a little out of hand here... but we should just go one layer deeper. Let's subset the data by who was above the average child mortality rate and who was not.<br />
+<br />
+</p>
+<pre class="r"><code>child_mort_cutoff_data &lt;- gselect_us %&gt;% 
+  # we are really just interested in the 2015 year... 
+  group_by(Year) %&gt;% 
+  # this will give a column to compare child mortality to
+  mutate(avg_mort = mean(child_mortality),
+         # make a comlumn getting 1 if the avg is greater or 0 if not
+         compare = ifelse(child_mortality &gt; avg_mort, 1, 0),
+         # hardcoding compare to be 0 if the year is not 2015
+         compare = ifelse(Year == 1800, 0, compare)) %&gt;% 
+  ungroup() %&gt;% 
+  group_by(country) %&gt;% 
+  # telling R that the country should get 1 for both dates if it was 1 for 2015
+  mutate(compare = max(compare),
+         compare = ifelse(compare == 1, &quot;Above Avg. Child Mortality&quot;, &quot;At or Under Avg. Child Mortality&quot;))
+
+
+# Now let us plot it again...
+ggplot(child_mort_cutoff_data) + 
+  # let&#39;s add the `shape` argument to our aesthetics
+  geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = as.factor(Year), size = population,
+                 shape = as.factor(us_val))) +
+  # fix our log scale (make them dollars)
+  scale_x_log10(labels = scales::dollar) +
+  # let&#39;s get rid of the legends for now...
+  guides(size = FALSE, color = FALSE, shape = FALSE) +
+  # and add a theme
+  theme_fivethirtyeight() +
+  # and labels
+  labs(
+    y = &quot;Life Expectancy&quot;,
+    x = &quot;GDP Per Capita&quot;,
+    title = &quot;Change in GDP and Life Expectancy&quot;,
+    subtitle = &quot;from 1800 to 2015, separated by groups at or above average child mortality&quot;
+  ) +
+  # now, we add &quot;facets&quot; to group the data into different panes
+  # we will use our &#39;compare&#39; variable for that.
+  facet_grid(~compare) </code></pre>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>So we just did a lot... and it was a bit of overkill. But it is interesting to see. We know that the US is under the average child mortality rate (the triangle in the right pane). We can also now see that those higher GDP and life expectancy are correlated with better child mortality rates.<br />
+<br />
+This is all just data exploration and we know that looking at associations this way tells us nothing about causation. Though, it can be a good first step!<br />
+<br />
+Hopefully you all are now experts with ggplot <strong>and</strong> dplyr since we used them both a lot here!</p>
+</div>
 </div>
 
 </main>
