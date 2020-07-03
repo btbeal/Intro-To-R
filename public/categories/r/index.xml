@@ -40,5 +40,16 @@ Here I want to cover:
       <description>Welcome to The University of Washington and your crash course on R. Note that this class will not be incredibly robust (we have three days) but it will aim to provide you the tools necessary to do well in your stats classes and beyond. Futher, I believe several of you will take a semester long course in R. You&#39;ll be ahead of that game but will go into more depth during that class.</description>
     </item>
     
+    <item>
+      <title>Problem Set 1</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/problemsets/set1/</link>
+      <pubDate>Mon, 29 Jun 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/problemsets/set1/</guid>
+      <description>This problem set will require knowledge of both Lesson 1 and Lesson 2. If you haven&#39;t read over those, go ahead and do that then come back. Or, if you think you got it, carry on!
+Basic Math and Logic with R Store the value 18 in a variable x and the value 23 in the varialbe r_is_cool.
+Write an simple expression in your console that adds those two variables Write an expression to test whether or not x is greater than or equal to r_is_cool Write an expression to test whether x is less than r_is_cool AND x + 10 is greater than r_is_cool What is the sum of the following vector: c(TRUE, TRUE, FALSE, TRUE)?</description>
+    </item>
+    
   </channel>
 </rss>
