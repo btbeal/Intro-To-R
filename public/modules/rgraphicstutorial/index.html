@@ -42,15 +42,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/R.min.js"></script>
     
     <script>hljs.initHighlightingOnLoad();</script>
 
@@ -450,7 +442,7 @@ gselect_us &lt;- gap_selected_years %&gt;%
 
 
 ggplot(gselect_us) + 
-  # let&#39;s add the `shape` argument to our aesthetics
+  # let&#39;s add the &quot;shape&quot; argument to our aesthetics
   geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = as.factor(Year), size = population,
                  shape = as.factor(us_val))) +
   # fix our log scale (make them dollars)
@@ -495,7 +487,7 @@ ggplot(child_mort_cutoff_data) +
   # let&#39;s get rid of the legends for now...
   guides(size = FALSE, color = FALSE, shape = FALSE) +
   # and add a theme
-  theme_fivethirtyeight() +
+  theme_minimal() +
   # and labels
   labs(
     y = &quot;Life Expectancy&quot;,

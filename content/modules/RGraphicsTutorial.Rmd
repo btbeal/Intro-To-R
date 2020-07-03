@@ -229,7 +229,7 @@ gselect_us <- gap_selected_years %>%
 
 
 ggplot(gselect_us) + 
-  # let's add the `shape` argument to our aesthetics
+  # let's add the "shape" argument to our aesthetics
   geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = as.factor(Year), size = population,
                  shape = as.factor(us_val))) +
   # fix our log scale (make them dollars)
@@ -277,7 +277,7 @@ ggplot(child_mort_cutoff_data) +
   # let's get rid of the legends for now...
   guides(size = FALSE, color = FALSE, shape = FALSE) +
   # and add a theme
-  theme_fivethirtyeight() +
+  theme_minimal() +
   # and labels
   labs(
     y = "Life Expectancy",
