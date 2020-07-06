@@ -32,6 +32,15 @@ Here I want to cover:
     </item>
     
     <item>
+      <title>Lesson 3 - Strings and Dates</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/stringsndates/</link>
+      <pubDate>Tue, 30 Jun 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/stringsndates/</guid>
+      <description>Some of the most common data-related issues for those new to healthcare research (probably any research) revolve around string and date manipulation. Fortunately for us, R has some really incredible packages to help us deal with them. Like anything in R, it can be done in base R. Though, you&#39;ll never use base R again for string/date manipulation so... i&#39;m not going to cover it here. Again, this is meant to be a broad overview of both of the packages so that you can go back to them when you&#39;re stuck!</description>
+    </item>
+    
+    <item>
       <title>Lesson 1 - intro to R</title>
       <link>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-06-30-lesson1/</link>
       <pubDate>Mon, 29 Jun 2020 21:13:14 -0500</pubDate>

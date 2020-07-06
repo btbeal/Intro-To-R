@@ -1,0 +1,104 @@
+---
+title: "Lesson 3 - Strings and Dates"
+author: "Brennan T. Beal"
+date: 2020-06-30T21:13:14-05:00
+categories: ["R"]
+draft: FALSE
+tags: ["R Markdown", "Lessons", "Intro"]
+---
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+Some of the most common data-related issues for those new to healthcare research (probably any research) revolve around string and date manipulation. Fortunately for us, R has some really incredible packages to help us deal with them. Like anything in R, it can be done in base R. Though, you'll never use base R again for string/date manipulation so... i'm not going to cover it here. Again, this is meant to be a broad overview of both of the packages so that you can go back to them when you're stuck!  
+
+### Strings with Stringr Package
+The first of the two packages we're going to discuss is the stringr package in R. Since you're an R veteran, you know how to install and upload this package using `install.packages()` and `library()`. That said, stringr is part of the tidyverse that we have already been introduced to. So, if you've installed that package, you have access to stringr (once you've called the library).  
+  
+Before we dive in, know that strings are a bit complex - [here](https://www.gastonsanchez.com/r4strings/) is an entire R book on dedicated to string manipulation in R. Like the rest of R, the most important skill is to understand when stringr can help, and then using their [**incredible** cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/strings.pdf) when needed until you begin to memorize the functions (go to that page now and save it).  
+  
+Strings are any formulation of characters. Often times, we want to transform our data by a given string (think ICD-10 codes in medical data). To do this, we need to be able to get rid of strings we don't need, keep strings we do need, and sometimes, change all of our strings. To begin, let's look at the `fruit` vector that comes pre-loaded with stringr. Type `fruit` into your console to see.  
+
+```{r, results='hide'}
+fruit
+```
+
+That's a lot of fruit. All stringr functions take the form of `str_*`. The function I use the most from stringr is the `str_detect()` function, which tells us whether a string contains a specific pattern or not. There is another function, `str_subset()`, that is a wrapper function for `str_detect()`, but I like `str_detect()` because it has more flexible applications. The function takes a string vector (such as fruit) and a pattern and returns TRUE or FALSE. For example, suppose I wanted every fruit that contains a "q"?  
+
+```{r}
+# Note, str_detect returns T/F... 
+# Luckily, we know how to index based on the TRUE values
+fruit[str_detect(fruit, "q")]
+```
+
+Usually, we want to know more about the string than whether or not it just contains a "q". Often, we want to be more specific about the pattern we are providing. What R is really doing is matching patterns based on regular expressions (commonly read as regexp). These are really intimidating looking patterns that provide more precision about what qualifying strings should look like. For example, suppose we want all strings that *begin* with "y"? We can use the common `^` anchor to specify that.  
+
+```{r}
+fruit[str_detect(fruit, "^q")]
+```
+
+The other anchor is `$`. So, we could also have tried to find all the fruits that end with "q". Since no fruits end in "q", try it with the letter "a": `fruit[str_detect(fruit, "a$")]`. The second page of the [stringr cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/strings.pdf) that I referenced above provides detail on how to construct these values. Just know that you can get very specific with the place and structure of a pattern you want to reference with regular expressions. To test if the pattern you wrtie matches as you'd have hoped, I usually use this [website](https://regex101.com/).  
+  
+A couple more things about `str_detect()` that may be useful. First, all stringr functions are case specific. This is important because if you ask R to detect all patterns with "y" in them, they will only return lowercase "y" matches. For example, try using our example above: `fruit[str_detect(fruit, "^Q")]`. It tells you that no patterns match. Second, all stringr functions (including detect) can all be used within tidyvese piping to manipulate data frames. Let's see an example of both of these things in action using the mtcars data.  
+
+```{r}
+mtcars %>% 
+  # convert the rownames to a column named Car
+  rownames_to_column(var = "Car") %>% 
+  # return all cars that contain an "m"
+  filter(str_detect(Car, "m"))
+
+```
+  
+Notice that this is only the values of our new `Car` variable that contains a lowercase "m"? There are two ways to get around this. First, we could use the base R function `tolower()` to convert all the values (temporarily) to lowercase and then match based on that. Then, the line would read something like `filter(str_detect(tolower(Car), "m"))`. This is not very neat - now we have 3 functions nested within each other. Of course, we know about regular expressions and so that is probably the better way to go. Regular expressions allow you to tell R to match any one of what is in brackets, `[]`. Take a look:  
+  
+```{r}
+mtcars %>% 
+  # convert the rownames to a column named Car
+  rownames_to_column(var = "Car") %>% 
+  # return all cars that contain an "m" or "M"
+  filter(str_detect(Car, "[Mm]"))
+```
+
+That looks a bit cleaner, right?  
+  
+Now that you've got that down, I only want to cover one more tool that I use pretty often: `str_replace()`. Again, clue is in the function name - this function is useful when we want to replace one pattern with another. Let's take a look at the first 10 sentences in the `sentences` vector that comes with the strigr package.  
+  
+```{r}
+sent_subset <- sentences[1:10]
+sent_subset
+```
+  
+Now, suppose we want to replace all the "e" values with "-" - we could do something like:  
+  
+```{r}
+str_replace(sent_subset, "e", "-")
+```
+  
+But this only replaces the first matched pattern. So, we can use `str_replace_all()` to... replace all of them. 
+  
+```{r}
+str_replace_all(sent_subset, "e", "-")
+```
+
+Now what if we wanted to remove, instead of replace, all vowels in any position?  
+  
+```{r}
+# remember our bracket trick?
+# Note that we can remove something by replacing with ""
+str_replace_all(sent_subset, "[aeiou]", "")
+```
+
+And now, finally, we can create something that looks like your econometric textbook as so:  
+
+```{r}
+weird_sentences <- str_replace_all(sent_subset, "[aeiou]", "")
+# remove any space, period, comma, or apostrophe
+str_replace_all(weird_sentences, "[ .,']", "")
+```
+  
+That is a fairly useless result... but hopefully you've at least seen some of the things that we can do with the stringr package! Of course, there are many more functions that you will find useful. The main goal here was an introduction. You know where to look though, if you need help. If you're having string issues, stringr can likely help.  
+  
+Now, about those dates.

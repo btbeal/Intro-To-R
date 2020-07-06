@@ -1,0 +1,115 @@
+---
+title: "Lesson 3 - Strings and Dates"
+author: "Brennan T. Beal"
+date: 2020-06-30T21:13:14-05:00
+categories: ["R"]
+draft: FALSE
+tags: ["R Markdown", "Lessons", "Intro"]
+---
+
+
+
+<p>Some of the most common data-related issues for those new to healthcare research (probably any research) revolve around string and date manipulation. Fortunately for us, R has some really incredible packages to help us deal with them. Like anything in R, it can be done in base R. Though, you'll never use base R again for string/date manipulation so... i'm not going to cover it here. Again, this is meant to be a broad overview of both of the packages so that you can go back to them when you're stuck!</p>
+<div id="strings-with-stringr-package" class="section level3">
+<h3>Strings with Stringr Package</h3>
+<p>The first of the two packages we're going to discuss is the stringr package in R. Since you're an R veteran, you know how to install and upload this package using <code>install.packages()</code> and <code>library()</code>. That said, stringr is part of the tidyverse that we have already been introduced to. So, if you've installed that package, you have access to stringr (once you've called the library).</p>
+<p>Before we dive in, know that strings are a bit complex - <a href="https://www.gastonsanchez.com/r4strings/">here</a> is an entire R book on dedicated to string manipulation in R. Like the rest of R, the most important skill is to understand when stringr can help, and then using their <a href="https://github.com/rstudio/cheatsheets/blob/master/strings.pdf"><strong>incredible</strong> cheat sheet</a> when needed until you begin to memorize the functions (go to that page now and save it).</p>
+<p>Strings are any formulation of characters. Often times, we want to transform our data by a given string (think ICD-10 codes in medical data). To do this, we need to be able to get rid of strings we don't need, keep strings we do need, and sometimes, change all of our strings. To begin, let's look at the <code>fruit</code> vector that comes pre-loaded with stringr. Type <code>fruit</code> into your console to see.</p>
+<pre class="r"><code>fruit</code></pre>
+<p>That's a lot of fruit. All stringr functions take the form of <code>str_*</code>. The function I use the most from stringr is the <code>str_detect()</code> function, which tells us whether a string contains a specific pattern or not. There is another function, <code>str_subset()</code>, that is a wrapper function for <code>str_detect()</code>, but I like <code>str_detect()</code> because it has more flexible applications. The function takes a string vector (such as fruit) and a pattern and returns TRUE or FALSE. For example, suppose I wanted every fruit that contains a &quot;q&quot;?</p>
+<pre class="r"><code># Note, str_detect returns T/F... 
+# Luckily, we know how to index based on the TRUE values
+fruit[str_detect(fruit, &quot;q&quot;)]</code></pre>
+<pre><code>## [1] &quot;kumquat&quot; &quot;loquat&quot;  &quot;quince&quot;</code></pre>
+<p>Usually, we want to know more about the string than whether or not it just contains a &quot;q&quot;. Often, we want to be more specific about the pattern we are providing. What R is really doing is matching patterns based on regular expressions (commonly read as regexp). These are really intimidating looking patterns that provide more precision about what qualifying strings should look like. For example, suppose we want all strings that <em>begin</em> with &quot;y&quot;? We can use the common <code>^</code> anchor to specify that.</p>
+<pre class="r"><code>fruit[str_detect(fruit, &quot;^q&quot;)]</code></pre>
+<pre><code>## [1] &quot;quince&quot;</code></pre>
+<p>The other anchor is <code>$</code>. So, we could also have tried to find all the fruits that end with &quot;q&quot;. Since no fruits end in &quot;q&quot;, try it with the letter &quot;a&quot;: <code>fruit[str_detect(fruit, &quot;a$&quot;)]</code>. The second page of the <a href="https://github.com/rstudio/cheatsheets/blob/master/strings.pdf">stringr cheat sheet</a> that I referenced above provides detail on how to construct these values. Just know that you can get very specific with the place and structure of a pattern you want to reference with regular expressions. To test if the pattern you wrtie matches as you'd have hoped, I usually use this <a href="https://regex101.com/">website</a>.</p>
+<p>A couple more things about <code>str_detect()</code> that may be useful. First, all stringr functions are case specific. This is important because if you ask R to detect all patterns with &quot;y&quot; in them, they will only return lowercase &quot;y&quot; matches. For example, try using our example above: <code>fruit[str_detect(fruit, &quot;^Q&quot;)]</code>. It tells you that no patterns match. Second, all stringr functions (including detect) can all be used within tidyvese piping to manipulate data frames. Let's see an example of both of these things in action using the mtcars data.</p>
+<pre class="r"><code>mtcars %&gt;% 
+  # convert the rownames to a column named Car
+  rownames_to_column(var = &quot;Car&quot;) %&gt;% 
+  # return all cars that contain an &quot;m&quot;
+  filter(str_detect(Car, &quot;m&quot;))</code></pre>
+<pre><code>##                 Car  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## 1 Chrysler Imperial 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4
+## 2        Camaro Z28 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4</code></pre>
+<p>Notice that this is only the values of our new <code>Car</code> variable that contains a lowercase &quot;m&quot;? There are two ways to get around this. First, we could use the base R function <code>tolower()</code> to convert all the values (temporarily) to lowercase and then match based on that. Then, the line would read something like <code>filter(str_detect(tolower(Car), &quot;m&quot;))</code>. This is not very neat - now we have 3 functions nested within each other. Of course, we know about regular expressions and so that is probably the better way to go. Regular expressions allow you to tell R to match any one of what is in brackets, <code>[]</code>. Take a look:</p>
+<pre class="r"><code>mtcars %&gt;% 
+  # convert the rownames to a column named Car
+  rownames_to_column(var = &quot;Car&quot;) %&gt;% 
+  # return all cars that contain an &quot;m&quot; or &quot;M&quot;
+  filter(str_detect(Car, &quot;[Mm]&quot;))</code></pre>
+<pre><code>##                  Car  mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## 1          Mazda RX4 21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## 2      Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## 3          Merc 240D 24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## 4           Merc 230 22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## 5           Merc 280 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## 6          Merc 280C 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## 7         Merc 450SE 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## 8         Merc 450SL 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## 9        Merc 450SLC 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## 10 Chrysler Imperial 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## 11       AMC Javelin 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## 12        Camaro Z28 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+## 13     Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8</code></pre>
+<p>That looks a bit cleaner, right?</p>
+<p>Now that you've got that down, I only want to cover one more tool that I use pretty often: <code>str_replace()</code>. Again, clue is in the function name - this function is useful when we want to replace one pattern with another. Let's take a look at the first 10 sentences in the <code>sentences</code> vector that comes with the strigr package.</p>
+<pre class="r"><code>sent_subset &lt;- sentences[1:10]
+sent_subset</code></pre>
+<pre><code>##  [1] &quot;The birch canoe slid on the smooth planks.&quot; 
+##  [2] &quot;Glue the sheet to the dark blue background.&quot;
+##  [3] &quot;It&#39;s easy to tell the depth of a well.&quot;     
+##  [4] &quot;These days a chicken leg is a rare dish.&quot;   
+##  [5] &quot;Rice is often served in round bowls.&quot;       
+##  [6] &quot;The juice of lemons makes fine punch.&quot;      
+##  [7] &quot;The box was thrown beside the parked truck.&quot;
+##  [8] &quot;The hogs were fed chopped corn and garbage.&quot;
+##  [9] &quot;Four hours of steady work faced us.&quot;        
+## [10] &quot;Large size in stockings is hard to sell.&quot;</code></pre>
+<p>Now, suppose we want to replace all the &quot;e&quot; values with &quot;-&quot; - we could do something like:</p>
+<pre class="r"><code>str_replace(sent_subset, &quot;e&quot;, &quot;-&quot;)</code></pre>
+<pre><code>##  [1] &quot;Th- birch canoe slid on the smooth planks.&quot; 
+##  [2] &quot;Glu- the sheet to the dark blue background.&quot;
+##  [3] &quot;It&#39;s -asy to tell the depth of a well.&quot;     
+##  [4] &quot;Th-se days a chicken leg is a rare dish.&quot;   
+##  [5] &quot;Ric- is often served in round bowls.&quot;       
+##  [6] &quot;Th- juice of lemons makes fine punch.&quot;      
+##  [7] &quot;Th- box was thrown beside the parked truck.&quot;
+##  [8] &quot;Th- hogs were fed chopped corn and garbage.&quot;
+##  [9] &quot;Four hours of st-ady work faced us.&quot;        
+## [10] &quot;Larg- size in stockings is hard to sell.&quot;</code></pre>
+<p>But this only replaces the first matched pattern. So, we can use <code>str_replace_all()</code> to... replace all of them.</p>
+<pre class="r"><code>str_replace_all(sent_subset, &quot;e&quot;, &quot;-&quot;)</code></pre>
+<pre><code>##  [1] &quot;Th- birch cano- slid on th- smooth planks.&quot; 
+##  [2] &quot;Glu- th- sh--t to th- dark blu- background.&quot;
+##  [3] &quot;It&#39;s -asy to t-ll th- d-pth of a w-ll.&quot;     
+##  [4] &quot;Th-s- days a chick-n l-g is a rar- dish.&quot;   
+##  [5] &quot;Ric- is oft-n s-rv-d in round bowls.&quot;       
+##  [6] &quot;Th- juic- of l-mons mak-s fin- punch.&quot;      
+##  [7] &quot;Th- box was thrown b-sid- th- park-d truck.&quot;
+##  [8] &quot;Th- hogs w-r- f-d chopp-d corn and garbag-.&quot;
+##  [9] &quot;Four hours of st-ady work fac-d us.&quot;        
+## [10] &quot;Larg- siz- in stockings is hard to s-ll.&quot;</code></pre>
+<p>Now what if we wanted to remove, instead of replace, all vowels in any position?</p>
+<pre class="r"><code># remember our bracket trick?
+# Note that we can remove something by replacing with &quot;&quot;
+str_replace_all(sent_subset, &quot;[aeiou]&quot;, &quot;&quot;)</code></pre>
+<pre><code>##  [1] &quot;Th brch cn sld n th smth plnks.&quot;  &quot;Gl th sht t th drk bl bckgrnd.&quot;  
+##  [3] &quot;It&#39;s sy t tll th dpth f  wll.&quot;    &quot;Ths dys  chckn lg s  rr dsh.&quot;    
+##  [5] &quot;Rc s ftn srvd n rnd bwls.&quot;        &quot;Th jc f lmns mks fn pnch.&quot;       
+##  [7] &quot;Th bx ws thrwn bsd th prkd trck.&quot; &quot;Th hgs wr fd chppd crn nd grbg.&quot; 
+##  [9] &quot;Fr hrs f stdy wrk fcd s.&quot;         &quot;Lrg sz n stckngs s hrd t sll.&quot;</code></pre>
+<p>And now, finally, we can create something that looks like your econometric textbook as so:</p>
+<pre class="r"><code>weird_sentences &lt;- str_replace_all(sent_subset, &quot;[aeiou]&quot;, &quot;&quot;)
+# remove any space, period, comma, or apostrophe
+str_replace_all(weird_sentences, &quot;[ .,&#39;]&quot;, &quot;&quot;)</code></pre>
+<pre><code>##  [1] &quot;Thbrchcnsldnthsmthplnks&quot;  &quot;Glthshttthdrkblbckgrnd&quot;  
+##  [3] &quot;Itssyttllthdpthfwll&quot;      &quot;Thsdyschcknlgsrrdsh&quot;     
+##  [5] &quot;Rcsftnsrvdnrndbwls&quot;       &quot;Thjcflmnsmksfnpnch&quot;      
+##  [7] &quot;Thbxwsthrwnbsdthprkdtrck&quot; &quot;Thhgswrfdchppdcrnndgrbg&quot; 
+##  [9] &quot;Frhrsfstdywrkfcds&quot;        &quot;Lrgsznstckngsshrdtsll&quot;</code></pre>
+<p>That is a fairly useless result... but hopefully you've at least seen some of the things that we can do with the stringr package! Of course, there are many more functions that you will find useful. The main goal here was an introduction. You know where to look though, if you need help. If you're having string issues, stringr can likely help.</p>
+<p>Now, about those dates.</p>
+</div>
