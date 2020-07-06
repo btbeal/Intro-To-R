@@ -15,7 +15,6 @@ tags: ["R Markdown", "Lessons", "Intro"]
 <p>The first of the two packages we're going to discuss is the stringr package in R. Since you're an R veteran, you know how to install and upload this package using <code>install.packages()</code> and <code>library()</code>. That said, stringr is part of the tidyverse that we have already been introduced to. So, if you've installed that package, you have access to stringr (once you've called the library).</p>
 <p>Before we dive in, know that strings are a bit complex - <a href="https://www.gastonsanchez.com/r4strings/">here</a> is an entire R book on dedicated to string manipulation in R. Like the rest of R, the most important skill is to understand when stringr can help, and then using their <a href="https://github.com/rstudio/cheatsheets/blob/master/strings.pdf"><strong>incredible</strong> cheat sheet</a> when needed until you begin to memorize the functions (go to that page now and save it).</p>
 <p>Strings are any formulation of characters. Often times, we want to transform our data by a given string (think ICD-10 codes in medical data). To do this, we need to be able to get rid of strings we don't need, keep strings we do need, and sometimes, change all of our strings. To begin, let's look at the <code>fruit</code> vector that comes pre-loaded with stringr. Type <code>fruit</code> into your console to see.</p>
-<pre class="r"><code>fruit</code></pre>
 <p>That's a lot of fruit. All stringr functions take the form of <code>str_*</code>. The function I use the most from stringr is the <code>str_detect()</code> function, which tells us whether a string contains a specific pattern or not. There is another function, <code>str_subset()</code>, that is a wrapper function for <code>str_detect()</code>, but I like <code>str_detect()</code> because it has more flexible applications. The function takes a string vector (such as fruit) and a pattern and returns TRUE or FALSE. For example, suppose I wanted every fruit that contains a &quot;q&quot;?</p>
 <pre class="r"><code># Note, str_detect returns T/F... 
 # Luckily, we know how to index based on the TRUE values
@@ -110,6 +109,68 @@ str_replace_all(weird_sentences, &quot;[ .,&#39;]&quot;, &quot;&quot;)</code></p
 ##  [5] &quot;Rcsftnsrvdnrndbwls&quot;       &quot;Thjcflmnsmksfnpnch&quot;      
 ##  [7] &quot;Thbxwsthrwnbsdthprkdtrck&quot; &quot;Thhgswrfdchppdcrnndgrbg&quot; 
 ##  [9] &quot;Frhrsfstdywrkfcds&quot;        &quot;Lrgsznstckngsshrdtsll&quot;</code></pre>
-<p>That is a fairly useless result... but hopefully you've at least seen some of the things that we can do with the stringr package! Of course, there are many more functions that you will find useful. The main goal here was an introduction. You know where to look though, if you need help. If you're having string issues, stringr can likely help.</p>
+<p>That is a fairly useles result... but hopefully you've at least seen some of the things that we can do with the stringr package! Of course, there are many more functions that you will find useful. The main goal here was an introduction. You know where to look though, if you need help. If you're having string issues, stringr can likely help.</p>
 <p>Now, about those dates.</p>
+</div>
+<div id="dates-with-lubridate-package" class="section level3">
+<h3>Dates with Lubridate Package</h3>
+<p>Dates, like strings, are fairly complex. But dates are complex due to the nature of the way humans track time, which makes doing arithmetic pretty challenging. The R for Data Science book sums it up pretty well by asking a few simple questions:</p>
+<ol style="list-style-type: decimal">
+<li>Does every year have 365 days?</li>
+<li>Does every day have 24 hours?</li>
+<li>Does every minute have 60 seconds?</li>
+</ol>
+<p>In short, the answer is &quot;no&quot; to all of the above. So, for that reason alone, arithmetic gets complex. Consider if we wanted to look at a date two months from our current date? Well... do we mean 60 days? Do we mean that we just want to add two to our month? Some months are longer than others, remember. Luckily for us, the lubridate package has provided a nice set of functions to help us deal with dates in a sensible way. And even though we won't be digging into all the nuances above, it is really important to keep them in mind while you're working with dates!</p>
+<div id="the-basics" class="section level4">
+<h4>The Basics</h4>
+<p>Let's start with the most basic task that you'll have when working with dates: making dates into... dates. Most of the time, you will be provided with some character or numeric variable that is meant to represent dates but doesn't. So, to do any date manipulation, we must first specify to R that we are actually working with them. To do this, lubridate provides some pretty useful tools. To specify that you want a value to become a date, simply supply what form the values take as a function. Here are a few examples. Type these into your console:</p>
+<pre class="r"><code># these are in year-month-date format
+# So, we use ymd()
+ymd(&quot;2011-12-30&quot;)
+ymd(20111230)
+ymd(&quot;11 Dec. 30th&quot;)
+
+
+# These are in date month year format
+# So...
+dmy(&quot;30-12-11&quot;)
+dmy(30122011)
+
+# and then this wonky thing...
+dmy(&quot;30th Dec        2011&quot;)</code></pre>
+<p>There are others as well, which you can find on the <a href="https://rawgit.com/rstudio/cheatsheets/master/lubridate.pdf">lubridate cheat sheet</a>. Notice that the functions can take some pretty wild structures and return something sensible. Once you have a date object, you can then pull relevant information from it by specifying the part of the date you're concerned with.</p>
+<pre class="r"><code>my_date &lt;- ymd(&quot;2011-12-30&quot;)
+year(my_date)</code></pre>
+<pre><code>## [1] 2011</code></pre>
+<p>This works for other units as well. Try <code>month(my_date)</code>. Or, if we wanted which day of the week: <code>wday(my_date)</code>. Lubridate, like specifying a date, has a lot of neat functions for pulling information from a date object similar to what we just did.</p>
+</div>
+<div id="arithmetic" class="section level4">
+<h4>Arithmetic</h4>
+<p>Dates can be strange given all the intricacies we noted at the beginning. For this reason, lubridate has provided three different time structures for us to use so that we can specify how we want R to handle our dates.</p>
+<p>The first, and most simple, is a <strong>duration</strong>. Durations help us understand the exact time elapsed, in seconds, between two dates or during a number of dates. Lubridate specifies seconds because it is the only consistent time unit that we reference (as opposed to years, months, or days). To see the basic form of this, we can do something similar to above by typing:</p>
+<pre class="r"><code>ddays(12)
+dhours(12)
+
+#... etc.</code></pre>
+<p>You can use this to add or subtract some unit of dates. For example, suppose we want to add 12 days to our date, <code>my_date</code>, which was created above:</p>
+<pre class="r"><code>my_date + ddays(12)</code></pre>
+<pre><code>## [1] &quot;2012-01-11&quot;</code></pre>
+<p>That is about as easy as it comes. You can do this with other units of time as well. But, as mentioned above, there are times (literally) where this may not be what you're looking for. From the R for Data Science book, consider that our date of interest was March 12th at 1pm - let's take a look:</p>
+<pre class="r"><code>weird_date &lt;- ymd_hms(&quot;2016-03-12 13:00:00&quot;, tz = &quot;America/New_York&quot;)
+weird_date + ddays(1)</code></pre>
+<pre><code>## [1] &quot;2016-03-13 14:00:00 EDT&quot;</code></pre>
+<p>Somehow, we added a day's worth of seconds but gained an extra hour. We can also see that our time zones have changed. The duration functions are literal... and so if you want a full days worth of seconds, that is what you'll get. To account for things like this (and maybe fix some problems you may run into), lubridate also has <strong>periods</strong>.</p>
+<p>Periods work in a slightly more intuitive way and try to get at what most people mean when they simply want to add a day. From the example provided above:</p>
+<pre class="r"><code>weird_date + days(1)</code></pre>
+<pre><code>## [1] &quot;2016-03-13 13:00:00 EDT&quot;</code></pre>
+<p>These functions work in a similar manner... but are just more likely to produce the results anticipated. In general, you should use the simplest functions to produce what you need.</p>
+<p>Finally, we have <strong>intervals</strong>. Intervals are exactly what they sound like and are useful for determining how many &quot;durations&quot; or &quot;periods&quot; fall within specific intervals. Usually, we can get intuitive results from dividing the classes above. But, intervalls can help to be more specific and can be specified by the <code>%--%</code> operator. For example, suppose we want to know how many days (inclusive) are between December 22nd, 2018, and August 13th, 2020? We would first specify an interval:</p>
+<pre class="r"><code># Specify the interval with the %--% operator
+my_interval &lt;- ymd(&quot;2018-12-22&quot;) %--% dmy(&quot;13-08-2020&quot;)
+
+# then divide:
+my_interval/days(1)</code></pre>
+<pre><code>## [1] 600</code></pre>
+<p>There are many more impressive functions that we can use with dates and strings in R but this will serve as a crash course. Now you know the basics of stringr and lubridate as well as where to find the full information should you need it!</p>
+</div>
 </div>
