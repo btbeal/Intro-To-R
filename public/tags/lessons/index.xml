@@ -6,57 +6,57 @@
     <description>Recent content in Lessons on Intro to R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jul 2020 21:13:14 -0200</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2020 21:13:14 -0500</lastBuildDate>
     
 	<atom:link href="https://zealous-hawking-ce0a3d.netlify.app/tags/lessons/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Lesson 4 - Functions and Loops in R</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/lesson3/</link>
-      <pubDate>Wed, 01 Jul 2020 21:13:14 -0200</pubDate>
-      
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/lesson3/</guid>
-      <description>Now that you&#39;ve mastered the basics of R, and data manipulation with dplyr, you&#39;re ready for an introduction to functions and loops. Hopefully, the time you&#39;ll need for loops is minimal since dplyer has solved some grouping issues for us. But, you should still learn them just in case (and so you can understand them when reading others&#39; code).
-Here I want to cover:
-1. Functions and if statements 2.</description>
-    </item>
-    
-    <item>
-      <title>Lesson 2 - Indexing and Tidyverse</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-07-01-lesson2/</link>
-      <pubDate>Tue, 30 Jun 2020 21:13:14 -0500</pubDate>
-      
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-07-01-lesson2/</guid>
-      <description>In the previous lesson we covered the very basics of R. We discussed that R can be a fancy calculator, interpret logical arguments, and some fun facts sprinkled throughout. In addition, we covered basic data types and structures. Alone, this is good information to know... and is indeed the very bare bones introduction... but we are here to look at data - to manipulate data in a meaningful way. The first step towards data exploration is learning how to find values in a data set.</description>
-    </item>
-    
-    <item>
-      <title>Lesson 3 - Strings and Dates</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/stringsndates/</link>
-      <pubDate>Tue, 30 Jun 2020 21:13:14 -0500</pubDate>
-      
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/stringsndates/</guid>
-      <description>Some of the most common data-related issues for those new to healthcare research (probably any research) revolve around string and date manipulation. Fortunately for us, R has some really incredible packages to help us deal with them. Like anything in R, it can be done in base R. Though, you&#39;ll never use base R again for string/date manipulation so... i&#39;m not going to cover it here. Again, this is meant to be a broad overview of both of the packages so that you can go back to them when you&#39;re stuck!</description>
-    </item>
-    
-    <item>
       <title>Lesson 1 - intro to R</title>
       <link>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-06-30-lesson1/</link>
-      <pubDate>Mon, 29 Jun 2020 21:13:14 -0500</pubDate>
+      <pubDate>Sat, 04 Jul 2020 21:13:14 -0500</pubDate>
       
       <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-06-30-lesson1/</guid>
       <description>Welcome to The University of Washington and your crash course on R. Note that this class will not be incredibly robust (we have three days) but it will aim to provide you the tools necessary to do well in your stats classes and beyond. Futher, I believe several of you will take a semester long course in R. You&#39;ll be ahead of that game but will go into more depth during that class.</description>
     </item>
     
     <item>
+      <title>Lesson 2 - Indexing and Tidyverse</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-07-01-lesson2/</link>
+      <pubDate>Fri, 03 Jul 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-07-01-lesson2/</guid>
+      <description>In the previous lesson we covered the very basics of R. We discussed that R can be a fancy calculator, interpret logical arguments, and some fun facts sprinkled throughout. In addition, we covered basic data types and structures. Alone, this is good information to know... and is indeed the very bare bones introduction... but we are here to look at data - to manipulate data in a meaningful way. The first step towards data exploration is learning how to find values in a data set.</description>
+    </item>
+    
+    <item>
       <title>Lesson 2.5 - R Graphics Tutorial</title>
       <link>https://zealous-hawking-ce0a3d.netlify.app/modules/rgraphicstutorial/</link>
-      <pubDate>Sun, 28 Jun 2020 21:13:14 -0500</pubDate>
+      <pubDate>Thu, 02 Jul 2020 21:13:14 -0500</pubDate>
       
       <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/rgraphicstutorial/</guid>
       <description>For this lesson, we&#39;re going to use the gapminder data, which can be found in its original form here. If you&#39;re reading this and not attending the class, I would highly encourage you to check out the website! The late Hans Rosling was a brilliant guy and his work, followed up by children, is worth digging through.
 The main purpose of this exercise is to learn how to graph your data; however, we first need to understand the (subjectively) best format for data, tidy data.</description>
+    </item>
+    
+    <item>
+      <title>Lesson 3 - Strings and Dates</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/stringsndates/</link>
+      <pubDate>Wed, 01 Jul 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/stringsndates/</guid>
+      <description>Some of the most common data-related issues for those new to healthcare research (probably any research) revolve around string and date manipulation. Fortunately for us, R has some really incredible packages to help us deal with them. Like anything in R, it can be done in base R. Though, you&#39;ll never use base R again for string/date manipulation so... i&#39;m not going to cover it here. Again, this is meant to be a broad overview of both of the packages so that you can go back to them when you&#39;re stuck!</description>
+    </item>
+    
+    <item>
+      <title>Lesson 4 - Functions and Loops in R</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/lesson3/</link>
+      <pubDate>Tue, 30 Jun 2020 21:13:14 -0200</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/lesson3/</guid>
+      <description>Now that you&#39;ve mastered the basics of R, and data manipulation with dplyr, you&#39;re ready for an introduction to functions and loops. Hopefully, the time you&#39;ll need for loops is minimal since dplyer has solved some grouping issues for us. But, you should still learn them just in case (and so you can understand them when reading others&#39; code).
+Here I want to cover:
+1. Functions and if statements 2.</description>
     </item>
     
   </channel>
