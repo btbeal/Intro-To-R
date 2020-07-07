@@ -6,10 +6,21 @@
     <description>Recent content on Intro to R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Jul 2020 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2020 21:13:14 -0500</lastBuildDate>
     
 	<atom:link href="https://zealous-hawking-ce0a3d.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lesson 0 - Getting Setup</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/0_gettingstarted/</link>
+      <pubDate>Mon, 06 Jul 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/0_gettingstarted/</guid>
+      <description>Downloading R To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to this website and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done here.
+Pick the free version.
+ RStudio RStudio provides the luxury of keeping track of variables/data/packages and provides a lot moe flexibility in general, which you will quickly see.</description>
+    </item>
     
     <item>
       <title>Lesson 1 - intro to R</title>
