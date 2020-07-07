@@ -9,8 +9,6 @@ tags: ["R Markdown", "Lessons", "Intro"]
 
 
 
-<pre class="r"><code>knitr::opts_chunk$get(&#39;fig.path&#39;)</code></pre>
-<pre><code>## [1] &quot;0_GettingStarted_files/figure-html/&quot;</code></pre>
 <div id="downloading-r" class="section level3">
 <h3>Downloading R</h3>
 <p>To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to <a href="https://cloud.r-project.org/">this website</a> and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done <a href="https://rstudio.com/products/rstudio/download/">here</a>.</p>
@@ -29,8 +27,8 @@ tags: ["R Markdown", "Lessons", "Intro"]
 <p>Finally, we should discuss how to actually open and begin a script. Find the white square icon at the very upper left of RStudio (the one with a green plus sign). It is a dropdown menu - select R script.</p>
 <p>You should now have a pane that looks something like this:</p>
 <div class="figure">
-<img src="/RStudioScript.png" alt="Initial RStudio Setup" />
-<p class="caption">Initial RStudio Setup</p>
+<img src="/RStudioScript.png" alt="Opening a script" />
+<p class="caption">Opening a script</p>
 </div>
 <p>You can work in the console if you prefer, but working in a script allows you to keep track of what has been done to your data and what your process has been. Try typing <code>2 + 2</code> somewhere in the script, highlight, and press Run (on the top right of the script ribbon). See that 2+2 gets sent to, and executed in the console, but we still have a record of what has been done in our script.</p>
 <p>You'll want to open a new script every time you're working on a new problem. Actually, best practices suggest that you begin a &quot;new project&quot;. We will cover that at the end.</p>
@@ -57,8 +55,8 @@ tags: ["R Markdown", "Lessons", "Intro"]
 <p>Projects make life easier and help make your code more reproducible. Notably, if you're setting a directory manually like we've done above, your code will not run on someone else's machine... unless they've the same file path as you (unlikely). When you are working within a projects folder, you can simply send a project over, with all the files, and use &quot;relative&quot; paths therein to make your code translatable.</p>
 <p>In RStudio, to the right of our script button in the upper left, we can see a blue box with another green arrow. Click that. There you will see a few options:</p>
 <div class="figure">
-<img src="/Directory.png" alt="Initial RStudio Setup" />
-<p class="caption">Initial RStudio Setup</p>
+<img src="/Directory.png" alt="Choosing project directory" />
+<p class="caption">Choosing project directory</p>
 </div>
 <p>Since we already have a new folder, let's associate this project with that folder. Click &quot;Existing Directory&quot; and &quot;browse&quot; to find that folder.</p>
 <p>Now, we can read in data just like we did above. Further, we can send that folder (with the project) to someone, who could save it wherever on their machine, and run your code. This is considered best practice for writing reproducible code.</p>

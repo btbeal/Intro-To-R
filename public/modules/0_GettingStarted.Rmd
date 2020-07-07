@@ -11,9 +11,6 @@ tags: ["R Markdown", "Lessons", "Intro"]
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-knitr::opts_chunk$get('fig.path')
-```
 ### Downloading R
 To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to [this website](https://cloud.r-project.org/) and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done [here](https://rstudio.com/products/rstudio/download/).  
   
@@ -34,7 +31,7 @@ Finally, we should discuss how to actually open and begin a script. Find the whi
   
 You should now have a pane that looks something like this:  
   
-![Initial RStudio Setup](/RStudioScript.png)  
+![Opening a script](/RStudioScript.png)  
   
 You can work in the console if you prefer, but working in a script allows you to keep track of what has been done to your data and what your process has been. Try typing `2 + 2` somewhere in the script, highlight, and press Run (on the top right of the script ribbon). See that 2+2 gets sent to, and executed in the console, but we still have a record of what has been done in our script.  
   
@@ -64,7 +61,7 @@ Projects make life easier and help make your code more reproducible. Notably, if
   
 In RStudio, to the right of our script button in the upper left, we can see a blue box with another green arrow. Click that. There you will see a few options:  
   
-![Initial RStudio Setup](/Directory.png)  
+![Choosing project directory](/Directory.png)  
   
 Since we already have a new folder, let's associate this project with that folder. Click "Existing Directory" and "browse" to find that folder.  
   
