@@ -1,7 +1,7 @@
 ---
 title: "Lesson 0 - Getting Setup"
 author: "Brennan T. Beal"
-date: 2020-06-27T21:13:14-05:00
+date: 2020-07-07T21:13:14-05:00
 categories: ["R"]
 draft: FALSE
 tags: ["R Markdown", "Lessons", "Intro"]
@@ -21,7 +21,7 @@ RStudio provides the luxury of keeping track of variables/data/packages and prov
   
 Now, open RStudio. There should be two columns, with the right column having two windows. Notice that the left column has two tabs - "Console" and "Terminal", with the default toggled to console. If you open R itself (not RStudio), you'd notice that the console pane is a mirror image of the R shell. So, RStudio provides all the other panes, which we will cover here.  
   
-![Initial RStudio Setup](../RStudioPanes.png)  
+![Initial RStudio Setup](/static/RStudioPanes.png)  
   
 The upper right pane, by default, will be set to environment. Here, we will be able to see all the data loaded, variables saved, etc. This is nice because instead of printing these things to our console, we can just peak over to the right and find information about our environment there. History is exactly what it sounds like. The connection panel is helpful to connect to servers to work with data stored elsewhere, remotely. By default, those are the only three. But, we can discuss some other common panels that may come up as you become more advanced R users!  
   
@@ -31,7 +31,7 @@ Finally, we should discuss how to actually open and begin a script. Find the whi
   
 You should now have a pane that looks something like this:  
   
-![Initial RStudio Setup](../RStudioScript.png)  
+![Initial RStudio Setup](/static/RStudioScript.png)  
   
 You can work in the console if you prefer, but working in a script allows you to keep track of what has been done to your data and what your process has been. Try typing `2 + 2` somewhere in the script, highlight, and press Run (on the top right of the script ribbon). See that 2+2 gets sent to, and executed in the console, but we still have a record of what has been done in our script.  
   
@@ -61,7 +61,7 @@ Projects make life easier and help make your code more reproducible. Notably, if
   
 In RStudio, to the right of our script button in the upper left, we can see a blue box with another green arrow. Click that. There you will see a few options:  
   
-![Initial RStudio Setup](../Directory.png)  
+![Initial RStudio Setup](/static/Directory.png)  
   
 Since we already have a new folder, let's associate this project with that folder. Click "Existing Directory" and "browse" to find that folder.  
   
