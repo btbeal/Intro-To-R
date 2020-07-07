@@ -70,5 +70,16 @@ Basic Math and Logic with R Store the value 18 in a variable x and the value 23 
 Write an simple expression in your console that adds those two variables Write an expression to test whether or not x is greater than or equal to r_is_cool Write an expression to test whether x is less than r_is_cool AND x + 10 is greater than r_is_cool What is the sum of the following vector: c(TRUE, TRUE, FALSE, TRUE)?</description>
     </item>
     
+    <item>
+      <title>Lesson 0 - Getting Setup</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/0_gettingstarted/</link>
+      <pubDate>Sat, 27 Jun 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/0_gettingstarted/</guid>
+      <description>Downloading R To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to this website and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done here.
+Pick the free version.
+ RStudio RStudio provides the luxury of keeping track of variables/data/packages and provides a lot moe flexibility in general, which you will quickly see.</description>
+    </item>
+    
   </channel>
 </rss>

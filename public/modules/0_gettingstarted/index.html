@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lesson 0 - Getting Setup</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://zealous-hawking-ce0a3d.netlify.app/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/R.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.60.1" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Lesson 0 - Getting Setup</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/modules">Modules</a></li>
+                            
+                                <li><a href="/problemsets">Problem Sets</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/btbeal"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/BealBrennan"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/btbeal/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Lesson 0 - Getting Setup</h2>
+        <h5></h5>
+        
+<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r-markdown"><kbd class="item-tag">R Markdown</kbd></a>
+
+<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/lessons"><kbd class="item-tag">Lessons</kbd></a>
+
+<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/intro"><kbd class="item-tag">Intro</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">
+
+
+<div id="downloading-r" class="section level3">
+<h3>Downloading R</h3>
+<p>To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to <a href="https://cloud.r-project.org/">this website</a> and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done <a href="https://rstudio.com/products/rstudio/download/">here</a>.</p>
+<p>Pick the free version.</p>
+</div>
+<div id="rstudio" class="section level3">
+<h3>RStudio</h3>
+<p>RStudio provides the luxury of keeping track of variables/data/packages and provides a lot moe flexibility in general, which you will quickly see. So, no one <em>needs</em> RStudio to work in R but it is helpful.</p>
+<p>Now, open RStudio. There should be two columns, with the right column having two windows. Notice that the left column has two tabs - &quot;Console&quot; and &quot;Terminal&quot;, with the default toggled to console. If you open R itself (not RStudio), you'd notice that the console pane is a mirror image of the R shell. So, RStudio provides all the other panes, which we will cover here.</p>
+<div class="figure">
+<img src="/static/RStudioPanes.png" alt="Initial RStudio Setup" />
+<p class="caption">Initial RStudio Setup</p>
+</div>
+<p>The upper right pane, by default, will be set to environment. Here, we will be able to see all the data loaded, variables saved, etc. This is nice because instead of printing these things to our console, we can just peak over to the right and find information about our environment there. History is exactly what it sounds like. The connection panel is helpful to connect to servers to work with data stored elsewhere, remotely. By default, those are the only three. But, we can discuss some other common panels that may come up as you become more advanced R users!</p>
+<p>The bottom right panel has four tabs, files, plots, packages, help, Viewer. Toggle through these - they should all seem fairly explanatory. If not, we will cover them in class. I will say that the help panel is a lifesaver as you're starting out. Try typing <code>?sum</code> into your console - now check out the help panel. Anytime you're unfamiliar with a function, we can find it there.</p>
+<p>Finally, we should discuss how to actually open and begin a script. Find the white square icon at the very upper left of RStudio (the one with a green plus sign). It is a dropdown menu - select R script.</p>
+<p>You should now have a pane that looks something like this:</p>
+<div class="figure">
+<img src="/static/RStudioScript.png" alt="Initial RStudio Setup" />
+<p class="caption">Initial RStudio Setup</p>
+</div>
+<p>You can work in the console if you prefer, but working in a script allows you to keep track of what has been done to your data and what your process has been. Try typing <code>2 + 2</code> somewhere in the script, highlight, and press Run (on the top right of the script ribbon). See that 2+2 gets sent to, and executed in the console, but we still have a record of what has been done in our script.</p>
+<p>You'll want to open a new script every time you're working on a new problem. Actually, best practices suggest that you begin a &quot;new project&quot;. We will cover that at the end.</p>
+<p>Finally, we will briefly cover loading in data.</p>
+</div>
+<div id="directories-and-reading-in-data" class="section level3">
+<h3>Directories and Reading in Data</h3>
+<p>R is really great at handling different types of data formats, which includes .csv, SAS, etc. Most commonly, we are going to be working with .csv files. So, I'm only going to cover that here. Google is your friend when you run into any oddities regarding files you need to access with R.</p>
+<div id="setting-a-working-directory" class="section level4">
+<h4>Setting a Working Directory</h4>
+<p>To do access data in R, you'll need to set a &quot;working directory&quot;. A working directory tells R where you want it to look for data that you're referencing. R will not be able to read in data that it cannot find. Don't worry if this part seems confusing - we will cover it again.</p>
+<p>To see what directory you're in, type <code>getwd()</code> into your console. This will tell you where you are within your computer's files. To set a new directory - you should set this where your data is - you can type <code>setwd()</code> into the console and deliver the path to that folder to it. This looks something like <code>setwd(&quot;path/to/myFolder&quot;)</code>. Let me show you an example.</p>
+<p>Create a folder on your desktop labeled <code>RFiles</code> and save it there (you don't need to do this part with R). Once you've done that, you can type <code>setwd(&quot;~/Desktop/RFiles&quot;)</code>. The tilde tells R go all the way to Desktop, then select the RFiles folder. Now type <code>getwd()</code> into your console. It should read something like: &quot;/Users/btbeal/Desktop/RFiles&quot;. Now, if you place data in that folder, R can find it. So, let's do that.</p>
+<p>Let's download this .csv file by clicking <a href="../../data/income_per_person.csv">this link</a>. Store the data as &quot;gapminder.csv&quot; in your new folder, <code>RFiles</code>. Now, we can discuss how to read it in.</p>
+</div>
+<div id="reading-data" class="section level4">
+<h4>Reading Data</h4>
+<p>As mentioned, data is most commonly in a .csv file. To read it in, we can use the <code>read.csv2()</code> function and store it in our environment by typing the following into our script that we have opened: <code>new_data &lt;- read.csv2(&quot;gapminder.csv&quot;)</code>.</p>
+<p>If all goes to plan, you now have a data set loaded into your environment labeled &quot;new_data&quot;. Don't worry about the functions we used to get there - we will cover that in class.</p>
+</div>
+</div>
+<div id="using-projects" class="section level3">
+<h3>Using Projects</h3>
+<p>Projects make life easier and help make your code more reproducible. Notably, if you're setting a directory manually like we've done above, your code will not run on someone else's machine... unless they've the same file path as you (unlikely). When you are working within a projects folder, you can simply send a project over, with all the files, and use &quot;relative&quot; paths therein to make your code translatable.</p>
+<p>In RStudio, to the right of our script button in the upper left, we can see a blue box with another green arrow. Click that. There you will see a few options:</p>
+<div class="figure">
+<img src="/static/Directory.png" alt="Initial RStudio Setup" />
+<p class="caption">Initial RStudio Setup</p>
+</div>
+<p>Since we already have a new folder, let's associate this project with that folder. Click &quot;Existing Directory&quot; and &quot;browse&quot; to find that folder.</p>
+<p>Now, we can read in data just like we did above. Further, we can send that folder (with the project) to someone, who could save it wherever on their machine, and run your code. This is considered best practice for writing reproducible code.</p>
+<p>Now, getting started in R is probably the most difficult part. And learning a new language takes time. But, once you're up and running after week one, I think you're going to see that R is an awesome, fun, language that is going to help you a lot in the future. After all... this whole website was built from within R!</p>
+</div>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
