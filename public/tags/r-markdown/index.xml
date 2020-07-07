@@ -17,7 +17,7 @@
       <pubDate>Mon, 06 Jul 2020 21:13:14 -0500</pubDate>
       
       <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/0_gettingstarted/</guid>
-      <description>Downloading R To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to this website and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done here.
+      <description>knitr::opts_chunk$get(&amp;#39;fig.path&amp;#39;) ## [1] &amp;quot;0_GettingStarted_files/figure-html/&amp;quot; Downloading R To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to this website and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done here.
 Pick the free version.
  RStudio RStudio provides the luxury of keeping track of variables/data/packages and provides a lot moe flexibility in general, which you will quickly see.</description>
     </item>

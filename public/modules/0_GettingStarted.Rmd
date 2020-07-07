@@ -11,6 +11,9 @@ tags: ["R Markdown", "Lessons", "Intro"]
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+knitr::opts_chunk$get('fig.path')
+```
 ### Downloading R
 To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to [this website](https://cloud.r-project.org/) and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done [here](https://rstudio.com/products/rstudio/download/).  
   
