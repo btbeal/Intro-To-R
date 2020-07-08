@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Problem Set 1</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://zealous-hawking-ce0a3d.netlify.app/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/R.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.60.1" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Problem Set 1</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/practice/problemsets">Problem Sets</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/practice/solns">Solutions</a></li>
+                            
+                                <li><a href="/modules">Modules</a></li>
+                            
+                                <li><a href="/practice">Practice</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/btbeal"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/BealBrennan"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/btbeal/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Problem Set 1</h2>
+        <h5></h5>
+        
+<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/problem-set"><kbd class="item-tag">Problem Set</kbd></a>
+
+<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r"><kbd class="item-tag">R</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">
+
+
+<p>This problem set will require knowledge of both Lesson 1 and Lesson 2. If you haven't read over those, go ahead and do that then come back. Or, if you think you got it, carry on!</p>
+<div id="basic-math-and-logic-with-r" class="section level3">
+<h3>Basic Math and Logic with R</h3>
+<p>Store the value 18 in a variable <code>x</code> and the value 23 in the varialbe <code>r_is_cool</code>.</p>
+<ol style="list-style-type: decimal">
+<li>Write an simple expression in your console that adds those two variables</li>
+<li>Write an expression to test whether or not <code>x</code> is greater than or equal to <code>r_is_cool</code></li>
+<li>Write an expression to test whether <code>x</code> is less than <code>r_is_cool</code> AND <code>x</code> + 10 is greater than <code>r_is_cool</code></li>
+<li>What is the sum of the following vector: <code>c(TRUE, TRUE, FALSE, TRUE)</code>?</li>
+</ol>
+</div>
+<div id="indexing-vectors" class="section level3">
+<h3>Indexing Vectors</h3>
+<p>Copy the following into your console:<br />
+</p>
+<pre class="r"><code>what_the_vec &lt;- c(seq.int(from = 8, to = 72, by = 2))</code></pre>
+<p>Now, answer the following questions.</p>
+<ol style="list-style-type: decimal">
+<li>What is the 14th value of this vector, <code>what_the_vec</code>?</li>
+<li>Store the 2nd, 8th, and 20th value of the vector in a new vector, <code>new_vec</code></li>
+<li>Write an expression to test whether the 2nd value of <code>new_vec</code> is smaller than the first</li>
+<li>Remove the first value from the vector <code>new_vec</code> (recall that we can use a '-' sign to remove values) and store the remaining two in <code>new_vec2</code></li>
+</ol>
+</div>
+<div id="indexing-data-frames" class="section level3">
+<h3>Indexing Data Frames</h3>
+<p>For this exercise, we are going to use the iris dataset, which is pre-loaded into base R. First, we should take a look at it.</p>
+<ol style="list-style-type: decimal">
+<li>What are the dimensions of the iris data set? (How many observations and variables?)</li>
+<li>What kind of variables are present? (character, numeric, etc.)</li>
+</ol>
+<p>Now that you know what kind of data you are working with, let's work on finding values within using base R.</p>
+<ol style="list-style-type: decimal">
+<li>Since each column is a vector, we can store them in their own vector, if we'd like. Store the fourth column, <code>Petal.Width</code> in a new variable, <code>pet_width</code>.</li>
+<li>Using the <code>mean()</code> function, find the mean of <code>pet_width</code></li>
+<li>What is the second value of the third column of <code>iris</code>?</li>
+<li>How many values in the second column, <code>Sepal.Width</code>, are greater than 3.2 (remember that <code>TRUE</code> = 1)?</li>
+<li>What is that as a percentage? (recall that <code>nrow()</code> gives the number of rows... so we just need that and the answer to #3)</li>
+<li>Using the <code>table()</code> function, what is the count of the various species within our dataset?</li>
+<li>There are three different species in our data. Remove &quot;setosa&quot; and store the new data in <code>new_data</code></li>
+<li>What is average <code>Sepal.Length</code> of our <code>new_data</code></li>
+<li>In base R, create a new column for <code>new_data</code> called <code>large_petal_flag</code>. Using the <code>ifelse()</code> function, assign the value 1 to rows with a <code>Petal.Length</code> greater than 4.5, and a value of 0 to those that don't.</li>
+<li>What is the sum of <code>new_data$large_petal_flag</code>? What is this as a proportion? (hint: taking the average of binary variables gives you the proportion if they are 1/0)</li>
+</ol>
+</div>
+<div id="dplyr" class="section level3">
+<h3>Dplyr</h3>
+<p>Working in base R is not that fun... but it really can come in handy understanding how to do things the hard way. Now let's switch over to using our dplyr verbs. Remember, to use dplyr, you must have it installed. We will install the entire tidyverse by typing <code>install.packages(&quot;tidyverse&quot;)</code>. No need to do this if you've already done it. If <code>tidyverse</code> is already installed, just type <code>library(tidyverse)</code> and you will have all the tools at your disposal.<br />
+<br />
+Using the <code>iris</code> data set, and our dplyr verbs, do the following...</p>
+<ol style="list-style-type: decimal">
+<li>Create a new column, <code>double_petal</code>, with <code>mutate()</code> that multiplies <code>Petal.Width</code> by 2. Store this new data frame in <code>fancy_iris</code></li>
+<li>Using our <code>filter()</code> command, filter out all values of <code>double_petal</code> less than 2.3 and greater than 4. How many rows are in that data set?</li>
+<li>Suppose we want to see the maximum <code>Sepal.Length</code> for each species - how can we do that? (hint: you will need to group by the variable <code>Species</code> and use the <code>summarise</code> verb)</li>
+</ol>
+<p>There are a few other verbs that we didn't cover in our lessons (for the sake of brevity). But some really useful ones to know along the way are <code>pivot_wider</code> and <code>pivot_longer</code>. We will go over these a bit in class but don't have time to cover them here.</p>
+</div>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

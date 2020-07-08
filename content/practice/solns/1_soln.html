@@ -1,0 +1,130 @@
+---
+title: "Solutions for PS 1"
+author: "Brennan T. Beal"
+date: 2020-06-29T21:13:14-05:00
+categories: ["R"]
+draft: FALSE
+tags: ["Problem Set", "R"]
+---
+
+
+
+<div id="basic-math-and-logic-with-r" class="section level3">
+<h3>Basic Math and Logic with R</h3>
+<pre class="r"><code># ---- SETUP
+x &lt;- 18
+r_is_cool &lt;- 23
+
+# 1
+x + r_is_cool
+#2
+x &gt;= r_is_cool
+#3
+x &lt; r_is_cool &amp; x + 10 &gt; r_is_cool
+
+#4
+sum(c(TRUE, TRUE, FALSE, TRUE))</code></pre>
+</div>
+<div id="indexing-vectors" class="section level2">
+<h2>Indexing Vectors</h2>
+<pre class="r"><code># ---- SETUP
+what_the_vec &lt;- c(seq.int(from = 8, to = 72, by = 2))
+
+# 1
+what_the_vec[14]</code></pre>
+<pre><code>## [1] 34</code></pre>
+<pre class="r"><code># 2
+new_vec &lt;- what_the_vec[c(2, 8, 20)]
+# 3
+new_vec[2] &lt; new_vec[1]</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code># 4
+new_vec2 &lt;- new_vec[-1]</code></pre>
+<div id="indexing-data-frames" class="section level3">
+<h3>Indexing Data Frames</h3>
+<div id="section-1" class="section level4">
+<h4>Section 1</h4>
+<pre class="r"><code># 1
+dim(iris)
+# --- OR ----
+str(iris)
+# str gives more info... but technically all we needed was dimensions
+
+# 2
+# str(iris) from above gives this answer as well</code></pre>
+</div>
+<div id="section-2" class="section level4">
+<h4>Section 2</h4>
+<pre class="r"><code># 1
+pet_width &lt;- iris[,4]
+# ----- OR -----
+pet_width &lt;- iris$Petal.Width # this is same thing as above
+# 2
+mean(pet_width)
+# 3
+iris[2,3]
+# 4
+sum(iris$Sepal.Width &gt; 3.2)
+# 5
+sum(iris$Sepal.Width &gt; 3.2)/length(iris$Sepal.Width)
+# ---- OR
+sum(iris$Sepal.Width &gt; 3.2)/nrow(iris)
+# Note that because iris$Sepal.Width is a vector, we can use length.
+# nrow on a data frame gives a sort of &quot;length&quot; of a df
+# So, either will work
+
+# 6
+table(iris$Species)
+# 7
+new_data &lt;- iris[iris$Species != &quot;setosa&quot;,]
+# This one may have been tricky for you
+# != means not equal and the comma tells us that we want
+# the iris data frame for all rows where 
+# iris$Species IS NOT EQUAL to &quot;setosa&quot;
+# to check if you did this right - table(new_data$Species)
+
+# 8 
+mean(new_data$Sepal.Length)
+# 9
+new_data$large_petal_flag &lt;- ifelse(new_data$Petal.Length &gt; 4.5, 1, 0)
+# 10
+# sum
+sum(new_data$large_petal_flag)
+# proportion
+sum(new_data$large_petal_flag)/length(new_data$large_petal_flag)
+# --- OR ---
+mean(new_data$large_petal_flag)
+# Notice that the mean of a binary variable is the proportion of &#39;1&#39; values present
+# So, both the above works better with mean being easier to read</code></pre>
+</div>
+</div>
+<div id="dplyr" class="section level3">
+<h3>Dplyr</h3>
+<pre class="r"><code># ---- SETUP
+# install.packages(&quot;tidyverse&quot;)
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.1     ✓ purrr   0.3.4
+## ✓ tibble  3.0.1     ✓ dplyr   1.0.0
+## ✓ tidyr   1.1.0     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code># 1 &amp; # 2
+fancy_iris &lt;- iris %&gt;%
+  mutate(double_petal = 2 * Petal.Width) %&gt;% # 1
+  filter(double_petal &gt; 2.3,
+         double_petal &lt; 4)
+# Note that to filter by multiple things, we can separate by a comma
+# If we wanted and &quot;OR&quot;, we could&#39;ve typed &quot;|&quot;
+# Also, filter keeps true values. So, to filter OUT the values specified,
+# we needed to reverse the signs
+
+# 3
+iris %&gt;%
+  group_by(Species) %&gt;% 
+  summarise(max_Sepal.Length = max(Sepal.Length))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+</div>
+</div>
