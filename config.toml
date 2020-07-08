@@ -33,11 +33,11 @@ googleAnalytics = ""
     weight = 3
 
 [[menu.main]]
-    url = "/practice/problemsets"
+    url = "/problemsets"
     name = "Problem Sets"
     weight = 4
 [[menu.main]]
-    url = "/practice/solns"
+    url = "/solns"
     name = "Solutions"
     weight = 5
 
