@@ -15,7 +15,7 @@ googleAnalytics = ""
     font = "Raleway" # should match the name on Google Fonts!
     highlight = true
     highlightStyle = "default"
-    highlightLanguages = ["R"]
+    highlightLanguages = ["r"]
 
 [[menu.main]]
     url = "/"
@@ -33,21 +33,21 @@ googleAnalytics = ""
     weight = 3
 
 [[menu.main]]
-    identifier = "Menuehead"
+    identifier = "cat"
     url = "/practice"
     name = "Practice"
     weight = 4
 [[menu.main]]
-    identifier = "MenuSoln"
-    url = "/practice/solutions"
+    identifier = "cat1"
+    url = "/practice/solns"
     name = "Solutions"
-    parent = "Menuehead"
+    parent = "cat"
     weight = 2
 [[menu.main]]
-    identifier = "MenuProbs"
+    identifier = "cat2"
     url = "/practice/problemsets"
     name = "Problem Sets"
-    parent = "Menuehead"
+    parent = "cat"
     weight = 1
 
 # Social icons to be shown on the right-hand side of the navigation bar.
