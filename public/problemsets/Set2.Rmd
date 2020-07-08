@@ -11,6 +11,7 @@ tags: ["Practice", "R"]
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(lubridate)
+
 ```
 
 For problem set two, we will be building on modules 0 - 3 and testing your skills of tidyverse, dates, strings, and plotting. So, if you are unfamiliar with those, take a look at the modules and come back.  
@@ -27,6 +28,7 @@ Let's get started!
 ### Question 1
 First, create a new project, save the data as "applemobilitytrends.csv", and store the data within the same folder that your project is located in. Then, read in the data like so:  
 ```{r, results='hide'}
+# Your path will be different, remember
 mobility <- read.csv("../data/applemobilitytrends.csv")
 ```
   
