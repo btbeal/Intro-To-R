@@ -41,11 +41,13 @@ googleAnalytics = ""
     identifier = "MenuSoln"
     url = "/tags/Solutions"
     name = "Solutions"
+    parent = "Menuehead"
     weight = 2
 [[menu.main]]
     identifier = "MenuProbs"
     url = "/tags/Practice"
     name = "Problem Sets"
+    parent = "Menuehead"
     weight = 1
 
 # Social icons to be shown on the right-hand side of the navigation bar.
