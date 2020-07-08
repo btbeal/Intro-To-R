@@ -39,13 +39,13 @@ googleAnalytics = ""
     weight = 4
 [[menu.main]]
     identifier = "MenuSoln"
-    url = "/tags/Solutions"
+    url = "/tags/solutions"
     name = "Solutions"
     parent = "Menuehead"
     weight = 2
 [[menu.main]]
     identifier = "MenuProbs"
-    url = "/tags/Practice"
+    url = "/tags/practice"
     name = "Problem Sets"
     parent = "Menuehead"
     weight = 1
