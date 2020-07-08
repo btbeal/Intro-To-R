@@ -17,7 +17,7 @@ theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
 ```
 
 ### Initial Setup
-```{r, results='hide', warning=FALSE}
+```{r, results='hide', warning=FALSE, message=FALSE}
 # load relevant libraries
 library(tidyverse)
 library(lubridate)

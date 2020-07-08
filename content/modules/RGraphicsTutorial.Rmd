@@ -9,7 +9,11 @@ tags: ["R Markdown", "Lessons", "Intro"]
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
+library(tidyverse)
+library(ggthemes)
+theme_set(theme_fivethirtyeight())
+theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
+             plot.background = element_rect(fill = "transparent", colour = NA))
 gapminder_IncomePerCap <- read.csv("../data/income_per_person.csv")
 gap <- read.csv2("../data/gapminder.csv")
 ```
@@ -211,7 +215,7 @@ ggplot(gap_selected_years) +
   # let's get rid of the legends for now...
   guides(size = FALSE, color = FALSE) +
   # and add a theme
-  theme_minimal() +
+  #theme_minimal() +
   # and labels
   labs(
     y = "Life Expectancy",
@@ -237,7 +241,7 @@ ggplot(gselect_us) +
   # let's get rid of the legends for now...
   guides(size = FALSE, color = FALSE) +
   # and add a theme
-  theme_minimal() +
+  #theme_minimal() +
   # and labels
   labs(
     y = "Life Expectancy",
@@ -277,7 +281,7 @@ ggplot(child_mort_cutoff_data) +
   # let's get rid of the legends for now...
   guides(size = FALSE, color = FALSE, shape = FALSE) +
   # and add a theme
-  theme_minimal() +
+  #theme_minimal() +
   # and labels
   labs(
     y = "Life Expectancy",

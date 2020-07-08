@@ -106,7 +106,7 @@ The entirety of this problem set will build off of the COVID Apple Mobility data
       <pubDate>Sun, 28 Jun 2020 21:13:14 -0500</pubDate>
       
       <guid>https://zealous-hawking-ce0a3d.netlify.app/solns/2_soln/</guid>
-      <description>Initial Setup # load relevant libraries library(tidyverse) library(lubridate) ## ## Attaching package: &amp;#39;lubridate&amp;#39; ## The following objects are masked from &amp;#39;package:base&amp;#39;: ## ## date, intersect, setdiff, union # read in data (this step looks slightly different for me) mobility &amp;lt;- read.csv(&amp;quot;../data/applemobilitytrends.csv&amp;quot;) # view the structure str(mobility)  Question 1 # Since we are tidyverse experts, we can answer all these questions in one try: mobility_CLT &amp;lt;- mobility %&amp;gt;% # step 1 filter(region == &amp;quot;Charlotte&amp;quot;, sub.</description>
+      <description>Initial Setup # load relevant libraries library(tidyverse) library(lubridate) # read in data (this step looks slightly different for me) mobility &amp;lt;- read.csv(&amp;quot;../data/applemobilitytrends.csv&amp;quot;) # view the structure str(mobility)  Question 1 # Since we are tidyverse experts, we can answer all these questions in one try: mobility_CLT &amp;lt;- mobility %&amp;gt;% # step 1 filter(region == &amp;quot;Charlotte&amp;quot;, sub.region == &amp;quot;North Carolina&amp;quot;, # step 3 transportation_type == &amp;quot;driving&amp;quot;) %&amp;gt;% # step 4 pivot_longer(cols = starts_with(&amp;quot;X&amp;quot;), names_to = &amp;quot;date&amp;quot;, values_to = &amp;quot;volume&amp;quot;) %&amp;gt;% # step 5 mutate(date = str_replace_all(date, &amp;quot;[Xx.</description>
     </item>
     
   </channel>
