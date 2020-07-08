@@ -42,7 +42,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/R.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
     
     <script>hljs.initHighlightingOnLoad();</script>
 
@@ -94,7 +94,9 @@
                             
                                 <li><a href="/modules">Modules</a></li>
                             
-                                <li><a href="/problemsets">Problem Sets</a></li>
+                                <li><a href="/practice/problemsets">Problem Sets</a></li>
+                            
+                                <li><a href="/practice/solns">Solutions</a></li>
                             
                         </ul>
                     
@@ -120,7 +122,7 @@
         <h2>Problem Set 1</h2>
         <h5></h5>
         
-<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/problem-set"><kbd class="item-tag">Problem Set</kbd></a>
+<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/practice"><kbd class="item-tag">Practice</kbd></a>
 
 <a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r"><kbd class="item-tag">R</kbd></a>
 
@@ -151,7 +153,7 @@
 <li>What is the 14th value of this vector, <code>what_the_vec</code>?</li>
 <li>Store the 2nd, 8th, and 20th value of the vector in a new vector, <code>new_vec</code></li>
 <li>Write an expression to test whether the 2nd value of <code>new_vec</code> is smaller than the first</li>
-<li>Remove the first value from the vector <code>new_vec</code> (recall that we can use a '-' sign to remove values) and store it in <code>new_vec2</code></li>
+<li>Remove the first value from the vector <code>new_vec</code> (recall that we can use a '-' sign to remove values) and store the remaining two in <code>new_vec2</code></li>
 </ol>
 </div>
 <div id="indexing-data-frames" class="section level3">
@@ -174,12 +176,15 @@
 <li>In base R, create a new column for <code>new_data</code> called <code>large_petal_flag</code>. Using the <code>ifelse()</code> function, assign the value 1 to rows with a <code>Petal.Length</code> greater than 4.5, and a value of 0 to those that don't.</li>
 <li>What is the sum of <code>new_data$large_petal_flag</code>? What is this as a proportion? (hint: taking the average of binary variables gives you the proportion if they are 1/0)</li>
 </ol>
+</div>
+<div id="dplyr" class="section level3">
+<h3>Dplyr</h3>
 <p>Working in base R is not that fun... but it really can come in handy understanding how to do things the hard way. Now let's switch over to using our dplyr verbs. Remember, to use dplyr, you must have it installed. We will install the entire tidyverse by typing <code>install.packages(&quot;tidyverse&quot;)</code>. No need to do this if you've already done it. If <code>tidyverse</code> is already installed, just type <code>library(tidyverse)</code> and you will have all the tools at your disposal.<br />
 <br />
 Using the <code>iris</code> data set, and our dplyr verbs, do the following...</p>
 <ol style="list-style-type: decimal">
 <li>Create a new column, <code>double_petal</code>, with <code>mutate()</code> that multiplies <code>Petal.Width</code> by 2. Store this new data frame in <code>fancy_iris</code></li>
-<li>Using our <code>filter()</code> command, filter out all values less than 2.3 and less than 4. How many rows are in that data set?</li>
+<li>Using our <code>filter()</code> command, filter out all values of <code>double_petal</code> less than 2.3 and greater than 4. How many rows are in that data set?</li>
 <li>Suppose we want to see the maximum <code>Sepal.Length</code> for each species - how can we do that? (hint: you will need to group by the variable <code>Species</code> and use the <code>summarise</code> verb)</li>
 </ol>
 <p>There are a few other verbs that we didn't cover in our lessons (for the sake of brevity). But some really useful ones to know along the way are <code>pivot_wider</code> and <code>pivot_longer</code>. We will go over these a bit in class but don't have time to cover them here.</p>

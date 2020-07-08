@@ -83,12 +83,12 @@
   </url>
   
   <url>
-    <loc>https://zealous-hawking-ce0a3d.netlify.app/practice/</loc>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/problemsets/set1/</loc>
     <lastmod>2020-06-29T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zealous-hawking-ce0a3d.netlify.app/practice/problemsets/set1/</loc>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/problemsets/</loc>
     <lastmod>2020-06-29T21:13:14-05:00</lastmod>
   </url>
   
@@ -98,12 +98,17 @@
   </url>
   
   <url>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/solns/</loc>
+    <lastmod>2020-06-29T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zealous-hawking-ce0a3d.netlify.app/tags/solutions/</loc>
     <lastmod>2020-06-29T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zealous-hawking-ce0a3d.netlify.app/practice/solns/1_soln/</loc>
+    <loc>https://zealous-hawking-ce0a3d.netlify.app/solns/1_soln/</loc>
     <lastmod>2020-06-29T21:13:14-05:00</lastmod>
   </url>
   

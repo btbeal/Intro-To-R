@@ -13,10 +13,10 @@
     
     <item>
       <title>Problem Set 1</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/practice/problemsets/set1/</link>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/problemsets/set1/</link>
       <pubDate>Mon, 29 Jun 2020 21:13:14 -0500</pubDate>
       
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/practice/problemsets/set1/</guid>
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/problemsets/set1/</guid>
       <description>This problem set will require knowledge of both Lesson 1 and Lesson 2. If you haven&#39;t read over those, go ahead and do that then come back. Or, if you think you got it, carry on!
 Basic Math and Logic with R Store the value 18 in a variable x and the value 23 in the varialbe r_is_cool.
 Write an simple expression in your console that adds those two variables Write an expression to test whether or not x is greater than or equal to r_is_cool Write an expression to test whether x is less than r_is_cool AND x + 10 is greater than r_is_cool What is the sum of the following vector: c(TRUE, TRUE, FALSE, TRUE)?</description>
@@ -24,10 +24,10 @@ Write an simple expression in your console that adds those two variables Write a
     
     <item>
       <title>Solutions for PS 1</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/practice/solns/1_soln/</link>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/solns/1_soln/</link>
       <pubDate>Mon, 29 Jun 2020 21:13:14 -0500</pubDate>
       
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/practice/solns/1_soln/</guid>
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/solns/1_soln/</guid>
       <description>Basic Math and Logic with R # ---- SETUP x &amp;lt;- 18 r_is_cool &amp;lt;- 23 # 1 x + r_is_cool #2 x &amp;gt;= r_is_cool #3 x &amp;lt; r_is_cool &amp;amp; x + 10 &amp;gt; r_is_cool #4 sum(c(TRUE, TRUE, FALSE, TRUE))  Indexing Vectors # ---- SETUP what_the_vec &amp;lt;- c(seq.int(from = 8, to = 72, by = 2)) # 1 what_the_vec[14] ## [1] 34 # 2 new_vec &amp;lt;- what_the_vec[c(2, 8, 20)] # 3 new_vec[2] &amp;lt; new_vec[1] ## [1] FALSE # 4 new_vec2 &amp;lt;- new_vec[-1] Indexing Data Frames Section 1 # 1 dim(iris) # --- OR ---- str(iris) # str gives more info.</description>
     </item>
     

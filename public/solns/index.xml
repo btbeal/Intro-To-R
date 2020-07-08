@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Solutions on Intro to R</title>
-    <link>https://zealous-hawking-ce0a3d.netlify.app/tags/solutions/</link>
-    <description>Recent content in Solutions on Intro to R</description>
+    <title>Solns on Intro to R</title>
+    <link>https://zealous-hawking-ce0a3d.netlify.app/solns/</link>
+    <description>Recent content in Solns on Intro to R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 29 Jun 2020 21:13:14 -0500</lastBuildDate>
     
-	<atom:link href="https://zealous-hawking-ce0a3d.netlify.app/tags/solutions/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zealous-hawking-ce0a3d.netlify.app/solns/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
