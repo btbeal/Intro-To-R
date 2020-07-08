@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Solutions for PS 2</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://zealous-hawking-ce0a3d.netlify.app/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.60.1" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Solutions for PS 2</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/modules">Modules</a></li>
+                            
+                                <li><a href="/problemsets">Problem Sets</a></li>
+                            
+                                <li><a href="/solns">Solutions</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/btbeal"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/BealBrennan"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/btbeal/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Solutions for PS 2</h2>
+        <h5></h5>
+        
+<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r"><kbd class="item-tag">R</kbd></a>
+
+<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/solutions"><kbd class="item-tag">Solutions</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">
+
+
+<div id="initial-setup" class="section level3">
+<h3>Initial Setup</h3>
+<pre class="r"><code># load relevant libraries
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.1     ✓ purrr   0.3.4
+## ✓ tibble  3.0.1     ✓ dplyr   1.0.0
+## ✓ tidyr   1.1.0     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(lubridate)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<pre class="r"><code># read in data (this step looks slightly different for me)
+mobility &lt;- read.csv(&quot;../data/applemobilitytrends.csv&quot;)
+
+# view the structure
+str(mobility)</code></pre>
+</div>
+<div id="question-1" class="section level3">
+<h3>Question 1</h3>
+<pre class="r"><code># Since we are tidyverse experts, we can answer all these questions in one try:
+
+mobility_CLT &lt;- mobility %&gt;% 
+  # step 1
+  filter(region == &quot;Charlotte&quot;,
+         sub.region == &quot;North Carolina&quot;,
+         # step 3
+         transportation_type == &quot;driving&quot;) %&gt;%
+  # step 4
+  pivot_longer(cols = starts_with(&quot;X&quot;), names_to = &quot;date&quot;, values_to = &quot;volume&quot;) %&gt;% 
+  # step 5
+  mutate(date = str_replace_all(date, &quot;[Xx.]&quot;, &quot;&quot;),
+         # step 6
+         date = ymd(date))
+  
+# Now to plot...
+ggplot(mobility_CLT) +
+  # dividing by 100 for the scales below... do not need to do so otherwise
+  geom_line(aes(x = date, y = volume/100), color = &quot;red&quot;) + 
+  # note, the top two lines would suffice but...
+  ggthemes::theme_fivethirtyeight() +
+  labs(
+    title = &quot;Volume of Direction Requests; Charlotte, NC&quot;,
+    subtitle = &quot;volume as a percent change from baseline (100%)&quot;,
+    x = &quot;Date&quot;,
+    y = &quot;Volume&quot;,
+    caption = &quot;data: https://www.apple.com/covid19/mobility&quot;
+  ) + 
+  scale_y_continuous(labels = scales::percent)</code></pre>
+<p><img src="/solns/2_soln_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="question-2" class="section level3">
+<h3>Question 2</h3>
+<pre class="r"><code>mobility_CLT2 &lt;- mobility_CLT %&gt;% 
+  # step 1
+  mutate(weekday = wday(date)) %&gt;% 
+  # step 2
+  group_by(weekday) %&gt;% 
+  summarise(avg_volume = mean(volume, na.rm = TRUE)) %&gt;% 
+  # this not necessary for now 
+  # R needs to know weekday is categorical (not numerical)
+  mutate(weekday = as.factor(weekday))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code># Now to plot
+ggplot(mobility_CLT2) +
+  # make weekday a factor (it is categorical, not numerical)
+  # This is important for the scale of your x axis
+  # Try both!
+  geom_bar(aes(x = weekday, y = avg_volume, fill = weekday), stat = &quot;identity&quot;) +
+  ggthemes::theme_fivethirtyeight() +
+  scale_fill_ordinal() + 
+  guides(fill = FALSE) +
+  labs(
+    title = &quot;Average Direction Request Volume for Charlotte, NC&quot;,
+    subtitle = &quot;volume as a percent change from baseline (100%)&quot;,
+    x = &quot;Day of Week; 1 = Monday&quot;,
+    y = &quot;Volume&quot;,
+    caption = &quot;data: https://www.apple.com/covid19/mobility&quot;
+  )</code></pre>
+<p><img src="/solns/2_soln_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Looks like we have our final answer! Day 6, or Saturday, has our highest volume on average. Of course, this is a fairly naive approach to time series data... but that wasn't the point. Now you're tidyverse/ggplot experts!</p>
+</div>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

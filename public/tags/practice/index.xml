@@ -22,5 +22,15 @@ Basic Math and Logic with R Store the value 18 in a variable x and the value 23 
 Write an simple expression in your console that adds those two variables Write an expression to test whether or not x is greater than or equal to r_is_cool Write an expression to test whether x is less than r_is_cool AND x + 10 is greater than r_is_cool What is the sum of the following vector: c(TRUE, TRUE, FALSE, TRUE)?</description>
     </item>
     
+    <item>
+      <title>Problem Set 2</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/problemsets/set2/</link>
+      <pubDate>Mon, 29 Jun 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/problemsets/set2/</guid>
+      <description>For problem set two, we will be building on modules 0 - 3 and testing your skills of tidyverse, dates, strings, and plotting. So, if you are unfamiliar with those, take a look at the modules and come back.
+The entirety of this problem set will build off of the COVID Apple Mobility data. This data shows the percent of daily direction requests sent to the Apple servers for thousands of local regions by different types of transportation (walking, biking, and driving).</description>
+    </item>
+    
   </channel>
 </rss>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Problem Set 2</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: purple;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://zealous-hawking-ce0a3d.netlify.app/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.60.1" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Problem Set 2</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/modules">Modules</a></li>
+                            
+                                <li><a href="/problemsets">Problem Sets</a></li>
+                            
+                                <li><a href="/solns">Solutions</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/btbeal"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/BealBrennan"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/btbeal/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Problem Set 2</h2>
+        <h5></h5>
+        
+<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/practice"><kbd class="item-tag">Practice</kbd></a>
+
+<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r"><kbd class="item-tag">R</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">
+
+
+<p>For problem set two, we will be building on modules 0 - 3 and testing your skills of tidyverse, dates, strings, and plotting. So, if you are unfamiliar with those, take a look at the modules and come back.</p>
+<p>The entirety of this problem set will build off of the <a href="https://www.apple.com/covid19/mobility">COVID Apple Mobility data</a>. This data shows the percent of daily direction requests sent to the Apple servers for thousands of local regions by different types of transportation (walking, biking, and driving). To complete this lesson, you will need to download the data by clicking <a href="../../data/applemobilitytrends.csv">this link</a>.</p>
+<p>Our ultimate question today is two-fold:</p>
+<ol style="list-style-type: decimal">
+<li>What is the overall trend in mobility for Charlotte, NC?</li>
+<li>What day of the week are travelers most likely to travel, on average?</li>
+</ol>
+<p>Let's get started!</p>
+<div id="question-1" class="section level3">
+<h3>Question 1</h3>
+<p>First, create a new project, save the data as &quot;applemobilitytrends.csv&quot;, and store the data within the same folder that your project is located in. Then, read in the data like so:</p>
+<pre class="r"><code>mobility &lt;- read.csv(&quot;../data/applemobilitytrends.csv&quot;)</code></pre>
+<p>Hopefully that part wasn't so bad. Now, let's take a look using our <code>str()</code> function.</p>
+<pre class="r"><code>str(mobility)</code></pre>
+<p>Yuck. Okay, don't panic. We've seen this before (remember our graphics tutorial and the income data?).</p>
+<ol style="list-style-type: decimal">
+<li>Filter the mobility data so that the <code>region</code> is &quot;Charlotte&quot; and the <code>sub.region</code> is &quot;North Carolina&quot;.</li>
+<li>How many transportation types are represented (hint: our <code>table()</code> function may be handy)</li>
+<li>Filter for the <code>transportation_type</code> &quot;driving&quot; (note, you can just place this within the first filter)</li>
+</ol>
+<p>Now you've got what we know as a &quot;wide&quot; data set with (surprise) dates as columns and volumes (relative to the county baseline of 100%) as the column values.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Recalling what we learned in our graphics tutorial, use the <code>pivot_longer()</code> function to create a new <code>date</code> column and store the values from the previous columns in a new <code>volume</code> column. Remember that you can use <code>?pivot_longer()</code> to remind yourself of the arguments the function takes and that you can use <code>starts_with()</code> to select columns beginning with &quot;X&quot;.</li>
+</ol>
+<p>Awesome!</p>
+<p>Now we notice that this date column is actually a character vector. We need to change that character vector to a date vector. Though, to do that, we need to get rid of the &quot;X&quot; and &quot;.&quot; values.</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Using what we learned with the stringr package, replace all the &quot;X&quot; and &quot;.&quot; with &quot;&quot;.</li>
+<li>Remembering the lubridate package, what does form is the date character in? y? mdy? ymd? Using your answer to that question, <code>mutate()</code> the date from a character class to a date class.</li>
+</ol>
+<p>That was a lot of work. Normally, you would've done this all in one clean pipe so it didn't appear so messy. Small steps are better starting off so you can make sure each step is working properly. The final thing to do here is plot it!</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Using <code>ggplot</code> and <code>geom_line()</code>, plot the line graph of volume over time (hint: place <code>aes(x = date, y = volume)</code> within <code>geom_line()</code>).</li>
+</ol>
+<p>Pretty clear trend here... any guesses why?</p>
+<p>Now... about those those fluctuations.</p>
+</div>
+<div id="question-2" class="section level3">
+<h3>Question 2</h3>
+<p>Now that we already have our data formatted in a way that is usable for ggplot, all that's left is a couple more data manipulation steps.</p>
+<ol style="list-style-type: decimal">
+<li>Using lubridate's <code>wday()</code> function, create another column labeled <code>weekday</code> from your <code>date</code> column.</li>
+<li>Create a new data frame of volume averages by day of the week using your new column.</li>
+<li>With your new data frame, create a bar graph with geom_bar and days of the week on the x-axis (remember that since geom_bars default stat is &quot;count&quot;, you must specify `stat = &quot;identity&quot;).</li>
+<li>Which day has the highest direction requests? The lowest?</li>
+</ol>
+<p>This was a lot of work. So, if you made it this far, nice job! You should be really happy. If you struggled, don't worry. We all do. I still do. Remember that the <code>?</code> function is your friend as well as google!</p>
+</div>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

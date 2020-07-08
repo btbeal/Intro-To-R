@@ -29,7 +29,7 @@ sum(c(TRUE, TRUE, FALSE, TRUE))
 ```
   
 ## Indexing Vectors
-```{r}
+```{r, results='hide'}
 # ---- SETUP
 what_the_vec <- c(seq.int(from = 8, to = 72, by = 2))
 
@@ -61,7 +61,7 @@ str(iris)
 
 #### Section 2
   
-```{r, results='hide'}
+```{r, results='hide', warning=FALSE}
 # 1
 pet_width <- iris[,4]
 # ----- OR -----
@@ -107,7 +107,7 @@ mean(new_data$large_petal_flag)
   
 ### Dplyr
   
-```{r, results='hide'}
+```{r, results='hide', warning=FALSE}
 # ---- SETUP
 # install.packages("tidyverse")
 library(tidyverse)

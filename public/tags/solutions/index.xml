@@ -17,7 +17,16 @@
       <pubDate>Mon, 29 Jun 2020 21:13:14 -0500</pubDate>
       
       <guid>https://zealous-hawking-ce0a3d.netlify.app/solns/1_soln/</guid>
-      <description>Basic Math and Logic with R # ---- SETUP x &amp;lt;- 18 r_is_cool &amp;lt;- 23 # 1 x + r_is_cool #2 x &amp;gt;= r_is_cool #3 x &amp;lt; r_is_cool &amp;amp; x + 10 &amp;gt; r_is_cool #4 sum(c(TRUE, TRUE, FALSE, TRUE))  Indexing Vectors # ---- SETUP what_the_vec &amp;lt;- c(seq.int(from = 8, to = 72, by = 2)) # 1 what_the_vec[14] ## [1] 34 # 2 new_vec &amp;lt;- what_the_vec[c(2, 8, 20)] # 3 new_vec[2] &amp;lt; new_vec[1] ## [1] FALSE # 4 new_vec2 &amp;lt;- new_vec[-1] Indexing Data Frames Section 1 # 1 dim(iris) # --- OR ---- str(iris) # str gives more info.</description>
+      <description>Basic Math and Logic with R # ---- SETUP x &amp;lt;- 18 r_is_cool &amp;lt;- 23 # 1 x + r_is_cool #2 x &amp;gt;= r_is_cool #3 x &amp;lt; r_is_cool &amp;amp; x + 10 &amp;gt; r_is_cool #4 sum(c(TRUE, TRUE, FALSE, TRUE))  Indexing Vectors # ---- SETUP what_the_vec &amp;lt;- c(seq.int(from = 8, to = 72, by = 2)) # 1 what_the_vec[14] # 2 new_vec &amp;lt;- what_the_vec[c(2, 8, 20)] # 3 new_vec[2] &amp;lt; new_vec[1] # 4 new_vec2 &amp;lt;- new_vec[-1] Indexing Data Frames Section 1 # 1 dim(iris) # --- OR ---- str(iris) # str gives more info.</description>
+    </item>
+    
+    <item>
+      <title>Solutions for PS 2</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/solns/2_soln/</link>
+      <pubDate>Sun, 28 Jun 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/solns/2_soln/</guid>
+      <description>Initial Setup # load relevant libraries library(tidyverse) ## ── Attaching packages ──────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ── ## ✓ ggplot2 3.3.1 ✓ purrr 0.3.4 ## ✓ tibble 3.0.1 ✓ dplyr 1.0.0 ## ✓ tidyr 1.1.0 ✓ stringr 1.4.0 ## ✓ readr 1.3.1 ✓ forcats 0.5.0 ## ── Conflicts ─────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ── ## x dplyr::filter() masks stats::filter() ## x dplyr::lag() masks stats::lag() library(lubridate) ## ## Attaching package: &amp;#39;lubridate&amp;#39; ## The following objects are masked from &amp;#39;package:base&amp;#39;: ## ## date, intersect, setdiff, union # read in data (this step looks slightly different for me) mobility &amp;lt;- read.</description>
     </item>
     
   </channel>
