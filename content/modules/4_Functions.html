@@ -14,8 +14,10 @@ tags: ["R Markdown", "Lessons", "Intro"]
 <p>Now that you've mastered the basics of R, and data manipulation with dplyr, you're ready for an introduction to functions and loops. Hopefully, the time you'll need for loops is minimal since dplyer has solved some grouping issues for us. But, you should still learn them just in case (and so you can understand them when reading others' code).<br />
 <br />
 Here I want to cover:</p>
-<pre><code>1. Functions and if statements
-2. Loops</code></pre>
+<ol style="list-style-type: decimal">
+<li>Functions and if statements</li>
+<li>Loops</li>
+</ol>
 <div id="functions-and-if-statements" class="section level3">
 <h3>Functions and if statements</h3>
 <p>Functions are a key part of R. Regarding R, John Chambers is quoted saying that 'Everything that exists is an object and everything that happens is a function call'. You may not have noticed but everything we have done thus far has used a function. The assignment operator, <code>&lt;-</code>, and the piping operator, <code>%&gt;%</code> are functions. So are all the dplyr verbs we discussed. In this sense, even though we may not need to create our own, we should still understand how best to interact with the ones we are using day-to-day.<br />
@@ -140,7 +142,7 @@ for(i in 1:6){
 ## [1] &quot;This particular value is 19&quot;
 ## [1] &quot;This particular value is 36&quot;
 ## [1] &quot;This particular value is 11&quot;</code></pre>
-<p>Note that I told R that it should loop 6 times <code>1:6</code> but that isn't very flexible. A new function, <code>length()</code> can tell us how long our vector is so we don't have to count.<br />
+<p>I told R that it should loop 6 times <code>1:6</code> but that isn't very flexible. A new function, <code>length()</code> can tell us how long our vector is so we don't have to count.<br />
 </p>
 <pre class="r"><code># open our for loop, and call our index &#39;i&#39; - we could&#39;ve called it anything but &#39;i&#39; is convention
 for(i in 1:length(new_vector)){

@@ -24,19 +24,19 @@ Pick the free version.
     
     <item>
       <title>Lesson 1 - intro to R</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-06-30-lesson1/</link>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/1_basics/</link>
       <pubDate>Sat, 04 Jul 2020 21:13:14 -0500</pubDate>
       
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-06-30-lesson1/</guid>
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/1_basics/</guid>
       <description>Welcome to The University of Washington and your crash course on R. Note that this class will not be incredibly robust (we have three days) but it will aim to provide you the tools necessary to do well in your stats classes and beyond. Futher, I believe several of you will take a semester long course in R. You&#39;ll be ahead of that game but will go into more depth during that class.</description>
     </item>
     
     <item>
       <title>Lesson 2 - Indexing and Tidyverse</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-07-01-lesson2/</link>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/2_indexingtidyverse/</link>
       <pubDate>Fri, 03 Jul 2020 21:13:14 -0500</pubDate>
       
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/2020-07-01-lesson2/</guid>
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/2_indexingtidyverse/</guid>
       <description>In the previous lesson we covered the very basics of R. We discussed that R can be a fancy calculator, interpret logical arguments, and some fun facts sprinkled throughout. In addition, we covered basic data types and structures. Alone, this is good information to know... and is indeed the very bare bones introduction... but we are here to look at data - to manipulate data in a meaningful way. The first step towards data exploration is learning how to find values in a data set.</description>
     </item>
     
@@ -52,22 +52,22 @@ The main purpose of this exercise is to learn how to graph your data; however, w
     
     <item>
       <title>Lesson 3 - Strings and Dates</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/stringsndates/</link>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/3_stringsndates/</link>
       <pubDate>Wed, 01 Jul 2020 21:13:14 -0500</pubDate>
       
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/stringsndates/</guid>
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/3_stringsndates/</guid>
       <description>Some of the most common data-related issues for those new to healthcare research (probably any research) revolve around string and date manipulation. Fortunately for us, R has some really incredible packages to help us deal with them. Like anything in R, it can be done in base R. Though, you&#39;ll never use base R again for string/date manipulation so... i&#39;m not going to cover it here. Again, this is meant to be a broad overview of both of the packages so that you can go back to them when you&#39;re stuck!</description>
     </item>
     
     <item>
       <title>Lesson 4 - Functions and Loops in R</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/lesson3/</link>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/4_functions/</link>
       <pubDate>Tue, 30 Jun 2020 21:13:14 -0200</pubDate>
       
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/lesson3/</guid>
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/4_functions/</guid>
       <description>Now that you&#39;ve mastered the basics of R, and data manipulation with dplyr, you&#39;re ready for an introduction to functions and loops. Hopefully, the time you&#39;ll need for loops is minimal since dplyer has solved some grouping issues for us. But, you should still learn them just in case (and so you can understand them when reading others&#39; code).
 Here I want to cover:
-1. Functions and if statements 2.</description>
+Functions and if statements Loops  Functions and if statements Functions are a key part of R.</description>
     </item>
     
   </channel>

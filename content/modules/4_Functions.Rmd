@@ -15,10 +15,10 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 
 Now that you've mastered the basics of R, and data manipulation with dplyr, you're ready for an introduction to functions and loops. Hopefully, the time you'll need for loops is minimal since dplyer has solved some grouping issues for us. But, you should still learn them just in case (and so you can understand them when reading others' code).\
 \
-Here I want to cover:
-
-    1. Functions and if statements
-    2. Loops
+Here I want to cover:  
+  
+  1. Functions and if statements
+  2. Loops
 
 
 ### Functions and if statements
@@ -161,7 +161,7 @@ for(i in 1:6){
 
 ```
 
-Note that I told R that it should loop 6 times `1:6` but that isn't very flexible. A new function, `length()` can tell us how long our vector is so we don't have to count.\
+I told R that it should loop 6 times `1:6` but that isn't very flexible. A new function, `length()` can tell us how long our vector is so we don't have to count.\
 
 ```{r, results='hide'}
 # open our for loop, and call our index 'i' - we could've called it anything but 'i' is convention
