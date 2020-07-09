@@ -1,0 +1,47 @@
+---
+title: "Problem Set 3"
+author: "Brennan T. Beal"
+date: 2020-06-27T21:13:14-05:00
+categories: ["R"]
+draft: FALSE
+tags: ["Practice", "R"]
+---
+
+
+
+<p>This problem set will be the last of them. It will build on the 4th module. So, if you've not checked it out, go ahead and do that! We will be building on a lot of components from the other modules as well.</p>
+<div id="function-concepts" class="section level3">
+<h3>Function Concepts</h3>
+<p>Here, I just want to touch on the general concepts of functions.</p>
+<ol style="list-style-type: decimal">
+<li>What is the general structure of a function?</li>
+<li>Consider this function: <code>my_function &lt;- function(x = 2, y){ x + 2*y}</code>. Which of the following throws an error? (select all that apply... and I know... but this is not for a grade)
+<ul>
+<li><code>my_function(y = 9)</code></li>
+<li><code>my_function(x = 12)</code></li>
+<li><code>my_function(12)</code></li>
+<li><code>my_function(y = 8, x = 4)</code></li>
+<li><code>my_function(12, 2)</code></li>
+</ul></li>
+<li>Why do the functions you selected above produce an error?</li>
+<li>Using the same function as above, does <code>my_function(3, 7)</code> give the same answer as <code>my_function(7, 3)</code>?</li>
+</ol>
+</div>
+<div id="writing-functions" class="section level3">
+<h3>Writing Functions</h3>
+<p>Now to actually writing your own functions. Since you're on your third problem set, these will be a little bit more difficult. Remember, we have office hours and they're meant to be challenging! Don't give up.</p>
+<ol style="list-style-type: decimal">
+<li>Create a function that takes a number and multiplies it by itself.</li>
+<li>Functions can take any kind of argument, including vectors. Given what you know about vectors, create a function that takes 2 vectors, x_vec and y_vec, and subtracts the second value of y_vec from the first value of x_vec.</li>
+<li>Write a function that finds the mean of <em>any</em> given length of numbers. Two things on this one... No, you may not use the <code>mean()</code> function. Second, it needs to be flexible to take a vector of any length.</li>
+</ol>
+</div>
+<div id="for-loops-and-if-statements" class="section level3">
+<h3>For Loops and If Statements</h3>
+<p>Most of the time you'll know you need a <em>for loop</em> because when speaking out loud, you'll say something like &quot;For all of these values, I need to do x,y,z&quot;. So, I'll phrase these problems that way.</p>
+<ol style="list-style-type: decimal">
+<li>Recall the mtcars data that we have used. For each value of horsepower (<code>hp</code>), check to see if the value is divisible by 2. If it is, store it in a new vector. What is the length of that vector?</li>
+<li>Take a look at the <code>letter</code> vector that comes pre-loaded in R. For each value in that vector, print the value to the console using <code>print()</code> if the letter is a vowel (aeiou).</li>
+<li>Use the following vector to answer your question: <code>random_words &lt;- c(&quot;Brennan&quot;, &quot;is&quot;, &quot;mean&quot;, &quot;for&quot;, &quot;this&quot;, &quot;question&quot;)</code>. For each word in the <code>random_words</code> vector, if the word is longer than 7 letters, append an exclamation mark. Else, do nothing. Store all of these values in a new vector, titled &quot;new_vec&quot;, so that all the words go into a new vector (appended or not). What is the print out of <code>str_c(new_vec, collapse = &quot; &quot;)</code>?</li>
+</ol>
+</div>

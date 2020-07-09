@@ -29,5 +29,16 @@
       <description>Initial Setup # load relevant libraries library(tidyverse) library(lubridate) # read in data (this step looks slightly different for me) mobility &amp;lt;- read.csv(&amp;quot;../data/applemobilitytrends.csv&amp;quot;) # view the structure str(mobility)  Question 1 # Since we are tidyverse experts, we can answer all these questions in one try: mobility_CLT &amp;lt;- mobility %&amp;gt;% # step 1 filter(region == &amp;quot;Charlotte&amp;quot;, sub.region == &amp;quot;North Carolina&amp;quot;, # step 3 transportation_type == &amp;quot;driving&amp;quot;) %&amp;gt;% # step 4 pivot_longer(cols = starts_with(&amp;quot;X&amp;quot;), names_to = &amp;quot;date&amp;quot;, values_to = &amp;quot;volume&amp;quot;) %&amp;gt;% # step 5 mutate(date = str_replace_all(date, &amp;quot;[Xx.</description>
     </item>
     
+    <item>
+      <title>Solutions for PS 3</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/solns/3_soln/</link>
+      <pubDate>Sun, 28 Jun 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/solns/3_soln/</guid>
+      <description>Function Concepts Answer 1: The general structure of a function if function(~arguments~){do something to arguments}. Of course, that is an informal definition so anything resembling that counts!
+Answer 2: Neither the second or third option will run.
+Answer 3: The two mentioned produce errors because there is no specified y value. The x value is pre-specified and so as long as we tell R what the y value should be, it will use the default x.</description>
+    </item>
+    
   </channel>
 </rss>

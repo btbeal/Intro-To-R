@@ -1,0 +1,108 @@
+---
+title: "Solutions for PS 3"
+author: "Brennan T. Beal"
+date: 2020-06-28T21:13:14-05:00
+categories: ["R"]
+draft: FALSE
+tags: ["R", "Solutions"]
+---
+
+
+
+<div id="function-concepts" class="section level3">
+<h3>Function Concepts</h3>
+<p>Answer 1: The general structure of a function if <code>function(~arguments~){do something to arguments}</code>. Of course, that is an informal definition so anything resembling that counts!</p>
+<p>Answer 2: Neither the second or third option will run.</p>
+<p>Answer 3: The two mentioned produce errors because there is no specified <code>y</code> value. The <code>x</code> value is pre-specified and so as long as we tell R what the <code>y</code> value should be, it will use the default x.</p>
+<p>Answer 4: No because R takes arguments in order specified in the function unless otherwise specified.</p>
+</div>
+<div id="writing-functions" class="section level3">
+<h3>Writing Functions</h3>
+<pre class="r"><code># Question 1:
+squaring_numbers &lt;- function(x){
+  x^2
+}
+
+# Question 2:
+vec_subtractor &lt;- function(x_vec, y_vec){
+  y_vec[2] - x_vec[1]
+}
+
+# Question 3:
+mean_function &lt;- function(any_vector){
+  sum(any_vector)/length(any_vector)
+}</code></pre>
+</div>
+<div id="for-loops-and-if-statements" class="section level3">
+<h3>For Loops and If Statements</h3>
+<pre class="r"><code># Question 1
+# -- Pull wt values from mt cars
+hp_values &lt;- mtcars$hp
+
+# -- Store the numbers to loop over (this makes the code a bit neater)
+len_hp &lt;- length(hp_values)
+
+# open a vector to store the values in 
+updated_hp_vec &lt;- c()
+for(hp in 1:len_hp){
+  # store our looped value by indexing our wt vector
+  value &lt;- hp_values[hp]
+  
+  # if its divisible by two...
+  if(value %% 2 == 0){
+    # update our vector (make sure you&#39;re putting the og vector in as well)
+    # if you don&#39;t place updated vec inside c() you&#39;ll just rewrite your value
+    updated_hp_vec &lt;- c(updated_hp_vec, value)
+  } else {
+    # otherwise, next value
+    next
+  }
+}
+
+# now, find how many values are in our vector
+length(updated_hp_vec)
+
+# Question 2
+# Store the length of the vector
+l_length &lt;- length(letters)
+
+
+for(l in 1:l_length){
+  # pull value from vector
+  value &lt;- letters[l]
+  
+  # str_detect returns T/F so...
+  if(str_detect(value, &quot;[AaEeIiOoUu]&quot;)){
+    
+    # print the value
+    # the output should tell you if you did this right
+    print(paste(value))
+  } else {
+    next
+  }
+}
+
+
+# Question 3
+random_words &lt;- c(&quot;Brennan&quot;, &quot;is&quot;, &quot;mean&quot;, &quot;for&quot;, &quot;this&quot;, &quot;question&quot;)
+
+vec_length &lt;- length(random_words)
+
+new_vec &lt;- c()
+for(w in 1:vec_length){
+  # index value from vector
+  word &lt;- random_words[w]
+  # find length of that word
+  word_length &lt;- str_length(word)
+  
+  if(word_length &gt; 7){
+    new_word &lt;- str_c(word, &quot;!&quot;)
+  } else {
+    new_word &lt;- word
+  }
+  new_vec &lt;- c(new_vec, new_word)
+}
+
+str_c(new_vec, collapse = &quot; &quot;)</code></pre>
+<p>Congrats! You're finished with the crash course!</p>
+</div>

@@ -5,7 +5,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>R</title>
+        <title>Solutions for PS 3</title>
         
         <style>
 
@@ -60,9 +60,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.60.1" />
         
-            <link href="/tags/r/index.xml" rel="alternate" type="application/rss&#43;xml" title="Intro to R" />
-            <link href="/tags/r/index.xml" rel="feed" type="application/rss&#43;xml" title="Intro to R" />
-        
 
         
 
@@ -80,7 +77,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">R</a>
+                    <a class="navbar-brand visible-xs" href="#">Solutions for PS 3</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -121,122 +118,120 @@
 
 <main>
 
-    <h2>R</h2>
-
-     <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/problemsets/set1/">Problem Set 1</a></h4>
-    <h5>June 29, 2020</h5>
-    
-<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/practice"><kbd class="item-tag">Practice</kbd></a>
-
-<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r"><kbd class="item-tag">R</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/problemsets/set2/">Problem Set 2</a></h4>
-    <h5>June 29, 2020</h5>
-    
-<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/practice"><kbd class="item-tag">Practice</kbd></a>
-
-<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r"><kbd class="item-tag">R</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/solns/1_soln/">Solutions for PS 1</a></h4>
-    <h5>June 29, 2020</h5>
-    
+    <div>
+        <h2>Solutions for PS 3</h2>
+        <h5></h5>
+        
 <a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r"><kbd class="item-tag">R</kbd></a>
 
 <a href="https://zealous-hawking-ce0a3d.netlify.app/tags/solutions"><kbd class="item-tag">Solutions</kbd></a>
 
 
+    </div>
 
+    <div align="start" class="content">
+
+
+<div id="function-concepts" class="section level3">
+<h3>Function Concepts</h3>
+<p>Answer 1: The general structure of a function if <code>function(~arguments~){do something to arguments}</code>. Of course, that is an informal definition so anything resembling that counts!</p>
+<p>Answer 2: Neither the second or third option will run.</p>
+<p>Answer 3: The two mentioned produce errors because there is no specified <code>y</code> value. The <code>x</code> value is pre-specified and so as long as we tell R what the <code>y</code> value should be, it will use the default x.</p>
+<p>Answer 4: No because R takes arguments in order specified in the function unless otherwise specified.</p>
 </div>
-  <div class="item">
+<div id="writing-functions" class="section level3">
+<h3>Writing Functions</h3>
+<pre class="r"><code># Question 1:
+squaring_numbers &lt;- function(x){
+  x^2
+}
 
-    
-    
-    
+# Question 2:
+vec_subtractor &lt;- function(x_vec, y_vec){
+  y_vec[2] - x_vec[1]
+}
 
-    
-    
-
-    <h4><a href="/solns/2_soln/">Solutions for PS 2</a></h4>
-    <h5>June 28, 2020</h5>
-    
-<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r"><kbd class="item-tag">R</kbd></a>
-
-<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/solutions"><kbd class="item-tag">Solutions</kbd></a>
-
-
-
+# Question 3:
+mean_function &lt;- function(any_vector){
+  sum(any_vector)/length(any_vector)
+}</code></pre>
 </div>
-  <div class="item">
+<div id="for-loops-and-if-statements" class="section level3">
+<h3>For Loops and If Statements</h3>
+<pre class="r"><code># Question 1
+# -- Pull wt values from mt cars
+hp_values &lt;- mtcars$hp
 
+# -- Store the numbers to loop over (this makes the code a bit neater)
+len_hp &lt;- length(hp_values)
+
+# open a vector to store the values in 
+updated_hp_vec &lt;- c()
+for(hp in 1:len_hp){
+  # store our looped value by indexing our wt vector
+  value &lt;- hp_values[hp]
+  
+  # if its divisible by two...
+  if(value %% 2 == 0){
+    # update our vector (make sure you&#39;re putting the og vector in as well)
+    # if you don&#39;t place updated vec inside c() you&#39;ll just rewrite your value
+    updated_hp_vec &lt;- c(updated_hp_vec, value)
+  } else {
+    # otherwise, next value
+    next
+  }
+}
+
+# now, find how many values are in our vector
+length(updated_hp_vec)
+
+# Question 2
+# Store the length of the vector
+l_length &lt;- length(letters)
+
+
+for(l in 1:l_length){
+  # pull value from vector
+  value &lt;- letters[l]
+  
+  # str_detect returns T/F so...
+  if(str_detect(value, &quot;[AaEeIiOoUu]&quot;)){
     
-    
-    
-
-    
-    
-
-    <h4><a href="/solns/3_soln/">Solutions for PS 3</a></h4>
-    <h5>June 28, 2020</h5>
-    
-<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/r"><kbd class="item-tag">R</kbd></a>
-
-<a href="https://zealous-hawking-ce0a3d.netlify.app/tags/solutions"><kbd class="item-tag">Solutions</kbd></a>
+    # print the value
+    # the output should tell you if you did this right
+    print(paste(value))
+  } else {
+    next
+  }
+}
 
 
+# Question 3
+random_words &lt;- c(&quot;Brennan&quot;, &quot;is&quot;, &quot;mean&quot;, &quot;for&quot;, &quot;this&quot;, &quot;question&quot;)
 
+vec_length &lt;- length(random_words)
+
+new_vec &lt;- c()
+for(w in 1:vec_length){
+  # index value from vector
+  word &lt;- random_words[w]
+  # find length of that word
+  word_length &lt;- str_length(word)
+  
+  if(word_length &gt; 7){
+    new_word &lt;- str_c(word, &quot;!&quot;)
+  } else {
+    new_word &lt;- word
+  }
+  new_vec &lt;- c(new_vec, new_word)
+}
+
+str_c(new_vec, collapse = &quot; &quot;)</code></pre>
+<p>Congrats! You're finished with the crash course!</p>
 </div>
- 
+</div>
 
 </main>
-
-
-
-<div class="pages">
-
-    
-
-    
-        <a class="icon pages-icon" href="/tags/r/page/2/" rel="next">
-            <i class="fa fa-arrow-right"></i>
-        </a>
-    
-
-</div>
-
-
 
         <footer>
             <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>

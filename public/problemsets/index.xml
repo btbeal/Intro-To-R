@@ -32,5 +32,16 @@ Write an simple expression in your console that adds those two variables Write a
 The entirety of this problem set will build off of the COVID Apple Mobility data. This data shows the percent of daily direction requests sent to the Apple servers for thousands of local regions by different types of transportation (walking, biking, and driving).</description>
     </item>
     
+    <item>
+      <title>Problem Set 3</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/problemsets/set3/</link>
+      <pubDate>Sat, 27 Jun 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/problemsets/set3/</guid>
+      <description>This problem set will be the last of them. It will build on the 4th module. So, if you&#39;ve not checked it out, go ahead and do that! We will be building on a lot of components from the other modules as well.
+Function Concepts Here, I just want to touch on the general concepts of functions.
+What is the general structure of a function? Consider this function: my_function &amp;lt;- function(x = 2, y){ x + 2*y}.</description>
+    </item>
+    
   </channel>
 </rss>

@@ -7,8 +7,11 @@ draft: FALSE
 tags: ["Practice", "R"]
 ---
 
-```{r setup, include=FALSE, warning=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      results = "hide")
 library(tidyverse)
 library(lubridate)
 
@@ -27,14 +30,14 @@ Let's get started!
   
 ### Question 1
 First, create a new project, save the data as "applemobilitytrends.csv", and store the data within the same folder that your project is located in. Then, read in the data like so:  
-```{r, results='hide'}
+```{r}
 # Your path will be different, remember
 mobility <- read.csv("../data/applemobilitytrends.csv")
 ```
   
 Hopefully that part wasn't so bad. Now, let's take a look using our `str()` function.  
   
-```{r, results='hide'}
+```{r}
 str(mobility)
 ```
    
