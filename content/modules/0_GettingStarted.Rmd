@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ### Downloading R
-To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to [this website](https://cloud.r-project.org/) and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done [here](https://rstudio.com/products/rstudio/download/).  
+To use R, we first need to have it installed. Doing that is fairly simple. Just go to [this website](https://cloud.r-project.org/) and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done [here](https://rstudio.com/products/rstudio/download/).  
   
 Pick the free version.  
   
@@ -43,7 +43,7 @@ Finally, we will briefly cover loading in data.
 R is really great at handling different types of data formats, which includes .csv, SAS, etc. Most commonly, we are going to be working with .csv files. So, I'm only going to cover that here. Google is your friend when you run into any oddities regarding files you need to access with R.  
   
 #### Setting a Working Directory
-To do access data in R, you'll need to set a "working directory". A working directory tells R where you want it to look for data that you're referencing. R will not be able to read in data that it cannot find. Don't worry if this part seems confusing - we will cover it again.  
+To access data in R, you'll need to set a "working directory". A working directory tells R where you want it to look for data that you're referencing. R will not be able to read in data that it cannot find. Don't worry if this part seems confusing - we will cover it again.  
   
 To see what directory you're in, type `getwd()` into your console. This will tell you where you are within your computer's files. To set a new directory - you should set this where your data is - you can type `setwd()` into the console and deliver the path to that folder to it. This looks something like `setwd("path/to/myFolder")`. Let me show you an example.  
   
