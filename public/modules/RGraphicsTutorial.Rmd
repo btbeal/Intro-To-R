@@ -8,12 +8,19 @@ tags: ["R Markdown", "Lessons", "Intro"]
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      dev.args=list(bg="transparent"),
+                      fig.align = 'center')
 library(tidyverse)
 library(ggthemes)
 theme_set(theme_fivethirtyeight())
 theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
-             plot.background = element_rect(fill = "transparent", colour = NA))
+             legend.background = element_rect(fill = "transparent", colour = NA),
+             legend.key = element_rect(fill = "transparent", colour = NA),
+             strip.background =element_rect(fill="transparent", colour = NA))
+
 gapminder_IncomePerCap <- read.csv("../data/income_per_person.csv")
 gap <- read.csv2("../data/gapminder.csv")
 ```
