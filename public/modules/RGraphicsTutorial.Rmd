@@ -15,6 +15,7 @@ library(tidyverse)
 library(ggthemes)
 theme_set(theme_fivethirtyeight())
 theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
+             plot.background = element_rect(fill = "transparent", colour = NA),
              legend.background = element_rect(fill = "transparent", colour = NA),
              legend.key = element_rect(fill = "transparent", colour = NA),
              strip.background =element_rect(fill="transparent", colour = NA))
@@ -143,7 +144,7 @@ ggplot(top_three) +
   geom_bar(aes(x = year, y = income, fill = country), stat = "identity", position = "dodge") +
   # now add a theme (scroll through and pick your favorite.. I really like the minimal one)
   # these themes are specified as theme_* - try several out!
-  theme_minimal() +
+  # theme_minimal() +
   # now add your labels
   labs(
     x = "Year",
