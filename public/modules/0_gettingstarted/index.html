@@ -136,7 +136,7 @@
 
 <div id="downloading-r" class="section level3">
 <h3>Downloading R</h3>
-<p>To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to <a href="https://cloud.r-project.org/">this website</a> and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done <a href="https://rstudio.com/products/rstudio/download/">here</a>.</p>
+<p>To use R, we first need to have it installed. Doing that is fairly simple. Just go to <a href="https://cloud.r-project.org/">this website</a> and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done <a href="https://rstudio.com/products/rstudio/download/">here</a>.</p>
 <p>Pick the free version.</p>
 </div>
 <div id="rstudio" class="section level3">
@@ -164,7 +164,7 @@
 <p>R is really great at handling different types of data formats, which includes .csv, SAS, etc. Most commonly, we are going to be working with .csv files. So, I'm only going to cover that here. Google is your friend when you run into any oddities regarding files you need to access with R.</p>
 <div id="setting-a-working-directory" class="section level4">
 <h4>Setting a Working Directory</h4>
-<p>To do access data in R, you'll need to set a &quot;working directory&quot;. A working directory tells R where you want it to look for data that you're referencing. R will not be able to read in data that it cannot find. Don't worry if this part seems confusing - we will cover it again.</p>
+<p>To access data in R, you'll need to set a &quot;working directory&quot;. A working directory tells R where you want it to look for data that you're referencing. R will not be able to read in data that it cannot find. Don't worry if this part seems confusing - we will cover it again.</p>
 <p>To see what directory you're in, type <code>getwd()</code> into your console. This will tell you where you are within your computer's files. To set a new directory - you should set this where your data is - you can type <code>setwd()</code> into the console and deliver the path to that folder to it. This looks something like <code>setwd(&quot;path/to/myFolder&quot;)</code>. Let me show you an example.</p>
 <p>Create a folder on your desktop labeled <code>RFiles</code> and save it there (you don't need to do this part with R). Once you've done that, you can type <code>setwd(&quot;~/Desktop/RFiles&quot;)</code>. The tilde tells R go all the way to Desktop, then select the RFiles folder. Now type <code>getwd()</code> into your console. It should read something like: &quot;/Users/btbeal/Desktop/RFiles&quot;. Now, if you place data in that folder, R can find it. So, let's do that.</p>
 <p>Let's download this .csv file by clicking <a href="../../data/income_per_person.csv">this link</a>. Store the data as &quot;gapminder.csv&quot; in your new folder, <code>RFiles</code>. Now, we can discuss how to read it in.</p>

@@ -17,7 +17,7 @@
       <pubDate>Mon, 06 Jul 2020 21:13:14 -0500</pubDate>
       
       <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/0_gettingstarted/</guid>
-      <description>Downloading R To use R, we first need to hvae it installed. Doing that is fairly simple. Just go to this website and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done here.
+      <description>Downloading R To use R, we first need to have it installed. Doing that is fairly simple. Just go to this website and follow the instructions! Once you have the language itself installed, you should also download RStudio, which is commonly referred to as an IDE (integrated development environment). That can be done here.
 Pick the free version.
  RStudio RStudio provides the luxury of keeping track of variables/data/packages and provides a lot moe flexibility in general, which you will quickly see.</description>
     </item>
@@ -41,22 +41,22 @@ Pick the free version.
     </item>
     
     <item>
-      <title>Lesson 2.5 - R Graphics Tutorial</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/rgraphicstutorial/</link>
+      <title>Lesson 3 - Strings and Dates</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/3_stringsndates/</link>
       <pubDate>Thu, 02 Jul 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/3_stringsndates/</guid>
+      <description>Some of the most common data-related issues for those new to healthcare research (probably any research) revolve around string and date manipulation. Fortunately for us, R has some really incredible packages to help us deal with them. Like anything in R, it can be done in base R. Though, you&#39;ll never use base R again for string/date manipulation so... i&#39;m not going to cover it here. Again, this is meant to be a broad overview of both of the packages so that you can go back to them when you&#39;re stuck!</description>
+    </item>
+    
+    <item>
+      <title>Lesson 4 - R Graphics Tutorial</title>
+      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/rgraphicstutorial/</link>
+      <pubDate>Wed, 01 Jul 2020 21:13:14 -0500</pubDate>
       
       <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/rgraphicstutorial/</guid>
       <description>For this lesson, we&#39;re going to use the gapminder data, which can be found in its original form here. If you&#39;re reading this and not attending the class, I would highly encourage you to check out the website! The late Hans Rosling was a brilliant guy and his work, followed up by children, is worth digging through.
 The main purpose of this exercise is to learn how to graph your data; however, we first need to understand the (subjectively) best format for data, tidy data.</description>
-    </item>
-    
-    <item>
-      <title>Lesson 3 - Strings and Dates</title>
-      <link>https://zealous-hawking-ce0a3d.netlify.app/modules/3_stringsndates/</link>
-      <pubDate>Wed, 01 Jul 2020 21:13:14 -0500</pubDate>
-      
-      <guid>https://zealous-hawking-ce0a3d.netlify.app/modules/3_stringsndates/</guid>
-      <description>Some of the most common data-related issues for those new to healthcare research (probably any research) revolve around string and date manipulation. Fortunately for us, R has some really incredible packages to help us deal with them. Like anything in R, it can be done in base R. Though, you&#39;ll never use base R again for string/date manipulation so... i&#39;m not going to cover it here. Again, this is meant to be a broad overview of both of the packages so that you can go back to them when you&#39;re stuck!</description>
     </item>
     
     <item>
@@ -70,7 +70,7 @@ The workshop, as it stands, is meant to span three days. So, the tutorials and p
     </item>
     
     <item>
-      <title>Lesson 4 - Functions and Loops in R</title>
+      <title>Lesson 5 - Functions and Loops in R</title>
       <link>https://zealous-hawking-ce0a3d.netlify.app/modules/4_functions/</link>
       <pubDate>Tue, 30 Jun 2020 21:13:14 -0200</pubDate>
       
