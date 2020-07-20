@@ -186,7 +186,7 @@ ggplot(us_data) +
   # now, we want specify the y axis to be income and x is year
   # we put these in the aes() comman (for aesthetics)
   geom_bar(aes(x = year, y = income), stat = &quot;identity&quot;)</code></pre>
-<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>That worked pretty well. Not the most attractive graph... but there it is nonetheless - two lines of code later. Also... check out the '30s. Interesting. Wonder what happened there (clue is in the depressed line).<br />
 <br />
 What if we wanted to look at this income growth for 3 countries? Let's say Germany, US, and France. We can do this a few ways - R has a color/fill argument that can be useful for separating by a given level. Let's use that.<br />
@@ -205,7 +205,7 @@ ggplot(top_three) +
   # now we add two arguments - fill, which tells us to color the bars by country
   # position (I prefer &quot;dodge&quot; - the default is &quot;stack&quot;)
   geom_bar(aes(x = year, y = income, fill = country), stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
-<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Like all of the examples, you should play around with the defaults and the data to see different results/etc.<br />
 <br />
 Finally, for this example, I want to show you some easy tricks to make this graph a little cleaner. I really like the <code>ggthemes</code> package to make a clean plot space. Go ahead and install it using <code>install.packages(&quot;ggthemes&quot;)</code>.<br />
@@ -230,7 +230,7 @@ ggplot(top_three) +
   # there are several ways to do this.. I use the scales package
   # scales can do a lot for your axes. Check it out:
   scale_y_continuous(labels = scales::dollar)</code></pre>
-<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Now you've got the basics of ggplot. Take some time to play around with this before moving on.<br />
 <br />
 Let's go a bit deeper into ggplot2 now.</p>
@@ -269,11 +269,11 @@ First, let's select the data we want.<br />
 </p>
 <pre class="r"><code>ggplot(gap_selected_years) +
   geom_point(aes(x = GDP_per_capita, y = life_expectancy))</code></pre>
-<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Alright, that's not beautiful... but it is a start. We can see two general clusters - one to the lower left and one gathered around the top. We can guess that these two clusters are the years. We can use the <code>color</code> argument (color is geom_point's fill equivalent) to verify our assumption:</p>
 <pre class="r"><code>ggplot(gap_selected_years) + 
   geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = Year))</code></pre>
-<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>So we were right. But there is still a bit of funkiness going on. First, the legend shows us that R thinks <code>Year</code> is continous... and it was... but for this analysis we should think of it as a factor (or categorical). We could use <code>as.factor(Year)</code> to transform it if we wanted.<br />
 <br />
 Second, the clusters are rough. We can could place these on a log scale to make it a bit more linear.<br />
@@ -283,7 +283,7 @@ Second, the clusters are rough. We can could place these on a log scale to make 
   geom_point(aes(x = GDP_per_capita, y = life_expectancy, color = Year)) +
   # we can just add a scale to the x axis (there are many of these - check them out!)
   scale_x_log10()</code></pre>
-<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Hey that looks a lot better! In general, we can see that everyone is doing better as a society. Awesome.<br />
 <br />
 But about dimensions... we have a population variable that we could take advantage of. Let's make the size of each point proportional to their population size.<br />
@@ -304,7 +304,7 @@ But about dimensions... we have a population variable that we could take advanta
     x = &quot;GDP Per Capita&quot;,
     title = &quot;Check Out This Graph&quot;
   )</code></pre>
-<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>But what if we wanted to call out the US, specifically? We could add a shape...</p>
 <pre class="r"><code># create a new data frame with a column indicated whether the value is for US or not
 gselect_us &lt;- gap_selected_years %&gt;% 
@@ -327,7 +327,7 @@ ggplot(gselect_us) +
     x = &quot;GDP Per Capita&quot;,
     title = &quot;Check Out This Graph&quot;
   )</code></pre>
-<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>See the triangle? That's the US. And yes, this is getting a little out of hand here... but we should just go one layer deeper. Let's subset the data by who was above the average child mortality rate and who was not.<br />
 <br />
 </p>
@@ -368,7 +368,7 @@ ggplot(child_mort_cutoff_data) +
   # now, we add &quot;facets&quot; to group the data into different panes
   # we will use our &#39;compare&#39; variable for that.
   facet_grid(~compare) </code></pre>
-<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/modules/RGraphicsTutorial_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>So we just did a lot... and it was a bit of overkill. But it is interesting to see. We know that the US is under the average child mortality rate (the triangle in the right pane). We can also now see that those higher GDP and life expectancy are correlated with better child mortality rates.<br />
 <br />
 This is all just data exploration and we know that looking at associations this way tells us nothing about causation. Though, it can be a good first step!<br />

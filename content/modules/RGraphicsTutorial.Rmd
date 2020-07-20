@@ -10,9 +10,7 @@ tags: ["R Markdown", "Lessons", "Intro"]
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE,
-                      message = FALSE,
-                      dev.args=list(bg="transparent"),
-                      fig.align = 'center')
+                      message = FALSE)
 library(tidyverse)
 library(ggthemes)
 theme_set(theme_fivethirtyeight())
