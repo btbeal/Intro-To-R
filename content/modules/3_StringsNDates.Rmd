@@ -7,7 +7,7 @@ draft: FALSE
 tags: ["R Markdown", "Lessons", "Intro"]
 ---
 
-```{r setup, include=FALSE, warning=FALSE}
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(lubridate)
@@ -84,16 +84,16 @@ Now what if we wanted to remove, instead of replace, all vowels in any position?
   
 ```{r}
 # remember our bracket trick?
-# Note that we can remove something by replacing with ""
-str_replace_all(sent_subset, "[aeiou]", "")
+# Note that we can remove something by similar convention
+str_remove_all(sent_subset, "[aeiou]")
 ```
 
 And now, finally, we can create something that looks like your econometric textbook as so:  
 
 ```{r}
-weird_sentences <- str_replace_all(sent_subset, "[aeiou]", "")
+weird_sentences <- str_remove_all(sent_subset, "[aeiou]")
 # remove any space, period, comma, or apostrophe
-str_replace_all(weird_sentences, "[ .,']", "")
+str_remove_all(weird_sentences, "[ .,']")
 ```
   
 That is a fairly useles result... but hopefully you've at least seen some of the things that we can do with the stringr package! Of course, there are many more functions that you will find useful. The main goal here was an introduction. You know where to look though, if you need help. If you're having string issues, stringr can likely help.  

@@ -43,7 +43,7 @@ mobility_CLT <- mobility %>%
   # step 4
   pivot_longer(cols = starts_with("X"), names_to = "date", values_to = "volume") %>% 
   # step 5
-  mutate(date = str_replace_all(date, "[Xx.]", ""),
+  mutate(date = str_remove_all(date, "[Xx.]"),
          # step 6
          date = ymd(date))
   
