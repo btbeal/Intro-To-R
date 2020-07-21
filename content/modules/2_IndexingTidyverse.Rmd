@@ -7,7 +7,7 @@ draft: FALSE
 tags: ["R Markdown", "Lessons", "Intro"]
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 
@@ -189,7 +189,7 @@ Already, I hope you find these namess intuitive. One of the biggest advantages t
 \
 Anytime you need to use a package in R, you must first install it with `install.packages("some_package")`. Then, you have to load it with `library(some_package). Notice the quotes and lack thereof.\
 
-```{r, results='hide'}
+```{r}
 # first, install the package. We only need to do this once.
 # install.packages("tidyverse")
 
